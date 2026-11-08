@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="ds-styles.css">
+  <script src="ds-bundle.js"></script>
+  <script src="./image-slot.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap">
+  <style>a{text-decoration:none}body{margin:0}::selection{background:rgba(243,222,214,0.6)}</style>
+</helmet>
+
+<div style="font-family:Inter,sans-serif;background:#FFFDFB;color:#231d1a;max-width:1100px;margin:0 auto;padding:0 clamp(16px,4vw,48px) 120px">
+
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:32px 0">
+    <a href="./index.html" style="font:600 12px/1 Inter,sans-serif;letter-spacing:0.04em;color:#231d1a;border-bottom:1px solid #231d1a">Home</a>
+    <div style="display:flex;gap:18px;font:500 12px/1 Inter,sans-serif;color:rgba(35,29,26,0.65)">
+      <a href="#" style="color:rgba(35,29,26,0.65)">Resume</a>
+      <a href="#" style="color:rgba(35,29,26,0.65)">Email</a>
+      <a href="#" style="color:rgba(35,29,26,0.65)">LinkedIn</a>
+    </div>
+  </div>
+
+  <header style="padding:72px 0 0">
+    <div style="font:500 12px/1 Inter,sans-serif;letter-spacing:0.04em;color:rgba(35,29,26,0.6);margin-bottom:24px">Design Lead, Meta Commerce</div>
+    <h1 style="font:500 clamp(52px,9vw,112px)/0.95 Inter,sans-serif;letter-spacing:-0.045em;margin:0;color:#231d1a">Checkout Redesign</h1>
+    <div style="font:500 clamp(28px,4vw,48px)/1.1 Inter,sans-serif;letter-spacing:-0.03em;margin-top:12px;color:rgba(35,29,26,0.45)">Facebook Web</div>
+  </header>
+
+  <p style="font:500 clamp(24px,3vw,34px)/1.25 Inter,sans-serif;letter-spacing:-0.02em;margin:0;color:#231d1a;max-width:660px;margin:88px 0 0 0">Facebook Shops’ web checkout was dated, out of step with the app, and losing high-value desktop orders.</p>
+
+  <div style="display:flex;flex-wrap:wrap;gap:40px 64px;justify-content:space-between;align-items:center;margin-top:120px">
+    <p style="font:500 clamp(24px,3vw,34px)/1.25 Inter,sans-serif;letter-spacing:-0.02em;margin:0;color:#231d1a;flex:1 1 280px;max-width:440px">We rebuilt it as a stepped modal flow, with order totals visible at every step.</p>
+    <figure style="flex:0 1 520px;min-width:0;margin:0">
+      <image-slot id="ed-fb-1" src="thumb-fb-checkout-1.png" shape="rect" radius="2" style="display:block;width:100%;aspect-ratio:900/385;height:auto" placeholder="Drop image"></image-slot>
+      <figcaption style="font:400 12px/1.4 Inter,sans-serif;color:rgba(35,29,26,0.6);margin-top:10px">Stepped checkout</figcaption>
+    </figure>
+  </div>
+
+  <div style="display:flex;flex-wrap:wrap;gap:40px 64px;justify-content:space-between;align-items:center;margin-top:120px">
+    <figure style="flex:0 1 440px;min-width:0;margin:0">
+      <image-slot id="ed-fb-2" src="thumb-fb-checkout-2.png" shape="rect" radius="2" style="display:block;width:100%;aspect-ratio:810/395;height:auto" placeholder="Drop image"></image-slot>
+      <figcaption style="font:400 12px/1.4 Inter,sans-serif;color:rgba(35,29,26,0.6);margin-top:10px">Web component library</figcaption>
+    </figure>
+    <p style="font:500 clamp(24px,3vw,34px)/1.25 Inter,sans-serif;letter-spacing:-0.02em;margin:0;color:#231d1a;flex:1 1 280px;max-width:440px">I led a web component library aligned with the Facebook Design System and the apps.</p>
+  </div>
+
+  <figure style="width:min(100%,560px);margin:120px 0 0 auto">
+    <image-slot id="ed-fb-3" src="ed-fb-journey.png" shape="rect" radius="2" style="display:block;width:100%;aspect-ratio:800/570;height:auto" placeholder="Drop image"></image-slot>
+      <figcaption style="font:400 12px/1.4 Inter,sans-serif;color:rgba(35,29,26,0.6);margin-top:10px">A cohesive journey across Shops</figcaption>
+  </figure>
+
+  <p style="font:500 clamp(24px,3vw,34px)/1.25 Inter,sans-serif;letter-spacing:-0.02em;margin:0;color:#231d1a;max-width:440px;margin:48px 0 0 0">One responsive framework for the whole shopping journey.</p>
+
+  <p style="font:500 clamp(32px,5vw,58px)/1.08 Inter,sans-serif;letter-spacing:-0.035em;margin:160px 0 0;max-width:900px;color:#231d1a">Exceeded goals — transactions and GMV up significantly.</p>
+  <p style="font:400 18px/1.6 Inter,sans-serif;margin:24px 0 0;max-width:520px;color:rgba(35,29,26,0.72)">Faster design and engineering, better cross-org collaboration, and the foundation for subscriptions, donations and full-screen checkout.</p>
+
+  <div style="margin-top:96px;border-top:1px solid rgba(35,29,26,0.12);padding-top:40px;display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap">
+    <div style="display:flex;gap:18px;font:500 12px/1 Inter,sans-serif;color:rgba(35,29,26,0.65)">
+      <a href="#" style="color:rgba(35,29,26,0.65)">Resume</a>
+      <a href="#" style="color:rgba(35,29,26,0.65)">Email</a>
+      <a href="#" style="color:rgba(35,29,26,0.65)">LinkedIn</a>
+    </div>
+    <p style="font:400 14px/1.6 Inter,sans-serif;margin:0;max-width:460px;color:rgba(35,29,26,0.55)">I'm Celia Marais, a New York-based UX designer with a background in Art Direction and a penchant for design systems. Most recently at Ernesta Inc. Formerly on the Commerce team at Meta, mental health startup Spring Health. Before that, I worked on short films, music videos, and visual design in San Francisco and Montreal.</p>
+  </div>
+</div>
+
+</x-dc>
+</body>
+</html>

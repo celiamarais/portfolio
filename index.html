@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200..700&display=swap">
+  <link rel="stylesheet" href="ds-styles.css">
+  <script src="ds-bundle.js"></script>
+  <script src="./image-slot.js"></script>
+  <style>
+    body{margin:0}
+    a{text-decoration:none}
+    ::selection{background:rgba(243,222,214,0.6)}
+  </style>
+</helmet>
+
+<div onMouseMove="{{ spawnBurst }}" onClick="{{ toggleBurst }}" style="font-family:Inter,'Helvetica Neue',Arial,sans-serif;background:#fffdfb;color:#231d1a;position:relative;min-height:100vh">
+  <div ref="{{ bgRef }}" style="position:fixed;inset:-25%;z-index:0;pointer-events:none;background:conic-gradient(from 210deg at 47% 34%, #fdf8f0 0deg, #fdf0e8 55deg, #f6d9cd 120deg, #f3ded6 200deg, #faf3e7 275deg, #fdf8f0 360deg);filter:blur(28px)"></div>
+  <div style="position:fixed;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg, rgba(250,243,231,0.42) 0%, rgba(250,243,231,0.06) 45%, rgba(250,243,231,0.55) 100%)"></div>
+  <div ref="{{ burstRef }}" style="position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden"></div>
+
+  <div style="position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 clamp(16px,4vw,48px) 120px">
+
+    <nav aria-label="Site" style="display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;padding:32px 0">
+      <a href="#" style="font:600 12px/1 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:0.04em;color:#231d1a;border-bottom:1px solid #231d1a">Celia Marais</a>
+      <div style="display:flex;gap:18px;font:500 12px/1 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:0.04em">
+        <a href="#" onClick="{{ copyEmail }}" style="color:#706b69">{{ emailLabel }}</a>
+        <a href="#" style="color:#706b69">LinkedIn</a>
+        <a href="#" style="color:#706b69">Resume</a>
+      </div>
+    </nav>
+
+    <header style="padding-top:72px">
+      <p style="font:330 clamp(24px,3vw,34px)/1.25 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:-0.02em;color:#231d1a;margin:0;max-width:660px">I'm a product designer with a background in art direction and a penchant for hairy problems and design systems.</p>
+      <p style="font:330 clamp(24px,3vw,34px)/1.25 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:-0.02em;color:#231d1a;margin:0;max-width:520px;margin:48px 0 0 auto">I solve problems for people by turning complex systems into simple, delightful experiences.</p>
+      <div style="display:flex;flex-direction:column;gap:24px;max-width:520px;margin:88px 0 0 8%">
+        <p style="font:400 18px/1.6 Inter,'Helvetica Neue',Arial,sans-serif;color:#231d1acc;margin:0">I've built products that help people make purchase decisions, find care when they're in crisis, and help teams work better and faster. I've done it at an early-stage startup, at a unicorn, at a big tech company, and on my own as a freelancer.</p>
+      </div>
+    </header>
+
+    <sc-for list="{{ groups }}" as="g" hint-placeholder-count="3">
+      <section style="margin-top:120px">
+        <div style="display:flex;align-items:baseline;gap:16px;padding-bottom:18px;border-bottom:1px solid rgba(35,29,26,0.12)">
+          <span style="font:500 12px/1 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:0.04em;color:#231d1a">{{ g.brandLabel }}</span>
+          <sc-if value="{{ g.suffix }}"><span style="font:500 12px/1 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:0.04em;color:#7b7774">{{ g.suffix }}</span></sc-if>
+        </div>
+        <sc-for list="{{ g.projects }}" as="p" hint-placeholder-count="3">
+          <div ref="{{ collectRef }}" style="display:flex;flex-wrap:wrap;gap:40px 64px;justify-content:space-between;align-items:center;padding:88px 0;border-bottom:1px solid rgba(35,29,26,0.12);opacity:0;transform:translateY(28px);transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1)">
+            <div style="flex:1 1 320px;max-width:480px;min-width:0">
+              <div style="font:400 12px/1.4 Inter,'Helvetica Neue',Arial,sans-serif;color:#7b7774;margin-bottom:10px">{{ p.num }}</div>
+              <h3 style="font:330 clamp(24px,3vw,34px)/1.25 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:-0.02em;color:#231d1a;margin:0;margin-bottom:24px">{{ p.name }}</h3>
+              <sc-if value="{{ p.isMerged }}">
+                <p style="font:400 18px/1.6 Inter,'Helvetica Neue',Arial,sans-serif;color:#231d1acc;margin:0;margin-bottom:24px">{{ p.storyPart1 }} <a href="{{ p.detailPage }}" style="font:600 12px/1 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:0.04em;color:#231d1a;border-bottom:1px solid #231d1a">Read the case study</a></p>
+                <p style="font:400 18px/1.6 Inter,'Helvetica Neue',Arial,sans-serif;color:#231d1acc;margin:0;margin-bottom:24px">{{ p.storyPart2 }} <a href="{{ p.detailPage2 }}" style="font:600 12px/1 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:0.04em;color:#231d1a;border-bottom:1px solid #231d1a">Read the case study</a></p>
+              </sc-if>
+              <sc-if value="{{ p.notMerged }}" hint-placeholder-val="{{ true }}">
+                <p style="font:400 18px/1.6 Inter,'Helvetica Neue',Arial,sans-serif;color:#231d1acc;margin:0;margin-bottom:24px">{{ p.story }}<sc-if value="{{ p.inlineDetail }}"> <a href="{{ p.detailPage }}" style="font:600 12px/1 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:0.04em;color:#231d1a;border-bottom:1px solid #231d1a">Read the case study</a></sc-if></p>
+              </sc-if>
+              <sc-if value="{{ p.isLightbox }}">
+                <a href="#" onClick="{{ p.openLightbox }}" style="font:600 12px/1 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:0.04em;color:#231d1a;border-bottom:1px solid #231d1a">View project</a>
+              </sc-if>
+              <sc-if value="{{ p.blockDetail }}">
+                <a href="{{ p.detailPage }}" style="font:600 12px/1 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:0.04em;color:#231d1a;border-bottom:1px solid #231d1a">Read the case study</a>
+              </sc-if>
+            </div>
+            <div style="flex:0 1 520px;min-width:0;display:flex;max-height:600px">
+              <image-slot id="{{ p.slot }}-thumbA-v2" src="{{ p.img1 }}" shape="rounded" radius="2" fit="contain" placeholder="Drop image" style="width:100%;max-height:600px"></image-slot>
+            </div>
+          </div>
+        </sc-for>
+      </section>
+    </sc-for>
+
+    <footer style="margin-top:96px;border-top:1px solid rgba(35,29,26,0.12);padding-top:40px;display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap">
+      <div style="display:flex;gap:18px;font:500 12px/1 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:0.04em">
+        <a href="#" onClick="{{ copyEmail }}" style="color:#706b69">{{ emailLabel }}</a>
+        <a href="#" style="color:#706b69">LinkedIn</a>
+        <a href="#" style="color:#706b69">Resume</a>
+      </div>
+      <p style="font:400 14px/1.6 Inter,'Helvetica Neue',Arial,sans-serif;margin:0;max-width:460px;color:#706b69">Celia Marais, product designer in New York.</p>
+    </footer>
+  </div>
+
+  <sc-if value="{{ hasLightbox }}">
+    <div onClick="{{ closeLightbox }}" style="position:fixed;inset:0;z-index:200;background:rgba(35,29,26,0.55);backdrop-filter:blur(4px);display:flex;justify-content:center;padding:40px 16px;overflow:auto">
+      <div onClick="{{ stopClick }}" style="position:relative;max-width:1100px;width:100%;height:fit-content;background:#fffdfb;border-radius:4px;overflow:hidden">
+        <div style="position:sticky;top:0;display:flex;justify-content:flex-end;padding:20px 24px;background:#fffdfb;z-index:2">
+          <button type="button" onClick="{{ closeLightbox }}" style="background:none;border:0;padding:0;cursor:pointer;font:600 12px/1 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:0.04em;color:#231d1a;border-bottom:1px solid #231d1a">Close</button>
+        </div>
+        <dc-import name="Project Ernesta Tools" hint-size="100%,1800px"></dc-import>
+      </div>
+    </div>
+  </sc-if>
+
+  <div style="position:fixed;bottom:28px;left:50%;transform:translateX(-50%);z-index:100;pointer-events:none">
+    <sc-if value="{{ copied }}">
+      <div style="background:#231d1a;color:#fffdfb;font:500 12px/1 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:0.04em;border-radius:2px;padding:12px 18px">Email copied to clipboard</div>
+    </sc-if>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+
+const GROUPS_RAW = [
+  { company: 'Meta', brand: 'meta', projects: [
+    { name: 'Facebook Web Checkout',
+      story: "As checkout design lead on this cross-functional project overhauling the entire Shops funnel, I redesigned Facebook's web checkout, which lagged behind its own apps even though desktop shoppers spend more. I led a redesign to a stepped, fully responsive flow that shows the order total at every step, and built the web component library behind it. Transactions and gross merchandise value both rose significantly.",
+      slot: 'proj2', img1: 'thumb-fb-checkout-1.png', img2: 'thumb-fb-checkout-2.png', detailPage: './Project Facebook Web Checkout Short.dc.html' },
+    { name: 'Processes and People',
+      story: "Meta's Post Purchase team had inconsistent mockups, undocumented flows and painful onboarding. I built a Figma product system with canonical screens and states, plus an interactive directory mapping people, teams and surfaces. The whole Commerce org adopted it as its source of truth.",
+      slot: 'proj4', img1: 'thumb-proc-1.png', img2: 'thumb-proc-2.png', detailPage: './Project Processes and People Short.dc.html', inline: true },
+    { name: 'Internal Test Tools & Payment Failure Flow',
+      storyPart1: "Engineers on the Commerce team had no easy way to create and manage test orders for development and QA. I built an internal dogfooding tool letting engineers generate realistic test orders with customizable parameters, giving comprehensive and efficient test coverage for checkout, shipping and returns flows.",
+      storyPart2: "Separately, of users whose order didn't go through because of a payment failure, only a few were returning to update and resubmit. I increased the update window to 48 hours, added email and text notifications, and simplified the update-payment flow with contextual, pre-filled guidance — lifting every target metric, including transactions and gross merchandise value.",
+      slot: 'proj6', img1: 'thumb-hackathon-1.png', img2: 'thumb-hackathon-2.png',
+      detailPage: './Project Meta Hackathon Short.dc.html', detailPage2: './Project Payment Failure Flow Short.dc.html', merged: true },
+    { name: 'Vision Work',
+      story: "Confusion around tracking hurt buyer trust and led to more help inquiries and lower customer ratings. I re-imagined order tracking around three themes — visibility, delight, and business messaging — with real-time tracking, rich in-app B2C messaging, and a scalable payhub for a 3-year vision of post-purchase.",
+      slot: 'proj9', img1: 'thumb-vision-1.png', img2: 'thumb-vision-2.png', detailPage: './Project Vision Work Short.dc.html' }
+  ]},
+  { company: 'Ernesta', brand: 'ernesta', projects: [
+    { name: 'Ernesta',
+      story: "Designed, implemented and owned the B2B area of ernesta.com. I created, implemented and scaled Ernesta's product and design system, and designed automated tools that improved internal workflows — including a way to easily generate B2B quotes and generate spec sheets straight from product data.",
+      slot: 'proj5', img1: 'thumb-ernesta-1.png', img2: 'thumb-ernesta-2.png', lightbox: true }
+  ]},
+  { company: 'Spring Health', brand: 'springhealth', projects: [
+    { name: 'Spring Health App',
+      story: "Spring Health had a library of CBT and mindfulness exercises buried in text, with no clear way in. I asked people how they were feeling instead of what they wanted to read, and mapped those answers to curated paths. Downloads rose 108% and the exercises became a standard part of the brand.",
+      slot: 'proj1', img1: 'thumb-spring-app-1.png', img2: 'thumb-spring-app-2.png', detailPage: './Project Spring Mobile App Short.dc.html' },
+    { name: 'Moments',
+      story: "We weren't addressing the needs of lower-acuity patients who may not want therapy but still need help managing their everyday mental health. I asked users how they're feeling and mapped answers to existing content categories, translating Spring Health's calming patterns onto smaller viewports. App downloads rose 136%.",
+      slot: 'proj8', img1: 'thumb-moments-1.png', img2: 'thumb-moments-2.png', detailPage: './Project Spring Moments Short.dc.html' }
+  ]}
+];
+
+const BRAND_STYLE = {
+  meta: { fontFamily: 'Inter,sans-serif', fontWeight: 700, letterSpacing: '-0.01em' },
+  ernesta: { fontFamily: 'Georgia,serif', fontStyle: 'italic', fontWeight: 400, letterSpacing: '0' },
+  springhealth: { fontFamily: 'Inter,sans-serif', fontWeight: 600, letterSpacing: '0.01em', color: 'rgb(55,131,124)' }
+};
+
+class Component extends DCLogic {
+  state = { copied: false, lightbox: false };
+  _burstOn = true;
+
+  toggleBurst = (e) => {
+    if (e.target.closest && e.target.closest('a, image-slot')) return;
+    this._burstOn = !this._burstOn;
+  };
+
+  bgRef = React.createRef();
+  burstRef = React.createRef();
+  _sections = [];
+
+  componentDidMount() {
+    const tick = () => {
+      this.revealVisible();
+      this.syncRatios();
+      this._raf = requestAnimationFrame(tick);
+    };
+    this._raf = requestAnimationFrame(tick);
+    this._fallback = setTimeout(() => this._sections.forEach((el) => this.reveal(el)), 1500);
+  }
+
+  componentWillUnmount() {
+    cancelAnimationFrame(this._raf);
+    clearTimeout(this._fallback);
+    clearTimeout(this._copyT);
+  }
+
+  reveal(el) {
+    if (!el) return;
+    el.style.opacity = '1';
+    el.style.transform = 'translateY(0)';
+  }
+
+  revealVisible = () => {
+    const vh = window.innerHeight || 800;
+    this._sections.forEach((el) => {
+      const r = el.getBoundingClientRect();
+      if (r.top < vh * 0.95 && r.bottom > -200) this.reveal(el);
+    });
+  };
+
+  collectRef = (el) => {
+    if (el && !this._sections.includes(el)) this._sections.push(el);
+  };
+
+  syncRatios = () => {
+    document.querySelectorAll('image-slot').forEach((slot) => {
+      const img = slot.shadowRoot && slot.shadowRoot.querySelector('img');
+      if (!img || !img.naturalWidth || !img.naturalHeight) return;
+      const r = img.naturalWidth + ' / ' + img.naturalHeight;
+      if (slot.style.aspectRatio !== r) {
+        slot.style.aspectRatio = r;
+        slot.style.height = 'auto';
+      }
+    });
+  };
+
+  spawnBurst = (e) => {
+    if (!this._burstOn) return;
+    const layer = this.burstRef.current;
+    if (!layer) return;
+    const now = performance.now();
+    if (this._lastBurst && now - this._lastBurst < 90) return;
+    this._lastBurst = now;
+    const d = 1100;
+    const el = document.createElement('div');
+    el.style.cssText = [
+      'position:absolute',
+      'left:' + (e.clientX - d / 2) + 'px',
+      'top:' + (e.clientY - d / 2) + 'px',
+      'width:' + d + 'px', 'height:' + d + 'px',
+      'border-radius:50%', 'pointer-events:none', 'filter:blur(28px)',
+      'opacity:0', 'transform:scale(0.6)',
+      'transition:opacity 1.1s cubic-bezier(0.16,1,0.3,1), transform 1.4s cubic-bezier(0.16,1,0.3,1)',
+      'background:conic-gradient(from 210deg at 50% 50%, #f7ecdc 0deg, #fbe4d3 55deg, #efc4a8 120deg, #ecc9b5 200deg, #f2e4cd 275deg, #f7ecdc 360deg)',
+      '-webkit-mask-image:radial-gradient(circle, #000 40%, transparent 72%)',
+      'mask-image:radial-gradient(circle, #000 40%, transparent 72%)'
+    ].join(';');
+    layer.appendChild(el);
+    requestAnimationFrame(() => { el.style.opacity = '1'; el.style.transform = 'scale(1)'; });
+    setTimeout(() => {
+      el.style.transition = 'opacity 4.5s ease';
+      el.style.opacity = '0';
+      setTimeout(() => el.remove(), 4700);
+    }, 2600);
+  };
+
+  copyEmail = (e) => {
+    e.preventDefault();
+    navigator.clipboard.writeText('celia.marais@email.com').catch(() => {});
+    this.setState({ copied: true });
+    clearTimeout(this._copyT);
+    this._copyT = setTimeout(() => this.setState({ copied: false }), 1800);
+  };
+
+  openLightbox = (e) => { e.preventDefault(); this.setState({ lightbox: true }); };
+  closeLightbox = () => this.setState({ lightbox: false });
+  stopClick = (e) => e.stopPropagation();
+
+  renderVals() {
+    return {
+      bgRef: this.bgRef,
+      burstRef: this.burstRef,
+      spawnBurst: this.spawnBurst,
+      toggleBurst: this.toggleBurst,
+      collectRef: this.collectRef,
+      copyEmail: this.copyEmail,
+      emailLabel: this.state.copied ? 'Copied' : 'Email',
+      copied: this.state.copied,
+      hasLightbox: this.state.lightbox,
+      closeLightbox: this.closeLightbox,
+      stopClick: this.stopClick,
+      groups: (() => {
+        let n = 1;
+        return GROUPS_RAW.map((g) => {
+          const brandLabel = g.brand === 'meta' ? 'Meta' : g.brand === 'ernesta' ? 'Ernesta' : g.brand === 'springhealth' ? 'Spring Health' : g.company;
+          return {
+            brandLabel, suffix: '',
+            projects: g.projects.map((p) => ({
+              ...p,
+              num: String(n++).padStart(2, '0'),
+              isLightbox: !!p.lightbox,
+              isMerged: !!p.merged,
+              notMerged: !p.merged,
+              inlineDetail: !!p.detailPage && !!p.inline,
+              blockDetail: !!p.detailPage && !p.inline && !p.merged,
+              openLightbox: this.openLightbox
+            }))
+          };
+        });
+      })()
+    };
+  }
+}
+
+</script>
+</body>
+</html>
