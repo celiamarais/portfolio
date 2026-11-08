@@ -25,9 +25,9 @@
   <div style="position:fixed;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg, rgba(250,243,231,0.42) 0%, rgba(250,243,231,0.06) 45%, rgba(250,243,231,0.55) 100%)"></div>
   <div ref="{{ burstRef }}" style="position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden"></div>
 
-  <div style="position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 clamp(16px,4vw,48px) 120px">
+  <div style="position:relative;z-index:1;max-width:640px;margin:0 auto;padding:0 max(20px,env(safe-area-inset-left,0px)) 120px">
 
-    <nav aria-label="Site" style="display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;padding:32px 0">
+    <nav aria-label="Site" style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:32px 0">
       <a href="#" style="font:600 12px/1 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:0.04em;color:#231d1a;border-bottom:1px solid #231d1a">Celia Marais</a>
       <div style="display:flex;gap:18px;font:500 12px/1 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:0.04em">
         <a href="#" onClick="{{ copyEmail }}" style="color:#706b69">{{ emailLabel }}</a>
@@ -36,67 +36,38 @@
       </div>
     </nav>
 
-    <header style="padding-top:72px">
-      <p style="font:330 clamp(24px,3vw,34px)/1.25 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:-0.02em;color:#231d1a;margin:0;max-width:660px">I'm a product designer with a background in art direction and a penchant for hairy problems and design systems.</p>
-      <p style="font:330 clamp(24px,3vw,34px)/1.25 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:-0.02em;color:#231d1a;margin:0;max-width:520px;margin:48px 0 0 auto">I solve problems for people by turning complex systems into simple, delightful experiences.</p>
-      <div style="display:flex;flex-direction:column;gap:24px;max-width:520px;margin:88px 0 0 8%">
-        <p style="font:400 18px/1.6 Inter,'Helvetica Neue',Arial,sans-serif;color:#231d1acc;margin:0">I've built products that help people make purchase decisions, find care when they're in crisis, and help teams work better and faster. I've done it at an early-stage startup, at a unicorn, at a big tech company, and on my own as a freelancer.</p>
-      </div>
+    <header style="padding-top:64px;display:flex;flex-direction:column;gap:32px">
+      <p style="font:330 clamp(24px,5vw,34px)/1.25 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:-0.02em;color:#231d1a;margin:0">I'm a product designer with a background in art direction and a penchant for hairy problems and design systems.</p>
+      <p style="font:330 clamp(24px,5vw,34px)/1.25 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:-0.02em;color:#231d1a;margin:0">I solve problems for people by turning complex systems into simple, delightful experiences.</p>
+      <p style="font:400 18px/1.6 Inter,'Helvetica Neue',Arial,sans-serif;color:#231d1acc;margin:0">I've built products that help people make purchase decisions, find care when they're in crisis, and help teams work better and faster. I've done it at an early-stage startup, at a unicorn, at a big tech company, and on my own as a freelancer.</p>
     </header>
 
     <sc-for list="{{ groups }}" as="g" hint-placeholder-count="3">
-      <section style="margin-top:120px">
-        <div style="display:flex;align-items:baseline;gap:16px;padding-bottom:18px;border-bottom:1px solid rgba(35,29,26,0.12)">
-          <span style="font:500 12px/1 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:0.04em;color:#231d1a">{{ g.brandLabel }}</span>
-          <sc-if value="{{ g.suffix }}"><span style="font:500 12px/1 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:0.04em;color:#7b7774">{{ g.suffix }}</span></sc-if>
-        </div>
+      <section style="margin-top:112px">
+        <div style="font:500 12px/1 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:0.04em;color:#231d1a;padding-bottom:16px;border-bottom:1px solid rgba(35,29,26,0.12)">{{ g.brandLabel }}</div>
         <sc-for list="{{ g.projects }}" as="p" hint-placeholder-count="3">
-          <div ref="{{ collectRef }}" style="display:flex;flex-wrap:wrap;gap:40px 64px;justify-content:space-between;align-items:center;padding:88px 0;border-bottom:1px solid rgba(35,29,26,0.12);opacity:0;transform:translateY(28px);transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1)">
-            <div style="flex:1 1 320px;max-width:480px;min-width:0">
-              <div style="font:400 12px/1.4 Inter,'Helvetica Neue',Arial,sans-serif;color:#7b7774;margin-bottom:10px">{{ p.num }}</div>
-              <h3 style="font:330 clamp(24px,3vw,34px)/1.25 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:-0.02em;color:#231d1a;margin:0;margin-bottom:24px">{{ p.name }}</h3>
-              <sc-if value="{{ p.isMerged }}">
-                <p style="font:400 18px/1.6 Inter,'Helvetica Neue',Arial,sans-serif;color:#231d1acc;margin:0;margin-bottom:24px">{{ p.storyPart1 }} <a href="{{ p.detailPage }}" style="font:600 12px/1 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:0.04em;color:#231d1a;border-bottom:1px solid #231d1a">Read the case study</a></p>
-                <p style="font:400 18px/1.6 Inter,'Helvetica Neue',Arial,sans-serif;color:#231d1acc;margin:0;margin-bottom:24px">{{ p.storyPart2 }} <a href="{{ p.detailPage2 }}" style="font:600 12px/1 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:0.04em;color:#231d1a;border-bottom:1px solid #231d1a">Read the case study</a></p>
-              </sc-if>
-              <sc-if value="{{ p.notMerged }}" hint-placeholder-val="{{ true }}">
-                <p style="font:400 18px/1.6 Inter,'Helvetica Neue',Arial,sans-serif;color:#231d1acc;margin:0;margin-bottom:24px">{{ p.story }}<sc-if value="{{ p.inlineDetail }}"> <a href="{{ p.detailPage }}" style="font:600 12px/1 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:0.04em;color:#231d1a;border-bottom:1px solid #231d1a">Read the case study</a></sc-if></p>
-              </sc-if>
-              <sc-if value="{{ p.isLightbox }}">
-                <a href="#" onClick="{{ p.openLightbox }}" style="font:600 12px/1 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:0.04em;color:#231d1a;border-bottom:1px solid #231d1a">View project</a>
-              </sc-if>
-              <sc-if value="{{ p.blockDetail }}">
-                <a href="{{ p.detailPage }}" style="font:600 12px/1 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:0.04em;color:#231d1a;border-bottom:1px solid #231d1a">Read the case study</a>
-              </sc-if>
-            </div>
-            <div style="flex:0 1 520px;min-width:0;display:flex;max-height:600px">
-              <image-slot id="{{ p.slot }}-thumbA-v2" src="{{ p.img1 }}" shape="rounded" radius="2" fit="contain" placeholder="Drop image" style="width:100%;max-height:600px"></image-slot>
-            </div>
-          </div>
+          <article ref="{{ collectRef }}" style="padding-top:64px;opacity:0;transform:translateY(28px);transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1)">
+            <h3 style="font:330 clamp(24px,5vw,34px)/1.25 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:-0.02em;color:#231d1a;margin:0;margin-bottom:20px">{{ p.name }}</h3>
+            <sc-for list="{{ p.lines }}" as="l" hint-placeholder-count="2">
+              <p style="font:400 18px/1.6 Inter,'Helvetica Neue',Arial,sans-serif;color:#231d1acc;margin:0;margin-bottom:16px">{{ l.text }}<sc-if value="{{ l.hasLink }}"> <a href="{{ l.href }}" style="color:#231d1a;border-bottom:1px solid #231d1a;font-weight:500">{{ l.label }}</a></sc-if></p>
+            </sc-for>
+            <a href="{{ p.href }}" aria-label="{{ p.imgLabel }}" style="display:block;margin-top:32px">
+              <img src="{{ p.img }}" alt="{{ p.imgAlt }}" style="display:block;width:100%;height:auto;border-radius:2px">
+            </a>
+          </article>
         </sc-for>
       </section>
     </sc-for>
 
-    <footer style="margin-top:96px;border-top:1px solid rgba(35,29,26,0.12);padding-top:40px;display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap">
+    <footer style="margin-top:112px;border-top:1px solid rgba(35,29,26,0.12);padding-top:32px;display:flex;flex-direction:column;gap:16px">
       <div style="display:flex;gap:18px;font:500 12px/1 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:0.04em">
         <a href="#" onClick="{{ copyEmail }}" style="color:#706b69">{{ emailLabel }}</a>
         <a href="#" style="color:#706b69">LinkedIn</a>
         <a href="#" style="color:#706b69">Resume</a>
       </div>
-      <p style="font:400 14px/1.6 Inter,'Helvetica Neue',Arial,sans-serif;margin:0;max-width:460px;color:#706b69">Celia Marais, product designer in New York.</p>
+      <p style="font:400 14px/1.6 Inter,'Helvetica Neue',Arial,sans-serif;margin:0;color:#706b69">Celia Marais, product designer in New York.</p>
     </footer>
   </div>
-
-  <sc-if value="{{ hasLightbox }}">
-    <div onClick="{{ closeLightbox }}" style="position:fixed;inset:0;z-index:200;background:rgba(35,29,26,0.55);backdrop-filter:blur(4px);display:flex;justify-content:center;padding:40px 16px;overflow:auto">
-      <div onClick="{{ stopClick }}" style="position:relative;max-width:1100px;width:100%;height:fit-content;background:#fffdfb;border-radius:4px;overflow:hidden">
-        <div style="position:sticky;top:0;display:flex;justify-content:flex-end;padding:20px 24px;background:#fffdfb;z-index:2">
-          <button type="button" onClick="{{ closeLightbox }}" style="background:none;border:0;padding:0;cursor:pointer;font:600 12px/1 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:0.04em;color:#231d1a;border-bottom:1px solid #231d1a">Close</button>
-        </div>
-        <dc-import name="Project Ernesta Tools" hint-size="100%,1800px"></dc-import>
-      </div>
-    </div>
-  </sc-if>
 
   <div style="position:fixed;bottom:28px;left:50%;transform:translateX(-50%);z-index:100;pointer-events:none">
     <sc-if value="{{ copied }}">
@@ -108,35 +79,41 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 
+const P = (n) => './Project ' + n + ' Short.dc.html';
 const GROUPS_RAW = [
   { company: 'Meta', brand: 'meta', projects: [
-    { name: 'Facebook Web Checkout',
-      story: "As checkout design lead on this cross-functional project overhauling the entire Shops funnel, I redesigned Facebook's web checkout, which lagged behind its own apps even though desktop shoppers spend more. I led a redesign to a stepped, fully responsive flow that shows the order total at every step, and built the web component library behind it. Transactions and gross merchandise value both rose significantly.",
-      slot: 'proj2', img1: 'thumb-fb-checkout-1.png', img2: 'thumb-fb-checkout-2.png', detailPage: './Project Facebook Web Checkout Short.dc.html' },
-    { name: 'Processes and People',
-      story: "Meta's Post Purchase team had inconsistent mockups, undocumented flows and painful onboarding. I built a Figma product system with canonical screens and states, plus an interactive directory mapping people, teams and surfaces. The whole Commerce org adopted it as its source of truth.",
-      slot: 'proj4', img1: 'thumb-proc-1.png', img2: 'thumb-proc-2.png', detailPage: './Project Processes and People Short.dc.html', inline: true },
-    { name: 'Internal Test Tools & Payment Failure Flow',
-      storyPart1: "Engineers on the Commerce team had no easy way to create and manage test orders for development and QA. I built an internal dogfooding tool letting engineers generate realistic test orders with customizable parameters, giving comprehensive and efficient test coverage for checkout, shipping and returns flows.",
-      storyPart2: "Separately, of users whose order didn't go through because of a payment failure, only a few were returning to update and resubmit. I increased the update window to 48 hours, added email and text notifications, and simplified the update-payment flow with contextual, pre-filled guidance — lifting every target metric, including transactions and gross merchandise value.",
-      slot: 'proj6', img1: 'thumb-hackathon-1.png', img2: 'thumb-hackathon-2.png',
-      detailPage: './Project Meta Hackathon Short.dc.html', detailPage2: './Project Payment Failure Flow Short.dc.html', merged: true },
-    { name: 'Vision Work',
-      story: "Confusion around tracking hurt buyer trust and led to more help inquiries and lower customer ratings. I re-imagined order tracking around three themes — visibility, delight, and business messaging — with real-time tracking, rich in-app B2C messaging, and a scalable payhub for a 3-year vision of post-purchase.",
-      slot: 'proj9', img1: 'thumb-vision-1.png', img2: 'thumb-vision-2.png', detailPage: './Project Vision Work Short.dc.html' }
+    { name: 'Facebook Web Checkout', href: P('Facebook Web Checkout'), img: 'thumb-fb-checkout-1.png', imgAlt: 'Stepped Facebook web checkout',
+      lines: [
+        { text: "Facebook's web checkout lagged behind its own apps, even though desktop shoppers spend more." },
+        { text: "I led a stepped, responsive redesign and the component library behind it, and transactions rose significantly.", label: 'Read the case study', href: P('Facebook Web Checkout') } ] },
+    { name: 'Processes and People', href: P('Processes and People'), img: 'thumb-proc-2.png', imgAlt: 'Post-purchase component library in Figma',
+      lines: [
+        { text: "Meta's Post Purchase team had outdated mockups, undocumented flows and no map of who owned what." },
+        { text: "I built a Figma product system and an org-wide directory, and Commerce adopted both as its standard.", label: 'Read the case study', href: P('Processes and People') } ] },
+    { name: 'Test Tools & Payment Failure', href: P('Meta Hackathon'), img: 'thumb-hackathon-2.png', imgAlt: 'Internal tool for creating test orders',
+      lines: [
+        { text: "Engineers had no easy way to create test orders, so I designed a tool that makes them in a few taps.", label: 'Test tools', href: P('Meta Hackathon') },
+        { text: "When payments failed, few buyers came back; a longer window, clearer nudges and a simpler flow lifted every target metric.", label: 'Payment failure', href: P('Payment Failure Flow') } ] },
+    { name: 'Vision Work', href: P('Vision Work'), img: 'thumb-vision-1.png', imgAlt: 'Live order tracking on lock screen and map',
+      lines: [
+        { text: "Confusing order tracking hurt buyer trust and drove help requests." },
+        { text: "I reimagined post-purchase around visibility, delight and business messaging.", label: 'Read the case study', href: P('Vision Work') } ] }
   ]},
   { company: 'Ernesta', brand: 'ernesta', projects: [
-    { name: 'Ernesta',
-      story: "Designed, implemented and owned the B2B area of ernesta.com. I created, implemented and scaled Ernesta's product and design system, and designed automated tools that improved internal workflows — including a way to easily generate B2B quotes and generate spec sheets straight from product data.",
-      slot: 'proj5', img1: 'thumb-ernesta-1.png', img2: 'thumb-ernesta-2.png', lightbox: true }
+    { name: 'Ernesta Tools', href: P('Ernesta Tools'), img: 'thumb-ernesta-1.png', imgAlt: 'Ernesta B2B quote tool',
+      lines: [
+        { text: "Ernesta's B2B customers had no home on the site, and no system behind it." },
+        { text: "I designed and built the B2B area, the design system, and tools that generate quotes and spec sheets.", label: 'Read the case study', href: P('Ernesta Tools') } ] }
   ]},
   { company: 'Spring Health', brand: 'springhealth', projects: [
-    { name: 'Spring Health App',
-      story: "Spring Health had a library of CBT and mindfulness exercises buried in text, with no clear way in. I asked people how they were feeling instead of what they wanted to read, and mapped those answers to curated paths. Downloads rose 108% and the exercises became a standard part of the brand.",
-      slot: 'proj1', img1: 'thumb-spring-app-1.png', img2: 'thumb-spring-app-2.png', detailPage: './Project Spring Mobile App Short.dc.html' },
-    { name: 'Moments',
-      story: "We weren't addressing the needs of lower-acuity patients who may not want therapy but still need help managing their everyday mental health. I asked users how they're feeling and mapped answers to existing content categories, translating Spring Health's calming patterns onto smaller viewports. App downloads rose 136%.",
-      slot: 'proj8', img1: 'thumb-moments-1.png', img2: 'thumb-moments-2.png', detailPage: './Project Spring Moments Short.dc.html' }
+    { name: 'Spring Health App', href: P('Spring Mobile App'), img: 'thumb-spring-app-1.png', imgAlt: 'Spring Health sign-in and onboarding screens',
+      lines: [
+        { text: "Care plans, assessments and therapy booking lived only on a desktop portal." },
+        { text: "As the first design hire, I took Spring Health native on iOS and Android.", label: 'Read the case study', href: P('Spring Mobile App') } ] },
+    { name: 'Moments', href: P('Spring Moments'), img: 'thumb-moments-2.png', imgAlt: 'Moments design system and screens',
+      lines: [
+        { text: "Lower-acuity patients didn't want therapy, but still needed everyday support." },
+        { text: "We asked how they were feeling instead, and app downloads rose 136%.", label: 'Read the case study', href: P('Spring Moments') } ] }
   ]}
 ];
 
@@ -261,20 +238,14 @@ class Component extends DCLogic {
       closeLightbox: this.closeLightbox,
       stopClick: this.stopClick,
       groups: (() => {
-        let n = 1;
         return GROUPS_RAW.map((g) => {
           const brandLabel = g.brand === 'meta' ? 'Meta' : g.brand === 'ernesta' ? 'Ernesta' : g.brand === 'springhealth' ? 'Spring Health' : g.company;
           return {
             brandLabel, suffix: '',
             projects: g.projects.map((p) => ({
               ...p,
-              num: String(n++).padStart(2, '0'),
-              isLightbox: !!p.lightbox,
-              isMerged: !!p.merged,
-              notMerged: !p.merged,
-              inlineDetail: !!p.detailPage && !!p.inline,
-              blockDetail: !!p.detailPage && !p.inline && !p.merged,
-              openLightbox: this.openLightbox
+              imgLabel: 'Open the ' + p.name + ' case study',
+              lines: p.lines.map((l) => ({ text: l.text, hasLink: !!l.label, label: l.label || '', href: l.href || p.href }))
             }))
           };
         });
