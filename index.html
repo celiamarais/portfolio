@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+<script src="assets/js/support.js"></script>
 </head>
 <body>
 <x-dc>
 
 <helmet>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200..700&display=swap">
-  <link rel="stylesheet" href="ds-styles.css">
-  <script src="ds-bundle.js"></script>
-  <script src="./image-slot.js"></script>
+  <link rel="stylesheet" href="assets/css/ds-styles.css">
+  <script src="assets/js/ds-bundle.js"></script>
+  <script src="assets/js/image-slot.js"></script>
   <style>
     body{margin:0}
     a{text-decoration:none}
@@ -79,38 +79,39 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 
-const P = (n) => './Project ' + n + ' Short.dc.html';
+const SLUG = {'Facebook Web Checkout':'facebook-checkout','Processes and People':'processes-and-people','Meta Hackathon':'test-tools','Payment Failure Flow':'payment-failure','Vision Work':'vision-work','Ernesta Tools':'ernesta-tools','Spring Mobile App':'spring-health-app','Spring Moments':'moments'};
+const P = (n) => './projects/' + SLUG[n] + '.html';
 const GROUPS_RAW = [
   { company: 'Meta', brand: 'meta', projects: [
-    { name: 'Facebook Web Checkout', href: P('Facebook Web Checkout'), img: 'thumb-fb-checkout-1.png', imgAlt: 'Stepped Facebook web checkout',
+    { name: 'Facebook Web Checkout', href: P('Facebook Web Checkout'), img: 'assets/images/thumb-fb-checkout-1.png', imgAlt: 'Stepped Facebook web checkout',
       lines: [
         { text: "Facebook's web checkout lagged behind its own apps, even though desktop shoppers spend more." },
         { text: "I led a stepped, responsive redesign and the component library behind it, and transactions rose significantly.", label: 'Read the case study', href: P('Facebook Web Checkout') } ] },
-    { name: 'Processes and People', href: P('Processes and People'), img: 'thumb-proc-2.png', imgAlt: 'Post-purchase component library in Figma',
+    { name: 'Processes and People', href: P('Processes and People'), img: 'assets/images/thumb-proc-2.png', imgAlt: 'Post-purchase component library in Figma',
       lines: [
         { text: "Meta's Post Purchase team had outdated mockups, undocumented flows and no map of who owned what." },
         { text: "I built a Figma product system and an org-wide directory, and Commerce adopted both as its standard.", label: 'Read the case study', href: P('Processes and People') } ] },
-    { name: 'Test Tools & Payment Failure', href: P('Meta Hackathon'), img: 'thumb-hackathon-2.png', imgAlt: 'Internal tool for creating test orders',
+    { name: 'Test Tools & Payment Failure', href: P('Meta Hackathon'), img: 'assets/images/thumb-hackathon-2.png', imgAlt: 'Internal tool for creating test orders',
       lines: [
         { text: "Engineers had no easy way to create test orders, so I designed a tool that makes them in a few taps.", label: 'Test tools', href: P('Meta Hackathon') },
         { text: "When payments failed, few buyers came back; a longer window, clearer nudges and a simpler flow lifted every target metric.", label: 'Payment failure', href: P('Payment Failure Flow') } ] },
-    { name: 'Vision Work', href: P('Vision Work'), img: 'thumb-vision-1.png', imgAlt: 'Live order tracking on lock screen and map',
+    { name: 'Vision Work', href: P('Vision Work'), img: 'assets/images/thumb-vision-1.png', imgAlt: 'Live order tracking on lock screen and map',
       lines: [
         { text: "Confusing order tracking hurt buyer trust and drove help requests." },
         { text: "I reimagined post-purchase around visibility, delight and business messaging.", label: 'Read the case study', href: P('Vision Work') } ] }
   ]},
   { company: 'Ernesta', brand: 'ernesta', projects: [
-    { name: 'Ernesta Tools', href: P('Ernesta Tools'), img: 'thumb-ernesta-1.png', imgAlt: 'Ernesta B2B quote tool',
+    { name: 'Ernesta Tools', href: P('Ernesta Tools'), img: 'assets/images/thumb-ernesta-1.png', imgAlt: 'Ernesta B2B quote tool',
       lines: [
         { text: "Ernesta's B2B customers had no home on the site, and no system behind it." },
         { text: "I designed and built the B2B area, the design system, and tools that generate quotes and spec sheets.", label: 'Read the case study', href: P('Ernesta Tools') } ] }
   ]},
   { company: 'Spring Health', brand: 'springhealth', projects: [
-    { name: 'Spring Health App', href: P('Spring Mobile App'), img: 'thumb-spring-app-1.png', imgAlt: 'Spring Health sign-in and onboarding screens',
+    { name: 'Spring Health App', href: P('Spring Mobile App'), img: 'assets/images/thumb-spring-app-1.png', imgAlt: 'Spring Health sign-in and onboarding screens',
       lines: [
         { text: "Care plans, assessments and therapy booking lived only on a desktop portal." },
         { text: "As the first design hire, I took Spring Health native on iOS and Android.", label: 'Read the case study', href: P('Spring Mobile App') } ] },
-    { name: 'Moments', href: P('Spring Moments'), img: 'thumb-moments-2.png', imgAlt: 'Moments design system and screens',
+    { name: 'Moments', href: P('Spring Moments'), img: 'assets/images/thumb-moments-2.png', imgAlt: 'Moments design system and screens',
       lines: [
         { text: "Lower-acuity patients didn't want therapy, but still needed everyday support." },
         { text: "We asked how they were feeling instead, and app downloads rose 136%.", label: 'Read the case study', href: P('Spring Moments') } ] }

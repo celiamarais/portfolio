@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+<script src="../assets/js/support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
-  <link rel="stylesheet" href="ds-styles.css">
-  <script src="ds-bundle.js"></script>
-  <script src="./image-slot.js"></script>
+  <link rel="stylesheet" href="../assets/css/ds-styles.css">
+  <script src="../assets/js/ds-bundle.js"></script>
+  <script src="../assets/js/image-slot.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap">
   <style>a{text-decoration:none}body{margin:0}::selection{background:rgba(243,222,214,0.6)}</style>
 </helmet>
@@ -18,7 +18,7 @@
 <div style="font-family:Inter,sans-serif;background:#FFFDFB;color:#231d1a;max-width:1100px;margin:0 auto;padding:0 clamp(16px,4vw,48px) 120px">
 
   <div style="display:flex;justify-content:space-between;align-items:center;padding:32px 0">
-    <a href="./index.html" style="font:600 12px/1 Inter,sans-serif;letter-spacing:0.04em;color:#231d1a;border-bottom:1px solid #231d1a">Home</a>
+    <a href="../index.html" style="font:600 12px/1 Inter,sans-serif;letter-spacing:0.04em;color:#231d1a;border-bottom:1px solid #231d1a">Home</a>
     <div style="display:flex;gap:18px;font:500 12px/1 Inter,sans-serif;color:rgba(35,29,26,0.65)">
       <a href="#" style="color:rgba(35,29,26,0.65)">Resume</a>
       <a href="#" style="color:rgba(35,29,26,0.65)">Email</a>
@@ -36,14 +36,14 @@
 
   <div style="display:flex;flex-wrap:wrap;gap:40px 64px;justify-content:space-between;align-items:center;margin-top:120px">
     <figure style="flex:0 1 420px;min-width:0;margin:0">
-      <image-slot id="ed-spring-1" src="thumb-spring-app-1.png" shape="rect" radius="2" style="display:block;width:100%;aspect-ratio:705/615;height:auto" placeholder="Drop image"></image-slot>
+      <image-slot id="ed-spring-1" src="../assets/images/thumb-spring-app-1.png" shape="rect" radius="2" style="display:block;width:100%;aspect-ratio:705/615;height:auto" placeholder="Drop image"></image-slot>
       <figcaption style="font:400 12px/1.4 Inter,sans-serif;color:rgba(35,29,26,0.6);margin-top:10px">Sign-in and intake</figcaption>
     </figure>
     <p style="font:500 clamp(24px,3vw,34px)/1.25 Inter,sans-serif;letter-spacing:-0.02em;margin:0;color:#231d1a;flex:1 1 280px;max-width:440px">I took it native — a reassuring sign-in, and clinical intake broken into bite-sized steps.</p>
   </div>
 
   <figure style="width:min(100%,640px);margin:120px 0 0 6%">
-    <image-slot id="ed-spring-2" src="ed-spring-flows.png" shape="rect" radius="2" style="display:block;width:100%;aspect-ratio:1080/670;height:auto" placeholder="Drop image"></image-slot>
+    <image-slot id="ed-spring-2" src="../assets/images/ed-spring-flows.png" shape="rect" radius="2" style="display:block;width:100%;aspect-ratio:1080/670;height:auto" placeholder="Drop image"></image-slot>
       <figcaption style="font:400 12px/1.4 Inter,sans-serif;color:rgba(35,29,26,0.6);margin-top:10px">Dashboard, care team, assessment</figcaption>
   </figure>
 
@@ -52,7 +52,7 @@
   <div style="display:flex;flex-wrap:wrap;gap:40px 64px;justify-content:space-between;align-items:center;margin-top:120px">
     <p style="font:500 clamp(24px,3vw,34px)/1.25 Inter,sans-serif;letter-spacing:-0.02em;margin:0;color:#231d1a;flex:1 1 280px;max-width:440px">Booking went from an endless list of hours to date, then time.</p>
     <figure style="flex:0 1 260px;min-width:0;margin:0">
-      <image-slot id="ed-spring-3" src="ed-spring-scheduling.png" shape="rect" radius="2" style="display:block;width:100%;aspect-ratio:385/620;height:auto" placeholder="Drop image"></image-slot>
+      <image-slot id="ed-spring-3" src="../assets/images/ed-spring-scheduling.png" shape="rect" radius="2" style="display:block;width:100%;aspect-ratio:385/620;height:auto" placeholder="Drop image"></image-slot>
       <figcaption style="font:400 12px/1.4 Inter,sans-serif;color:rgba(35,29,26,0.6);margin-top:10px">Scheduling</figcaption>
     </figure>
   </div>

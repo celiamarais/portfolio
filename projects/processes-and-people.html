@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+<script src="../assets/js/support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
-  <link rel="stylesheet" href="ds-styles.css">
-  <script src="ds-bundle.js"></script>
-  <script src="./image-slot.js"></script>
+  <link rel="stylesheet" href="../assets/css/ds-styles.css">
+  <script src="../assets/js/ds-bundle.js"></script>
+  <script src="../assets/js/image-slot.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap">
   <style>a{text-decoration:none}body{margin:0}::selection{background:rgba(243,222,214,0.6)}</style>
 </helmet>
@@ -18,7 +18,7 @@
 <div style="font-family:Inter,sans-serif;background:#FFFDFB;color:#231d1a;max-width:1100px;margin:0 auto;padding:0 clamp(16px,4vw,48px) 120px">
 
   <div style="display:flex;justify-content:space-between;align-items:center;padding:32px 0">
-    <a href="./index.html" style="font:600 12px/1 Inter,sans-serif;letter-spacing:0.04em;color:#231d1a;border-bottom:1px solid #231d1a">Home</a>
+    <a href="../index.html" style="font:600 12px/1 Inter,sans-serif;letter-spacing:0.04em;color:#231d1a;border-bottom:1px solid #231d1a">Home</a>
     <div style="display:flex;gap:18px;font:500 12px/1 Inter,sans-serif;color:rgba(35,29,26,0.65)">
       <a href="#" style="color:rgba(35,29,26,0.65)">Resume</a>
       <a href="#" style="color:rgba(35,29,26,0.65)">Email</a>
@@ -36,13 +36,13 @@
   <div style="display:flex;flex-wrap:wrap;gap:48px 64px;justify-content:space-between;align-items:flex-start;margin-top:96px">
     <p style="font:500 clamp(24px,3vw,34px)/1.25 Inter,sans-serif;letter-spacing:-0.02em;margin:0;color:#231d1a;flex:1 1 280px;max-width:440px;padding-top:40px">So I built a Figma library — components, templates, states and documented flows.</p>
     <figure style="flex:0 1 400px;min-width:0;margin:0">
-    <image-slot id="ed-library" src="thumb-proc-2.png" shape="rect" radius="2" style="display:block;width:100%;aspect-ratio:715/730;height:auto" placeholder="Drop library screenshot"></image-slot>
+    <image-slot id="ed-library" src="../assets/images/thumb-proc-2.png" shape="rect" radius="2" style="display:block;width:100%;aspect-ratio:715/730;height:auto" placeholder="Drop library screenshot"></image-slot>
     <figcaption style="font:400 12px/1.4 Inter,sans-serif;color:rgba(35,29,26,0.6);margin-top:10px">Component library</figcaption>
   </figure>
   </div>
 
   <figure style="width:min(100%,560px);margin:140px 0 0 8%">
-    <image-slot id="ed-flow" src="thumb-proc-1.png" shape="rect" radius="2" style="display:block;width:100%;aspect-ratio:1310/440;height:auto" placeholder="Drop post-purchase flow"></image-slot>
+    <image-slot id="ed-flow" src="../assets/images/thumb-proc-1.png" shape="rect" radius="2" style="display:block;width:100%;aspect-ratio:1310/440;height:auto" placeholder="Drop post-purchase flow"></image-slot>
     <figcaption style="font:400 12px/1.4 Inter,sans-serif;color:rgba(35,29,26,0.6);margin-top:10px">Post-purchase flows</figcaption>
   </figure>
 
@@ -50,7 +50,7 @@
 
   <div style="display:flex;flex-wrap:wrap;gap:48px;align-items:flex-end;margin-top:120px">
     <figure style="flex:0 1 320px;min-width:0;margin:0">
-      <image-slot id="ed-directory" src="proc-directory-crop.png" shape="rect" radius="2" style="display:block;width:100%;aspect-ratio:650/775;height:auto" placeholder="Drop directory screenshot"></image-slot>
+      <image-slot id="ed-directory" src="../assets/images/proc-directory-crop.png" shape="rect" radius="2" style="display:block;width:100%;aspect-ratio:650/775;height:auto" placeholder="Drop directory screenshot"></image-slot>
       <figcaption style="font:400 12px/1.4 Inter,sans-serif;color:rgba(35,29,26,0.6);margin-top:10px">Org directory</figcaption>
     </figure>
     <p style="font:500 clamp(24px,3vw,34px)/1.25 Inter,sans-serif;letter-spacing:-0.02em;margin:0;color:#231d1a;flex:1 1 300px;max-width:440px">And a live directory of people, teams and surface owners.</p>
