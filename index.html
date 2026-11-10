@@ -9,7 +9,7 @@
 <x-dc>
 
 <helmet>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200..700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200..700&amp;display=swap">
   <link rel="stylesheet" href="assets/css/ds-styles.css">
   <script src="assets/js/ds-bundle.js"></script>
   <script src="assets/js/image-slot.js"></script>
@@ -25,7 +25,7 @@
   <div style="position:fixed;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg, rgba(250,243,231,0.42) 0%, rgba(250,243,231,0.06) 45%, rgba(250,243,231,0.55) 100%)"></div>
   <div ref="{{ burstRef }}" style="position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden"></div>
 
-  <div style="position:relative;z-index:1;max-width:640px;margin:0 auto;padding:0 max(20px,env(safe-area-inset-left,0px)) 120px">
+  <div style="position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 0 max(20px,env(safe-area-inset-left,0px)) 120px">
 
     <nav aria-label="Site" style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:32px 0">
       <a href="#" style="font:600 12px/1 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:0.04em;color:#231d1a;border-bottom:1px solid #231d1a">Celia Marais</a>
@@ -39,7 +39,7 @@
     <header style="padding-top:64px;display:flex;flex-direction:column;gap:32px">
       <p style="font:330 clamp(24px,5vw,34px)/1.25 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:-0.02em;color:#231d1a;margin:0">I'm a product designer with a background in art direction and a penchant for hairy problems and design systems.</p>
       <p style="font:330 clamp(24px,5vw,34px)/1.25 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:-0.02em;color:#231d1a;margin:0">I solve problems for people by turning complex systems into simple, delightful experiences.</p>
-      <p style="font:400 18px/1.6 Inter,'Helvetica Neue',Arial,sans-serif;color:#231d1acc;margin:0">I've built products that help people make purchase decisions, find care when they're in crisis, and help teams work better and faster. I've done it at an early-stage startup, at a unicorn, at a big tech company, and on my own as a freelancer.</p>
+      <p style="font:400 18px/1.6 Inter,'Helvetica Neue',Arial,sans-serif;color:#231d1acc;margin:0">I've built products that help people make purchase decisions, find care when they're in crisis, and products help teams work better and faster. I've done it at an early-stage startup, at a unicorn, at a big tech company, and on my own as a freelancer.</p>
     </header>
 
     <sc-for list="{{ groups }}" as="g" hint-placeholder-count="3">
@@ -79,7 +79,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 
-const SLUG = {'Facebook Web Checkout':'facebook-checkout','Processes and People':'processes-and-people','Meta Hackathon':'test-tools','Payment Failure Flow':'payment-failure','Vision Work':'vision-work','Ernesta Tools':'ernesta-tools','Spring Mobile App':'spring-health-app','Spring Moments':'moments'};
+const SLUG = {"Facebook Web Checkout": "facebook-checkout", "Processes and People": "processes-and-people", "Meta Hackathon": "test-tools", "Payment Failure Flow": "payment-failure", "Vision Work": "vision-work", "Ernesta Tools": "ernesta-tools", "Spring Mobile App": "spring-health-app", "Spring Moments": "moments"};
 const P = (n) => './projects/' + SLUG[n] + '.html';
 const GROUPS_RAW = [
   { company: 'Meta', brand: 'meta', projects: [

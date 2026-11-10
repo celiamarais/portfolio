@@ -8,63 +8,67 @@
 <body>
 <x-dc>
 <helmet>
-  <link rel="stylesheet" href="../assets/css/ds-styles.css">
-  <script src="../assets/js/ds-bundle.js"></script>
   <script src="../assets/js/image-slot.js"></script>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap">
-  <style>a{text-decoration:none}body{margin:0}::selection{background:rgba(243,222,214,0.6)}</style>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200..700&amp;display=swap">
+  <style>a{text-decoration:none}body{margin:0;background:#fffdfb}::selection{background:rgba(243,222,214,0.6)}</style>
 </helmet>
 
-<div style="font-family:Inter,sans-serif;background:#FFFDFB;color:#231d1a;max-width:1100px;margin:0 auto;padding:0 clamp(16px,4vw,48px) 120px">
+<div style="font-family:Inter,'Helvetica Neue',Arial,sans-serif;background:#fffdfb;color:#231d1a;max-width:820px;margin:0 auto;padding:0 max(20px,env(safe-area-inset-left,0px)) 120px">
 
-  <div style="display:flex;justify-content:space-between;align-items:center;padding:32px 0">
-    <a href="../index.html" style="font:600 12px/1 Inter,sans-serif;letter-spacing:0.04em;color:#231d1a;border-bottom:1px solid #231d1a">Home</a>
-    <div style="display:flex;gap:18px;font:500 12px/1 Inter,sans-serif;color:rgba(35,29,26,0.65)">
-      <a href="#" style="color:rgba(35,29,26,0.65)">Resume</a>
-      <a href="#" style="color:rgba(35,29,26,0.65)">Email</a>
-      <a href="#" style="color:rgba(35,29,26,0.65)">LinkedIn</a>
+  <nav aria-label="Site" style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:32px 0">
+    <a href="../index.html" style="font:600 12px/1 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:0.04em;color:#231d1a;border-bottom:1px solid #231d1a">Celia Marais</a>
+    <div style="display:flex;gap:18px;font:500 12px/1 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:0.04em">
+      <a href="#" style="color:#706b69">Email</a>
+      <a href="#" style="color:#706b69">LinkedIn</a>
+      <a href="#" style="color:#706b69">Resume</a>
     </div>
-  </div>
+  </nav>
 
-  <header style="padding:72px 0 0">
-    <div style="font:500 12px/1 Inter,sans-serif;letter-spacing:0.04em;color:rgba(35,29,26,0.6);margin-bottom:24px">Spring Health</div>
-    <h1 style="font:500 clamp(52px,9vw,112px)/0.95 Inter,sans-serif;letter-spacing:-0.045em;margin:0;color:#231d1a">Moments</h1>
+  <header style="padding-top:64px">
+
+    <div style="font:500 12px/1 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:0.04em;color:#7b7774;margin-bottom:20px">Spring Health</div>
+
+    <h1 style="font:330 clamp(40px,9vw,72px)/1 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:-0.035em;color:#231d1a;margin:0;text-wrap:balance">Moments</h1>
+
   </header>
 
-  <p style="font:500 clamp(24px,3vw,34px)/1.25 Inter,sans-serif;letter-spacing:-0.02em;margin:0;color:#231d1a;max-width:600px;margin:88px 0 0 0">Lower-acuity patients didn’t want therapy — but still needed everyday support.</p>
+  <p style="font:330 clamp(24px,5vw,34px)/1.25 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:-0.02em;color:#231d1a;margin:0;text-wrap:pretty;margin-top:64px">Lower-acuity patients didn’t want therapy — but still needed everyday support.</p>
 
-  <div style="display:flex;flex-wrap:wrap;gap:40px 64px;justify-content:space-between;align-items:center;margin-top:120px">
-    <p style="font:500 clamp(24px,3vw,34px)/1.25 Inter,sans-serif;letter-spacing:-0.02em;margin:0;color:#231d1a;flex:1 1 280px;max-width:440px">So instead of asking them to pick a category, we asked: how are you feeling?</p>
-    <figure style="flex:0 1 520px;min-width:0;margin:0">
-      <image-slot id="ed-moments-1" src="../assets/images/thumb-moments-1.png" shape="rect" radius="2" style="display:block;width:100%;aspect-ratio:1165/515;height:auto" placeholder="Drop image"></image-slot>
-      <figcaption style="font:400 12px/1.4 Inter,sans-serif;color:rgba(35,29,26,0.6);margin-top:10px">Categories vs. feelings</figcaption>
-    </figure>
-  </div>
+  <p style="font:330 clamp(24px,5vw,34px)/1.25 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:-0.02em;color:#231d1a;margin:0;text-wrap:pretty;margin-top:32px">So instead of asking them to pick a category, we asked: how are you feeling?</p>
 
-  <div style="display:flex;flex-wrap:wrap;gap:40px 64px;justify-content:space-between;align-items:center;margin-top:120px">
-    <figure style="flex:0 1 340px;min-width:0;margin:0">
-      <image-slot id="ed-moments-2" src="../assets/images/ed-moments-flows.png" shape="rect" radius="2" style="display:block;width:100%;aspect-ratio:805/954;height:auto" placeholder="Drop image"></image-slot>
-      <figcaption style="font:400 12px/1.4 Inter,sans-serif;color:rgba(35,29,26,0.6);margin-top:10px">How are you feeling?</figcaption>
-    </figure>
-    <p style="font:500 clamp(24px,3vw,34px)/1.25 Inter,sans-serif;letter-spacing:-0.02em;margin:0;color:#231d1a;flex:1 1 280px;max-width:440px">Each answer maps to the right exercises, in a calm system built for small screens.</p>
-  </div>
-
-  <figure style="width:min(100%,540px);margin:120px 0 0 auto">
-    <image-slot id="ed-moments-3" src="../assets/images/thumb-moments-2.png" shape="rect" radius="2" style="display:block;width:100%;aspect-ratio:1010/790;height:auto" placeholder="Drop image"></image-slot>
-      <figcaption style="font:400 12px/1.4 Inter,sans-serif;color:rgba(35,29,26,0.6);margin-top:10px">A unified design system</figcaption>
+  <figure style="margin:32px 0 0">
+    <image-slot id="ed-moments-1" src="../assets/images/thumb-moments-1.png" shape="rect" radius="2" style="display:block;width:100%;aspect-ratio:1165/515;height:auto" placeholder="Drop image"></image-slot>
+    <figcaption style="font:400 12px/1.4 Inter,'Helvetica Neue',Arial,sans-serif;color:#7b7774;margin-top:10px">Categories vs. feelings</figcaption>
   </figure>
 
-  <p style="font:500 clamp(32px,5vw,58px)/1.08 Inter,sans-serif;letter-spacing:-0.035em;margin:160px 0 0;max-width:900px;color:#231d1a">136% more app downloads.</p>
-  <p style="font:400 18px/1.6 Inter,sans-serif;margin:24px 0 0;max-width:520px;color:rgba(35,29,26,0.72)">“This feels nice and peaceful and clear — other companies don’t have that.”</p>
+  <p style="font:330 clamp(24px,5vw,34px)/1.25 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:-0.02em;color:#231d1a;margin:0;text-wrap:pretty;margin-top:64px">Each answer maps to the right exercises, in a calm system built for small screens.</p>
 
-  <div style="margin-top:96px;border-top:1px solid rgba(35,29,26,0.12);padding-top:40px;display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap">
-    <div style="display:flex;gap:18px;font:500 12px/1 Inter,sans-serif;color:rgba(35,29,26,0.65)">
-      <a href="#" style="color:rgba(35,29,26,0.65)">Resume</a>
-      <a href="#" style="color:rgba(35,29,26,0.65)">Email</a>
-      <a href="#" style="color:rgba(35,29,26,0.65)">LinkedIn</a>
+  <figure style="margin:32px 0 0">
+    <image-slot id="ed-moments-2" src="../assets/images/ed-moments-flows.png" shape="rect" radius="2" style="display:block;width:100%;aspect-ratio:805/954;height:auto" placeholder="Drop image"></image-slot>
+    <figcaption style="font:400 12px/1.4 Inter,'Helvetica Neue',Arial,sans-serif;color:#7b7774;margin-top:10px">How are you feeling?</figcaption>
+  </figure>
+
+  <figure style="margin:32px 0 0">
+    <image-slot id="ed-moments-3" src="../assets/images/thumb-moments-2.png" shape="rect" radius="2" style="display:block;width:100%;aspect-ratio:1010/790;height:auto" placeholder="Drop image"></image-slot>
+    <figcaption style="font:400 12px/1.4 Inter,'Helvetica Neue',Arial,sans-serif;color:#7b7774;margin-top:10px">A unified design system</figcaption>
+  </figure>
+
+  <section style="margin-top:112px;border-top:1px solid rgba(35,29,26,0.12);padding-top:32px">
+
+    <p style="font:330 clamp(28px,6vw,44px)/1.12 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:-0.03em;color:#231d1a;margin:0;text-wrap:balance">136% more app downloads.</p>
+
+    <p style="font:400 18px/1.6 Inter,'Helvetica Neue',Arial,sans-serif;color:#231d1acc;margin:16px 0 0">“This feels nice and peaceful and clear — other companies don’t have that.”</p>
+
+  </section>
+
+  <footer style="margin-top:112px;border-top:1px solid rgba(35,29,26,0.12);padding-top:32px;display:flex;flex-direction:column;gap:16px">
+    <div style="display:flex;gap:18px;font:500 12px/1 Inter,'Helvetica Neue',Arial,sans-serif;letter-spacing:0.04em">
+      <a href="#" style="color:#706b69">Email</a>
+      <a href="#" style="color:#706b69">LinkedIn</a>
+      <a href="#" style="color:#706b69">Resume</a>
     </div>
-    <p style="font:400 14px/1.6 Inter,sans-serif;margin:0;max-width:460px;color:rgba(35,29,26,0.55)">I'm Celia Marais, a New York-based UX designer with a background in Art Direction and a penchant for design systems. Most recently at Ernesta Inc. Formerly on the Commerce team at Meta, mental health startup Spring Health. Before that, I worked on short films, music videos, and visual design in San Francisco and Montreal.</p>
-  </div>
+    <p style="font:400 14px/1.6 Inter,'Helvetica Neue',Arial,sans-serif;margin:0;color:#706b69">Celia Marais, product designer in New York.</p>
+  </footer>
 </div>
 
 </x-dc>
