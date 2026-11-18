@@ -8,94 +8,96 @@
 <body>
 <x-dc>
 <helmet>
+  <link rel="stylesheet" href="../assets/ds/celia-marais-portfolio/tokens.css">
+  <link rel="stylesheet" href="../assets/ds/celia-marais-portfolio/components/bundle.css">
   <script src="../assets/js/image-slot.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla:wght@300..700&amp;display=swap">
-  <style>a{text-decoration:none}body{margin:0;background:#fffdfb}::selection{background:rgba(243,222,214,0.6)}</style>
+  <style>a{text-decoration:none}body{margin:0;background:var(--paper)}::selection{background:rgba(243,222,214,0.6)}</style>
 </helmet>
 
-<div style="background:#fffdfb;min-height:100vh;width:100%">
-<div style="font-family:Karla,'Helvetica Neue',Arial,sans-serif;color:#231d1a;max-width:820px;margin:0 auto;padding:0 max(20px,env(safe-area-inset-left,0px)) 120px">
+<div style="background:var(--paper);min-height:100vh;width:100%">
+<div class="cm-page">
 
-  <nav aria-label="Site" style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:32px 0">
-    <a href="../index.html" style="font:500 12px/1 Karla,'Helvetica Neue',Arial,sans-serif;letter-spacing:0.04em;color:#231d1a;border-bottom:1px solid #231d1a">Celia Marais</a>
-    <div style="display:flex;gap:18px;font:500 12px/1 Karla,'Helvetica Neue',Arial,sans-serif;letter-spacing:0.04em">
-      <a href="#" style="color:#706b69">Email</a>
-      <a href="#" style="color:#706b69">LinkedIn</a>
-      <a href="#" style="color:#706b69">Resume</a>
+  <nav aria-label="Site" class="cm-nav">
+    <a href="../index.html" class="cm-name">Celia Marais</a>
+    <div class="cm-links">
+      <a href="#">Email</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Resume</a>
     </div>
   </nav>
 
-  <header style="padding-top:64px">
+  <header class="cm-header">
 
-    <div style="font:500 12px/1 Karla,'Helvetica Neue',Arial,sans-serif;letter-spacing:0.04em;color:#7b7774;margin-bottom:20px">Personal work</div>
+    <div class="cm-kicker">Personal work</div>
 
-    <h1 style="font:400 clamp(40px,9vw,72px)/1 Karla,'Helvetica Neue',Arial,sans-serif;letter-spacing:-0.01em;color:#231d1a;margin:0;text-wrap:balance">Visual Design</h1>
+    <h1 class="cm-title">Visual Design</h1>
 
   </header>
 
-  <p style="font:400 clamp(24px,5vw,34px)/1.25 Karla,'Helvetica Neue',Arial,sans-serif;letter-spacing:-0.01em;color:#231d1a;margin:0;text-wrap:pretty;margin-top:64px">Before product design, I was an art director. I still make things by hand.</p>
+  <p class="cm-story" style="margin-top:var(--space-64)">Before product design, I was an art director. I still make things by hand.</p>
 
-  <p style="font:400 clamp(24px,5vw,34px)/1.25 Karla,'Helvetica Neue',Arial,sans-serif;letter-spacing:-0.01em;color:#231d1a;margin:0;text-wrap:pretty;margin-top:32px">Posters for my team at Meta, on how we wanted to work together.</p>
+  <p class="cm-story" style="margin-top:var(--space-32)">Posters for my team at Meta, on how we wanted to work together.</p>
 
-  <figure style="margin:32px 0 0">
+  <figure class="cm-figure" style="margin-top:var(--space-32)">
     <div style="display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:16px;align-items:start">
       <image-slot id="vd-poster-1" src="../assets/images/vision-poster-04.png" shape="rect" radius="2" style="display:block;width:100%;aspect-ratio:1584/2448;height:auto" placeholder="Drop image"></image-slot>
       <image-slot id="vd-poster-2" src="../assets/images/vision-poster-02.png" shape="rect" radius="2" style="display:block;width:100%;aspect-ratio:1584/2448;height:auto" placeholder="Drop image"></image-slot>
     </div>
-    <figcaption style="font:400 12px/1.4 Karla,'Helvetica Neue',Arial,sans-serif;color:#7b7774;margin-top:10px">CXP + FoMo team posters</figcaption>
+    <figcaption class="cm-caption">CXP + FoMo team posters</figcaption>
   </figure>
 
-  <figure style="margin:32px 0 0">
+  <figure class="cm-figure" style="margin-top:var(--space-32)">
     <div style="display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:16px;align-items:start">
       <image-slot id="vd-photo-1" src="../assets/images/vision-group-16.png" shape="rect" radius="2" style="display:block;width:100%;aspect-ratio:817/821;height:auto" placeholder="Drop image"></image-slot>
       <image-slot id="vd-photo-2" src="../assets/images/vision-image-4.png" shape="rect" radius="2" style="display:block;width:100%;aspect-ratio:1222/824;height:auto" placeholder="Drop image"></image-slot>
       <image-slot id="vd-photo-3" src="../assets/images/vision-image-6.png" shape="rect" radius="2" style="display:block;width:100%;aspect-ratio:1092/822;height:auto" placeholder="Drop image"></image-slot>
     </div>
-    <figcaption style="font:400 12px/1.4 Karla,'Helvetica Neue',Arial,sans-serif;color:#7b7774;margin-top:10px">Photography</figcaption>
+    <figcaption class="cm-caption">Photography</figcaption>
   </figure>
 
-  <p style="font:400 clamp(24px,5vw,34px)/1.25 Karla,'Helvetica Neue',Arial,sans-serif;letter-spacing:-0.01em;color:#231d1a;margin:0;text-wrap:pretty;margin-top:64px">And I paint: watercolor, ink and gouache, mostly imaginary places.</p>
+  <p class="cm-story" style="margin-top:var(--space-64)">And I paint: watercolor, ink and gouache, mostly imaginary places.</p>
 
   <div style="display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:32px 16px;align-items:start;margin-top:32px">
       <figure style="margin:0">
         <image-slot id="art-1" src="https://images.squarespace-cdn.com/content/v1/695ff5f7d08e7045d7752942/0eeedf52-9151-4ea1-ab19-d4fe5d28339f/Untitled_Panorama.jpg?format=1500w" shape="rect" radius="2" style="display:block;width:100%;aspect-ratio:473/645;height:auto" placeholder="Drop image"></image-slot>
-        <figcaption style="font:400 12px/1.4 Karla,'Helvetica Neue',Arial,sans-serif;color:#7b7774;margin-top:10px"><span style="color:#231d1a">Panorama</span><br/>Watercolor, ink on paper</figcaption>
+        <figcaption class="cm-caption"><span style="color:var(--ink)">Panorama</span><br/>Watercolor, ink on paper</figcaption>
       </figure>
       <figure style="margin:0">
         <image-slot id="art-2" src="https://images.squarespace-cdn.com/content/v1/695ff5f7d08e7045d7752942/0156a2b7-7609-4a2a-9347-7f046a936717/Untitled_Mountain.jpg?format=1500w" shape="rect" radius="2" style="display:block;width:100%;aspect-ratio:473/645;height:auto" placeholder="Drop image"></image-slot>
-        <figcaption style="font:400 12px/1.4 Karla,'Helvetica Neue',Arial,sans-serif;color:#7b7774;margin-top:10px"><span style="color:#231d1a">Mountain</span><br/>Watercolor, ink on paper</figcaption>
+        <figcaption class="cm-caption"><span style="color:var(--ink)">Mountain</span><br/>Watercolor, ink on paper</figcaption>
       </figure>
       <figure style="margin:0">
         <image-slot id="art-3" src="https://images.squarespace-cdn.com/content/v1/695ff5f7d08e7045d7752942/cf621db0-2931-47e7-8999-fa64343c2d8c/A+landscape+in+green+and+pink.jpg?format=1500w" shape="rect" radius="2" style="display:block;width:100%;aspect-ratio:473/377;height:auto" placeholder="Drop image"></image-slot>
-        <figcaption style="font:400 12px/1.4 Karla,'Helvetica Neue',Arial,sans-serif;color:#7b7774;margin-top:10px"><span style="color:#231d1a">A landscape in green and pink</span><br/>Watercolor, ink, gouache on paper</figcaption>
+        <figcaption class="cm-caption"><span style="color:var(--ink)">A landscape in green and pink</span><br/>Watercolor, ink, gouache on paper</figcaption>
       </figure>
       <figure style="margin:0">
         <image-slot id="art-4" src="https://images.squarespace-cdn.com/content/v1/695ff5f7d08e7045d7752942/1fc38cb0-dd43-47c3-88be-32a6732d2ceb/a+landscape+grey+and+blue+and+black.jpeg?format=1500w" shape="rect" radius="2" style="display:block;width:100%;aspect-ratio:473/597;height:auto" placeholder="Drop image"></image-slot>
-        <figcaption style="font:400 12px/1.4 Karla,'Helvetica Neue',Arial,sans-serif;color:#7b7774;margin-top:10px"><span style="color:#231d1a">A landscape grey and blue and black</span><br/>Ink on paper</figcaption>
+        <figcaption class="cm-caption"><span style="color:var(--ink)">A landscape grey and blue and black</span><br/>Ink on paper</figcaption>
       </figure>
       <figure style="margin:0">
         <image-slot id="art-5" src="https://images.squarespace-cdn.com/content/v1/695ff5f7d08e7045d7752942/6f1c9a61-0ecf-4050-91f6-e7e0c0ebbb7d/and+then+she+left+me_small.jpg?format=1500w" shape="rect" radius="2" style="display:block;width:100%;aspect-ratio:473/667;height:auto" placeholder="Drop image"></image-slot>
-        <figcaption style="font:400 12px/1.4 Karla,'Helvetica Neue',Arial,sans-serif;color:#7b7774;margin-top:10px"><span style="color:#231d1a">And then, she left me</span><br/>Watercolor, ink, gouache on paper</figcaption>
+        <figcaption class="cm-caption"><span style="color:var(--ink)">And then, she left me</span><br/>Watercolor, ink, gouache on paper</figcaption>
       </figure>
       <figure style="margin:0">
         <image-slot id="art-6" src="https://images.squarespace-cdn.com/content/v1/695ff5f7d08e7045d7752942/c85c4c84-b401-4717-826d-1f7eee2900ea/Red+dot.jpg?format=1500w" shape="rect" radius="2" style="display:block;width:100%;aspect-ratio:473/644;height:auto" placeholder="Drop image"></image-slot>
-        <figcaption style="font:400 12px/1.4 Karla,'Helvetica Neue',Arial,sans-serif;color:#7b7774;margin-top:10px"><span style="color:#231d1a">A red dot</span><br/>Watercolor, ink, gouache on paper</figcaption>
+        <figcaption class="cm-caption"><span style="color:var(--ink)">A red dot</span><br/>Watercolor, ink, gouache on paper</figcaption>
       </figure>
   </div>
 
-  <section style="margin-top:112px;border-top:1px solid rgba(35,29,26,0.12);padding-top:32px">
+  <section class="cm-result-block" style="margin-top:var(--space-112)">
 
-    <p style="font:400 clamp(28px,6vw,44px)/1.12 Karla,'Helvetica Neue',Arial,sans-serif;letter-spacing:-0.015em;color:#231d1a;margin:0;text-wrap:balance">More paintings, and prints, at <a href="https://www.celiamarais.com" target="_blank" rel="noopener" style="color:#231d1a;border-bottom:1px solid #231d1a">celiamarais.com</a></p>
+    <p class="cm-result">More paintings, and prints, at <a href="https://www.celiamarais.com" target="_blank" rel="noopener" style="color:var(--ink);border-bottom:1px solid var(--ink)">celiamarais.com</a></p>
 
   </section>
 
-  <footer style="margin-top:112px;border-top:1px solid rgba(35,29,26,0.12);padding-top:32px;display:flex;flex-direction:column;gap:16px">
-    <div style="display:flex;gap:18px;font:500 12px/1 Karla,'Helvetica Neue',Arial,sans-serif;letter-spacing:0.04em">
-      <a href="#" style="color:#706b69">Email</a>
-      <a href="#" style="color:#706b69">LinkedIn</a>
-      <a href="#" style="color:#706b69">Resume</a>
+  <footer class="cm-footer" style="margin-top:var(--space-112)">
+    <div class="cm-links">
+      <a href="#">Email</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Resume</a>
     </div>
-    <p style="font:400 14px/1.6 Karla,'Helvetica Neue',Arial,sans-serif;margin:0;color:#706b69">Celia Marais, product designer in New York.</p>
+    <p class="cm-footer-line">Celia Marais, product designer in New York.</p>
   </footer>
 </div>
 </div>

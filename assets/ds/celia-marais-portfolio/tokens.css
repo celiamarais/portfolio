@@ -1,0 +1,42 @@
+/* Celia Marais Portfolio — generated from tokens.json */
+:root {
+  --paper: #fffdfb;
+  --ink: #231d1a;
+  --ink-body: #231d1acc;
+  --ink-soft: #706b69;
+  --ink-caption: #7b7774;
+  --ink-faint: #86827f;
+  --ink-ghost: #9c9896;
+  --hairline: rgba(35,29,26,0.12);
+  --blush: #f3ded6;
+  --font-sans: Karla, "Helvetica Neue", Arial, sans-serif;
+  --space-10: 10px;
+  --space-16: 16px;
+  --space-18: 18px;
+  --space-20: 20px;
+  --space-32: 32px;
+  --space-64: 64px;
+  --space-112: 112px;
+  --space-120: 120px;
+  --radius-image: 2px;
+  --column-max: 820px;
+  --gutter: 20px;
+  --text-title: 400 clamp(40px, 9vw, 72px)/1 var(--font-sans);
+  --tracking-title: -0.01em;
+  --text-result: 400 clamp(28px, 6vw, 44px)/1.12 var(--font-sans);
+  --tracking-result: -0.015em;
+  --text-story: 400 clamp(24px, 5vw, 34px)/1.25 var(--font-sans);
+  --tracking-story: -0.01em;
+  --text-support: 400 18px/1.6 var(--font-sans);
+  --tracking-support: 0;
+  --text-link: 500 18px/1.6 var(--font-sans);
+  --tracking-link: 0;
+  --text-footer: 400 14px/1.6 var(--font-sans);
+  --tracking-footer: 0;
+  --text-meta: 500 12px/1 var(--font-sans);
+  --tracking-meta: 0.04em;
+  --text-name-link: 500 12px/1 var(--font-sans);
+  --tracking-name-link: 0.04em;
+  --text-caption: 400 12px/1.4 var(--font-sans);
+  --tracking-caption: 0;
+}
