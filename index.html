@@ -79,7 +79,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 
-const SLUG = {"Facebook Web Checkout": "facebook-checkout", "Processes and People": "processes-and-people", "Meta Hackathon": "test-tools", "Payment Failure Flow": "payment-failure", "Vision Work": "vision-work", "Ernesta Tools": "ernesta-tools", "Spring Mobile App": "spring-health-app", "Spring Moments": "moments"};
+const SLUG = {"Facebook Web Checkout": "facebook-checkout", "Processes and People": "processes-and-people", "Meta Hackathon": "test-tools", "Payment Failure Flow": "payment-failure", "Vision Work": "vision-work", "Ernesta Tools": "ernesta-tools", "Spring Mobile App": "spring-health-app", "Spring Moments": "moments", "Visual Design": "visual-design"};
 const P = (n) => './projects/' + SLUG[n] + '.html';
 const GROUPS_RAW = [
   { company: 'Meta', brand: 'meta', projects: [
@@ -115,6 +115,12 @@ const GROUPS_RAW = [
       lines: [
         { text: "Lower-acuity patients didn't want therapy, but still needed everyday support." },
         { text: "We asked how they were feeling instead, and app downloads rose 136%.", label: 'Read the case study', href: P('Spring Moments') } ] }
+  ]},
+  { company: 'Personal', brand: 'personal', projects: [
+    { name: 'Visual Design', href: P('Visual Design'), img: 'https://images.squarespace-cdn.com/content/v1/695ff5f7d08e7045d7752942/cf621db0-2931-47e7-8999-fa64343c2d8c/A+landscape+in+green+and+pink.jpg?format=1500w', imgAlt: 'A landscape in green and pink, watercolor painting',
+      lines: [
+        { text: "Outside product work I make posters, photographs and paintings." },
+        { text: "Watercolor, ink and gouache, mostly imaginary places.", label: 'See the work', href: P('Visual Design') } ] }
   ]}
 ];
 
@@ -240,7 +246,7 @@ class Component extends DCLogic {
       stopClick: this.stopClick,
       groups: (() => {
         return GROUPS_RAW.map((g) => {
-          const brandLabel = g.brand === 'meta' ? 'Meta' : g.brand === 'ernesta' ? 'Ernesta' : g.brand === 'springhealth' ? 'Spring Health' : g.company;
+          const brandLabel = g.brand === 'meta' ? 'Meta' : g.brand === 'ernesta' ? 'Ernesta' : g.brand === 'springhealth' ? 'Spring Health' : g.brand === 'personal' ? 'Personal work' : g.company;
           return {
             brandLabel, suffix: '',
             projects: g.projects.map((p) => ({

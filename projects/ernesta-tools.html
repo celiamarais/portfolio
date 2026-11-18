@@ -45,8 +45,72 @@
   <p style="font:400 clamp(24px,5vw,34px)/1.25 Karla,'Helvetica Neue',Arial,sans-serif;letter-spacing:-0.01em;color:#231d1a;margin:0;text-wrap:pretty;margin-top:64px">Then automated the busywork: B2B quotes in a few clicks…</p>
 
   <figure style="margin:32px 0 0">
-    <image-slot id="ed-ernesta-2" src="../assets/images/quote-creator-image-295.png" shape="rect" radius="2" style="display:block;width:100%;aspect-ratio:4276/2792;height:auto" placeholder="Drop image"></image-slot>
-    <figcaption style="font:400 12px/1.4 Karla,'Helvetica Neue',Arial,sans-serif;color:#7b7774;margin-top:10px">B2B quotes</figcaption>
+    <div aria-hidden="true" style="position:relative;background:#f5f5f5;border-radius:6px;box-shadow:0 0 0 1px rgba(35,29,26,0.10);padding:20px;font:400 13px/1.35 -apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;color:#222;overflow:hidden">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px">
+        <div style="font-weight:700;font-size:20px;letter-spacing:-0.01em">Create quote</div>
+        <div style="font:italic 400 20px/1 Georgia,serif;letter-spacing:0.02em">Ernesta</div>
+      </div>
+      <div style="background:#fff;border:1px solid #e3e3e3;border-radius:4px;padding:12px 14px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between">
+        <div style="display:flex;gap:16px;flex-wrap:wrap">
+          <span style="display:flex;align-items:center;gap:6px"><span style="width:14px;height:14px;border-radius:50%;border:4px solid #3f6be8;box-sizing:border-box;background:#fff"></span>Create new order</span>
+          <span style="display:flex;align-items:center;gap:6px"><span style="width:14px;height:14px;border-radius:50%;border:1px solid #bbb;box-sizing:border-box"></span>Start with existing order</span>
+        </div>
+        <div style="flex:1 1 220px;max-width:420px;background:#3f6be8;color:#fff;font-weight:600;text-align:center;padding:9px 12px;border-radius:4px;transition:box-shadow .25s,transform .15s;{{ s.draft }}">Create Draft Order</div>
+      </div>
+      <div style="color:#a14d0c;font-size:12px;margin:8px 0 14px;padding-bottom:12px;border-bottom:1px solid #e3e3e3">To change after products have been added, you'll have to start again.</div>
+      <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:flex-start">
+        <div style="flex:999 1 400px;min-width:0;background:#fff;border:1px solid #e3e3e3;border-radius:4px;padding:14px">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+            <div style="font-weight:700;font-size:15px">Add products</div>
+            <div style="display:flex;background:#ececec;border-radius:4px;padding:3px;font-size:12px"><span style="background:#fff;border-radius:3px;padding:5px 14px">Build a sample box</span><span style="padding:5px 14px;color:#6b6b6b">Add a rug</span></div>
+          </div>
+          <div style="font-weight:700;margin:14px 0 8px">1. Choose rug</div>
+          <div style="border:1px solid #ddd;border-radius:3px;padding:8px 10px;min-height:16px;transition:box-shadow .25s;{{ s.search }}"><sc-if value="{{ hasQ }}">{{ q }}<span style="display:inline-block;width:1px;height:14px;background:#222;vertical-align:-2px;margin-left:1px"></span></sc-if><sc-if value="{{ noQ }}"><span style="color:#767676">Search products</span></sc-if></div>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:10px">
+            <div style="flex:1 1 180px;min-width:0;border:1px solid #ddd;border-radius:3px">
+              <div style="font-weight:600;padding:8px 12px">Rug name</div>
+              <div style="height:132px;overflow:hidden">
+                <sc-for list="{{ rugs }}" as="r" hint-placeholder-count="4"><div style="padding:8px 12px;border-top:1px solid #ececec;transition:background .2s,box-shadow .25s;{{ r.style }}">{{ r.name }}</div></sc-for>
+              </div>
+              <div style="text-align:center;padding:7px;border-top:1px solid #ececec;color:#555">{{ rugCount }}</div>
+            </div>
+            <div style="flex:1 1 180px;min-width:0;border:1px solid #ddd;border-radius:3px">
+              <div style="display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,0.6fr) minmax(0,0.9fr);font-weight:600;padding:8px 12px;gap:6px"><span>Title</span><span>Price</span><span>Available</span></div>
+              <div style="height:132px;overflow:hidden">
+                <sc-for list="{{ variants }}" as="v" hint-placeholder-count="0"><div style="display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,0.6fr) minmax(0,0.9fr);gap:6px;padding:8px 12px;border-top:1px solid #ececec;transition:background .2s,box-shadow .25s;{{ v.style }}"><span>{{ v.title }}</span><span>{{ v.price }}</span><span>{{ v.avail }}</span></div></sc-for>
+              </div>
+              <div style="text-align:center;padding:7px;border-top:1px solid #ececec;color:#555">{{ varCount }}</div>
+            </div>
+          </div>
+          <div style="margin-top:10px;text-align:center;padding:8px;border-radius:4px;font-weight:600;transition:all .25s;{{ s.addSample }}">Add sample to box</div>
+          <div style="font-weight:700;margin:18px 0 6px">2. Preview sample box</div>
+          <div style="font-weight:600;padding:8px 12px;border-bottom:1px solid #e3e3e3">Rug name</div>
+          <div style="transition:box-shadow .25s;{{ s.box }}">
+            <sc-if value="{{ boxEmpty }}"><div style="text-align:center;padding:10px;color:#555">Choose up to 5 samples</div></sc-if>
+            <sc-for list="{{ box }}" as="b" hint-placeholder-count="0"><div style="padding:8px 12px;border-bottom:1px solid #ececec">{{ b.name }}</div></sc-for>
+          </div>
+          <div style="text-align:center;padding:8px;color:#555">{{ boxCount }}</div>
+          <div style="margin-top:8px;text-align:center;padding:9px;border-radius:4px;color:#fff;font-weight:600;transition:all .25s;{{ s.addBox }}">Add box to quote</div>
+        </div>
+        <div style="flex:1 1 200px;min-width:0;background:#fff;border:1px solid #e3e3e3;border-radius:4px;transition:box-shadow .25s;{{ s.quote }}">
+          <div style="font-weight:700;font-size:15px;text-align:center;padding:12px">Quote preview</div>
+          <div style="display:flex;justify-content:space-between;font-weight:600;padding:8px 14px;border-top:1px solid #e3e3e3;border-bottom:1px solid #e3e3e3"><span>Title</span><span>Quantity</span></div>
+          <sc-if value="{{ quoteEmpty }}"><div style="text-align:center;padding:12px;color:#555;border-bottom:1px solid #e3e3e3">Your products will appear here</div></sc-if>
+          <sc-for list="{{ quote }}" as="qi" hint-placeholder-count="0"><div style="display:flex;justify-content:space-between;gap:10px;padding:10px 14px;border-bottom:1px solid #e3e3e3"><span>{{ qi.title }}</span><span>{{ qi.qty }}</span></div></sc-for>
+          <div style="text-align:center;padding:8px;color:#555">{{ quoteCount }}</div>
+        </div>
+      </div>
+      <sc-if value="{{ drafted }}">
+        <div style="position:absolute;left:50%;bottom:22px;transform:translateX(-50%);background:#1f2a1f;color:#fff;border-radius:4px;padding:10px 16px;font-weight:600;display:flex;gap:8px;align-items:center;white-space:nowrap;box-shadow:0 10px 30px rgba(0,0,0,0.2)"><span style="color:#8fe39b">&#10003;</span>Draft order #D1087 created</div>
+      </sc-if>
+    </div>
+    <figcaption style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:10px;font:400 12px/1.4 Karla,'Helvetica Neue',Arial,sans-serif;color:#7b7774">
+      <span>B2B quotes, simulated: {{ caption }}</span>
+      <span style="display:flex;gap:14px">
+        <button type="button" onClick="{{ toggle }}" style="all:unset;cursor:pointer;color:#231d1a;border-bottom:1px solid #231d1a;font-weight:500">{{ toggleLabel }}</button>
+        <button type="button" onClick="{{ replay }}" style="all:unset;cursor:pointer;color:#231d1a;border-bottom:1px solid #231d1a;font-weight:500">Replay</button>
+      </span>
+    </figcaption>
   </figure>
 
   <p style="font:400 clamp(24px,5vw,34px)/1.25 Karla,'Helvetica Neue',Arial,sans-serif;letter-spacing:-0.01em;color:#231d1a;margin:0;text-wrap:pretty;margin-top:64px">…and spec sheets generated straight from product data.</p>
@@ -76,5 +140,114 @@
 </div>
 
 </x-dc>
+<script type="text/x-dc" data-dc-script>
+const RUGS = ['Sample Box', 'Cormac', 'Carraway', 'Marlowe', 'Ondine', 'Tamsin', 'Wilder'];
+const VARIANTS = {
+  Cormac: [['Cormac – Oat', '$0', 'In stock'], ['Cormac – Rust', '$0', 'In stock'], ['Cormac – Ink', '$0', 'Low']],
+  Carraway: [['Carraway – Fog', '$0', 'In stock'], ['Carraway – Moss', '$0', 'In stock'], ['Carraway – Clay', '$0', 'Backorder']]
+};
+const RING = 'box-shadow:0 0 0 3px rgba(63,107,232,0.35);';
+
+class Component extends DCLogic {
+  state = this.initial();
+  _i = 0;
+
+  initial() {
+    return { q: '', rug: null, variant: null, box: [], quote: [], drafted: false, focus: '', press: '', caption: 'ready', playing: true };
+  }
+
+  timeline() {
+    const s = [];
+    const add = (d, p) => s.push([d, p]);
+    const type = (t) => { for (let i = 1; i <= t.length; i++) add(i === 1 ? 600 : 120, { q: t.slice(0, i), focus: 'search', caption: 'search for a rug' }); };
+    const pick = (rug, variant) => {
+      add(650, { focus: 'rug-' + rug, caption: 'pick the rug' });
+      add(450, { rug, focus: 'var-' + variant, caption: 'choose a colorway' });
+      add(750, { variant, focus: 'addSample', caption: 'add it to the sample box' });
+      add(650, { press: 'addSample' });
+      add(180, (st) => ({ box: [...st.box, variant], variant: null, press: '', focus: 'box', caption: 'sample added' }));
+    };
+    add(900, { focus: 'search', caption: 'search for a rug' });
+    type('Cor'); pick('Cormac', 'Cormac – Oat');
+    add(900, { q: '', rug: null, focus: 'search', caption: 'search for another' });
+    type('Carr'); pick('Carraway', 'Carraway – Fog');
+    add(900, { focus: 'addBox', caption: 'add the box to the quote' });
+    add(650, { press: 'addBox' });
+    add(180, (st) => ({ quote: [{ title: 'Sample box (' + st.box.length + ' samples)', qty: 1 }], press: '', focus: 'quote', caption: 'quote updated' }));
+    add(1000, { focus: 'draft', caption: 'create the draft order' });
+    add(650, { press: 'draft' });
+    add(180, { drafted: true, press: '', focus: '', caption: 'draft order ready to send' });
+    add(3400, 'reset');
+    return s;
+  }
+
+  run() {
+    clearTimeout(this._t);
+    const step = this._steps[this._i];
+    if (!step) return;
+    this._t = setTimeout(() => {
+      const p = step[1];
+      if (p === 'reset') { this._i = 0; this.setState(this.initial()); this.run(); return; }
+      this.setState((st) => (typeof p === 'function' ? p(st) : p));
+      this._i += 1;
+      this.run();
+    }, step[0]);
+  }
+
+  componentDidMount() {
+    this._steps = this.timeline();
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) {
+      this.setState({ box: ['Cormac – Oat', 'Carraway – Fog'], quote: [{ title: 'Sample box (2 samples)', qty: 1 }], drafted: true, caption: 'draft order ready to send', playing: false });
+      this._i = this._steps.length - 1;
+      return;
+    }
+    this.run();
+  }
+
+  componentWillUnmount() { clearTimeout(this._t); }
+
+  toggle = () => {
+    if (this.state.playing) { clearTimeout(this._t); this.setState({ playing: false }); }
+    else { if (this._i >= this._steps.length - 1) { this._i = 0; this.setState(this.initial()); } else { this.setState({ playing: true }); } this.run(); }
+  };
+
+  replay = () => { this._i = 0; this.setState(this.initial()); this.run(); };
+
+  renderVals() {
+    const st = this.state;
+    const f = (k) => (st.focus === k ? RING : '');
+    const pr = (k) => (st.press === k ? 'transform:scale(0.97);' : '');
+    const q = st.q.toLowerCase();
+    const rugs = RUGS.filter((r) => !q || r.toLowerCase().startsWith(q)).map((name) => ({
+      name, style: (st.rug === name ? 'background:#e8eefd;' : '') + f('rug-' + name)
+    }));
+    const variants = (st.rug ? VARIANTS[st.rug] || [] : []).map(([title, price, avail]) => ({
+      title, price, avail, style: (st.variant === title ? 'background:#e8eefd;' : '') + f('var-' + title)
+    }));
+    const enabledOutline = 'border:1px solid #3f6be8;color:#3f6be8;background:#fff;';
+    const disabledOutline = 'border:1px solid #c9d5f8;color:#8aa3ee;background:#fff;';
+    const boxReady = st.box.length > 0 && st.quote.length === 0;
+    return {
+      q: st.q, hasQ: !!st.q, noQ: !st.q,
+      rugs, rugCount: (q ? rugs.length : 90) + ' results',
+      variants, varCount: variants.length + ' results',
+      box: st.box.map((name) => ({ name })), boxEmpty: st.box.length === 0,
+      boxCount: st.box.length ? st.box.length + ' of 5 samples' : '0 results',
+      quote: st.quote, quoteEmpty: st.quote.length === 0, quoteCount: st.quote.length + ' results',
+      drafted: st.drafted, caption: st.caption,
+      toggle: this.toggle, replay: this.replay, toggleLabel: st.playing ? 'Pause' : 'Play',
+      s: {
+        search: f('search'),
+        addSample: (st.variant ? enabledOutline : disabledOutline) + f('addSample') + pr('addSample'),
+        box: f('box'),
+        addBox: 'background:' + (boxReady ? '#3f6be8' : '#a9bcf3') + ';' + f('addBox') + pr('addBox'),
+        quote: f('quote'),
+        draft: f('draft') + pr('draft')
+      }
+    };
+  }
+}
+</script>
 </body>
 </html>
