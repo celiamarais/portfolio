@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../assets/ds/celia-marais-portfolio/components/bundle.css">
   <script src="../assets/js/image-slot.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla:wght@300..700&amp;display=swap">
-  <style>a{text-decoration:none}body{margin:0;background:var(--paper)}::selection{background:rgba(243,222,214,0.6)}.cm-close{position:fixed;top:20px;right:20px;z-index:50;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ink);background:var(--paper);box-shadow:inset 0 0 0 1px var(--hairline);transition:background .2s}.cm-close:hover{background:var(--blush)}.cm-close:focus-visible{outline:2px solid var(--ink);outline-offset:3px}@media (max-width:900px){.cm-nav{padding-right:56px}}:root{--image-ground:#efedea}.cm-imgbg{background:var(--image-ground);border-radius:var(--radius-image)}.cm-title{font:var(--text-story);letter-spacing:var(--tracking-story)}.cm-subtitle{font:var(--text-support);color:var(--ink-soft);margin-top:4px}.cm-result{font:var(--text-story);letter-spacing:var(--tracking-story)}</style>
+  <style>a{text-decoration:none}body{margin:0;background:var(--paper)}::selection{background:rgba(243,222,214,0.6)}.cm-close{position:fixed;top:20px;right:20px;z-index:50;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ink);background:var(--paper);box-shadow:inset 0 0 0 1px var(--hairline);transition:background .2s}.cm-close:hover{background:var(--blush)}.cm-close:focus-visible{outline:2px solid var(--ink);outline-offset:3px}@media (max-width:900px){.cm-nav{padding-right:56px}}:root{--image-ground:#efedea}.cm-imgbg{background:var(--image-ground);border-radius:var(--radius-image)}.cm-title,.cm-subtitle,.cm-result{font:400 clamp(22px,4vw,27px)/1.25 var(--font-sans);letter-spacing:-.01em}.cm-title{margin:0;color:var(--ink)}.cm-subtitle{color:var(--ink-soft);margin:8px 0 0}.cm-beat{font:var(--text-support);color:var(--ink);margin:0}.cm-row{display:flex;gap:32px;align-items:center}.cm-row-media{flex:3 1 0;min-width:0}.cm-row-text{flex:2 1 0;min-width:0}.cm-row-wide .cm-row-media{flex:2 1 0}.cm-row-wide .cm-row-text{flex:1 1 0}.cm-divider{height:1px;background:var(--blush);margin:64px 0}@media (max-width:700px){.cm-row{flex-direction:column;align-items:stretch;gap:20px}}</style>
 </helmet>
 
 <div style="background:var(--paper);min-height:100vh;width:100%">
@@ -30,37 +30,39 @@
   </nav>
 
   <header class="cm-header">
-
-    <div class="cm-kicker">Personal work</div>
-
     <h1 class="cm-title">Visual Design</h1>
-
+    <p class="cm-subtitle">Before product design, I was an art director. I still make things by hand.</p>
   </header>
 
-  <p class="cm-support" style="margin-top:var(--space-32)">Before product design, I was an art director. I still make things by hand.</p>
+  <div style="height:var(--space-112)"></div>
 
-  <p class="cm-support" style="margin-top:var(--space-16)">Posters for my team at Meta, on how we wanted to work together.</p>
+  <p class="cm-beat">Posters for my team at Meta, on how we wanted to work together.</p>
 
-  <figure class="cm-figure" style="margin-top:var(--space-32)">
+  <div style="margin-top:var(--space-32)">
+  <figure class="cm-figure">
     <div style="display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:16px;align-items:start">
       <div class="cm-imgbg"><image-slot id="vd-poster-1" src="../assets/images/vision-poster-04.png" shape="rect" radius="2" style="display:block;width:min(100%, calc(600px * 1584 / 2448));margin-inline:auto;aspect-ratio:1584/2448;height:auto" placeholder="Drop image"></image-slot></div>
       <div class="cm-imgbg"><image-slot id="vd-poster-2" src="../assets/images/vision-poster-02.png" shape="rect" radius="2" style="display:block;width:min(100%, calc(600px * 1584 / 2448));margin-inline:auto;aspect-ratio:1584/2448;height:auto" placeholder="Drop image"></image-slot></div>
     </div>
-    <figcaption class="cm-caption">CXP + FoMo team posters</figcaption>
   </figure>
+  </div>
 
-  <figure class="cm-figure" style="margin-top:var(--space-32)">
+  <div style="margin-top:var(--space-32)">
+  <figure class="cm-figure">
     <div style="display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:16px;align-items:start">
       <div class="cm-imgbg"><image-slot id="vd-photo-1" src="../assets/images/vision-group-16.png" shape="rect" radius="2" style="display:block;width:min(100%, calc(600px * 817 / 821));margin-inline:auto;aspect-ratio:817/821;height:auto" placeholder="Drop image"></image-slot></div>
       <div class="cm-imgbg"><image-slot id="vd-photo-2" src="../assets/images/vision-image-4.png" shape="rect" radius="2" style="display:block;width:min(100%, calc(600px * 1222 / 824));margin-inline:auto;aspect-ratio:1222/824;height:auto" placeholder="Drop image"></image-slot></div>
       <div class="cm-imgbg"><image-slot id="vd-photo-3" src="../assets/images/vision-image-6.png" shape="rect" radius="2" style="display:block;width:min(100%, calc(600px * 1092 / 822));margin-inline:auto;aspect-ratio:1092/822;height:auto" placeholder="Drop image"></image-slot></div>
     </div>
-    <figcaption class="cm-caption">Photography</figcaption>
   </figure>
+  </div>
 
-  <p class="cm-support" style="margin-top:var(--space-64)">And I paint: watercolor, ink and gouache, mostly imaginary places.</p>
+  <div class="cm-divider" aria-hidden="true"></div>
 
-  <div style="display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:32px 16px;align-items:start;margin-top:32px">
+  <p class="cm-beat">And I paint: watercolor, ink and gouache, mostly imaginary places.</p>
+
+  <div style="margin-top:var(--space-32)">
+  <div style="display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:32px 16px;align-items:start">
       <figure style="margin:0">
         <div class="cm-imgbg"><image-slot id="art-1" src="https://images.squarespace-cdn.com/content/v1/695ff5f7d08e7045d7752942/0eeedf52-9151-4ea1-ab19-d4fe5d28339f/Untitled_Panorama.jpg?format=1500w" shape="rect" radius="2" style="display:block;width:min(100%, calc(600px * 473 / 645));margin-inline:auto;aspect-ratio:473/645;height:auto" placeholder="Drop image"></image-slot></div>
         <figcaption class="cm-caption"><span style="color:var(--ink)">Panorama</span><br/>Watercolor, ink on paper</figcaption>
@@ -85,6 +87,7 @@
         <div class="cm-imgbg"><image-slot id="art-6" src="https://images.squarespace-cdn.com/content/v1/695ff5f7d08e7045d7752942/c85c4c84-b401-4717-826d-1f7eee2900ea/Red+dot.jpg?format=1500w" shape="rect" radius="2" style="display:block;width:min(100%, calc(600px * 473 / 644));margin-inline:auto;aspect-ratio:473/644;height:auto" placeholder="Drop image"></image-slot></div>
         <figcaption class="cm-caption"><span style="color:var(--ink)">A red dot</span><br/>Watercolor, ink, gouache on paper</figcaption>
       </figure>
+  </div>
   </div>
 
   <section class="cm-result-block" style="margin-top:var(--space-112)">
