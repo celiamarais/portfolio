@@ -24,11 +24,11 @@
 </helmet>
 
 <div onMouseMove="{{ spawnBurst }}" onClick="{{ toggleBurst }}" style="font-family:var(--font-sans);background:var(--paper);color:var(--ink);position:relative;min-height:100vh">
-  <div ref="{{ bgRef }}" style="position:fixed;inset:-25%;z-index:0;pointer-events:none;filter:blur(28px);opacity:0.6">
-    <div class="cm-bg" style="animation-delay:0s;background:conic-gradient(from 210deg at 47% 34%, #fdf8f0 0deg, #fdf0e8 55deg, #f6d9cd 120deg, #f3ded6 200deg, #faf3e7 275deg, #fdf8f0 360deg)"></div>
-    <div class="cm-bg" style="animation-delay:-30s;background:conic-gradient(from 210deg at 47% 34%, #f7f6ef 0deg, #eef0e4 55deg, #dfe6d6 120deg, #e6ebdf 200deg, #f5f3e8 275deg, #f7f6ef 360deg)"></div>
-    <div class="cm-bg" style="animation-delay:-60s;background:conic-gradient(from 210deg at 47% 34%, #f8f5f6 0deg, #f1ebf1 55deg, #e5dbe6 120deg, #ebe3ec 200deg, #f7f3f2 275deg, #f8f5f6 360deg)"></div>
-    <div class="cm-bg" style="animation-delay:-90s;background:conic-gradient(from 210deg at 47% 34%, #fbf5ec 0deg, #f8e9d8 55deg, #f0d9c2 120deg, #f4e2d0 200deg, #faf2e6 275deg, #fbf5ec 360deg)"></div>
+  <div ref="{{ bgRef }}" style="position:fixed;inset:-25%;z-index:0;pointer-events:none;filter:blur(28px);opacity:0.8">
+    <div class="cm-bg" style="animation-delay:0s;background:conic-gradient(from 210deg at 47% 34%, #fbeee6 0deg, #f6d9cd 55deg, #efc4b1 120deg, #f3ded6 200deg, #fbf3ea 275deg, #fbeee6 360deg)"></div>
+    <div class="cm-bg" style="animation-delay:-30s;background:conic-gradient(from 210deg at 47% 34%, #eef2e6 0deg, #dce6d2 55deg, #c9d9c0 120deg, #dfe8d8 200deg, #f1f4ea 275deg, #eef2e6 360deg)"></div>
+    <div class="cm-bg" style="animation-delay:-60s;background:conic-gradient(from 210deg at 47% 34%, #f2edf5 0deg, #e2d7ea 55deg, #d3c4e0 120deg, #e6dcee 200deg, #f5f1f7 275deg, #f2edf5 360deg)"></div>
+    <div class="cm-bg" style="animation-delay:-90s;background:conic-gradient(from 210deg at 47% 34%, #fdf0e2 0deg, #f8dcc0 55deg, #f2c9a2 120deg, #f6dcc4 200deg, #fcf1e4 275deg, #fdf0e2 360deg)"></div>
   </div>
   <div style="position:fixed;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg, rgba(250,243,231,0.42) 0%, rgba(250,243,231,0.06) 45%, rgba(250,243,231,0.55) 100%)"></div>
   <div ref="{{ burstRef }}" style="position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden"></div>
@@ -52,7 +52,6 @@
 
     <sc-for list="{{ groups }}" as="g" hint-placeholder-count="3">
       <section style="margin-top:var(--space-112)">
-        <div class="cm-group-label">{{ g.brandLabel }}</div>
         <sc-for list="{{ g.projects }}" as="p" hint-placeholder-count="3">
           <article ref="{{ collectRef }}" style="padding-top:64px;opacity:0;transform:translateY(28px);transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1)">
             <h3 class="cm-story" style="font:400 24px/1.3 var(--font-sans);letter-spacing:-0.005em;margin-bottom:var(--space-16)">{{ p.name }}</h3>
