@@ -17,11 +17,19 @@
     body{margin:0}
     a{text-decoration:none}
     ::selection{background:rgba(243,222,214,0.6)}
+    .cm-bg{position:absolute;inset:0;opacity:0;animation:cm-bg-fade 120s ease-in-out infinite}
+    @keyframes cm-bg-fade{0%{opacity:0}10%{opacity:1}25%{opacity:1}35%{opacity:0}100%{opacity:0}}
+    @media (prefers-reduced-motion: reduce){.cm-bg{animation:none}.cm-bg:first-child{opacity:1}}
   </style>
 </helmet>
 
 <div onMouseMove="{{ spawnBurst }}" onClick="{{ toggleBurst }}" style="font-family:var(--font-sans);background:var(--paper);color:var(--ink);position:relative;min-height:100vh">
-  <div ref="{{ bgRef }}" style="position:fixed;inset:-25%;z-index:0;pointer-events:none;background:conic-gradient(from 210deg at 47% 34%, #fdf8f0 0deg, #fdf0e8 55deg, #f6d9cd 120deg, #f3ded6 200deg, #faf3e7 275deg, #fdf8f0 360deg);filter:blur(28px)"></div>
+  <div ref="{{ bgRef }}" style="position:fixed;inset:-25%;z-index:0;pointer-events:none;filter:blur(28px);opacity:0.6">
+    <div class="cm-bg" style="animation-delay:0s;background:conic-gradient(from 210deg at 47% 34%, #fdf8f0 0deg, #fdf0e8 55deg, #f6d9cd 120deg, #f3ded6 200deg, #faf3e7 275deg, #fdf8f0 360deg)"></div>
+    <div class="cm-bg" style="animation-delay:-30s;background:conic-gradient(from 210deg at 47% 34%, #f7f6ef 0deg, #eef0e4 55deg, #dfe6d6 120deg, #e6ebdf 200deg, #f5f3e8 275deg, #f7f6ef 360deg)"></div>
+    <div class="cm-bg" style="animation-delay:-60s;background:conic-gradient(from 210deg at 47% 34%, #f8f5f6 0deg, #f1ebf1 55deg, #e5dbe6 120deg, #ebe3ec 200deg, #f7f3f2 275deg, #f8f5f6 360deg)"></div>
+    <div class="cm-bg" style="animation-delay:-90s;background:conic-gradient(from 210deg at 47% 34%, #fbf5ec 0deg, #f8e9d8 55deg, #f0d9c2 120deg, #f4e2d0 200deg, #faf2e6 275deg, #fbf5ec 360deg)"></div>
+  </div>
   <div style="position:fixed;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg, rgba(250,243,231,0.42) 0%, rgba(250,243,231,0.06) 45%, rgba(250,243,231,0.55) 100%)"></div>
   <div ref="{{ burstRef }}" style="position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden"></div>
 
@@ -211,7 +219,7 @@ class Component extends DCLogic {
       'mask-image:radial-gradient(circle, #000 40%, transparent 72%)'
     ].join(';');
     layer.appendChild(el);
-    requestAnimationFrame(() => { el.style.opacity = '1'; el.style.transform = 'scale(1)'; });
+    requestAnimationFrame(() => { el.style.opacity = '0.45'; el.style.transform = 'scale(1)'; });
     setTimeout(() => {
       el.style.transition = 'opacity 4.5s ease';
       el.style.opacity = '0';
