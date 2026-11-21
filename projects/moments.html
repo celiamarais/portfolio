@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../assets/ds/celia-marais-portfolio/components/bundle.css">
   <script src="../assets/js/image-slot.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla:wght@300..700&amp;display=swap">
-  <style>a{text-decoration:none}body{margin:0;background:var(--paper)}::selection{background:rgba(243,222,214,0.6)}.cm-close{position:fixed;top:20px;right:20px;z-index:50;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ink);background:var(--paper);box-shadow:inset 0 0 0 1px var(--hairline);transition:background .2s}.cm-close:hover{background:var(--blush)}.cm-close:focus-visible{outline:2px solid var(--ink);outline-offset:3px}@media (max-width:900px){.cm-nav{padding-right:56px}}:root{--image-ground:#efedea}.cm-imgbg{background:var(--image-ground);border-radius:var(--radius-image)}.cm-title,.cm-subtitle,.cm-result{font:400 clamp(22px,4vw,27px)/1.25 var(--font-sans);letter-spacing:-.01em}.cm-title{margin:0;color:var(--ink)}.cm-subtitle{color:var(--ink-soft);margin:8px 0 0}.cm-beat{font:var(--text-support);color:var(--ink);margin:0}.cm-row{display:flex;gap:32px;align-items:center}.cm-row-media{flex:3 1 0;min-width:0}.cm-row-text{flex:2 1 0;min-width:0}.cm-row-wide .cm-row-media{flex:2 1 0}.cm-row-wide .cm-row-text{flex:1 1 0}.cm-divider{height:1px;background:var(--blush);margin:64px 0}@media (max-width:700px){.cm-row{flex-direction:column;align-items:stretch;gap:20px}}</style>
+  <style>a{text-decoration:none}body{margin:0;background:var(--paper)}::selection{background:rgba(243,222,214,0.6)}.cm-close{position:fixed;top:20px;right:20px;z-index:50;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ink);background:var(--paper);box-shadow:inset 0 0 0 1px var(--hairline);transition:background .2s}.cm-close:hover{background:var(--blush)}.cm-close:focus-visible{outline:2px solid var(--ink);outline-offset:3px}@media (max-width:900px){.cm-nav{padding-right:56px}}.cm-title,.cm-subtitle,.cm-result{font:400 clamp(22px,4vw,27px)/1.25 var(--font-sans);letter-spacing:-.01em}.cm-title{margin:0;color:var(--ink)}.cm-subtitle{color:var(--ink-soft);margin:8px 0 0}.cm-beat{display:block;font:var(--text-support);color:var(--ink);margin:0}.cm-beat b{font-weight:700}.cm-card{margin:0;background:#dedcda;border-radius:var(--radius-image);box-shadow:0 1px 3px -1px rgba(0,0,0,.12);padding:32px}.cm-card image-slot::part(frame){background:transparent}.cm-strip{display:flex;gap:24px;justify-content:center;align-items:flex-start}.cm-strip>div{min-width:0}.cm-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:60px}.cm-result-block .cm-support{color:var(--ink-body)}@media (max-width:700px){.cm-card{padding:16px}.cm-pair{grid-template-columns:1fr;gap:32px}.cm-strip{gap:10px}}</style>
 </helmet>
 
 <div style="background:var(--paper);min-height:100vh;width:100%">
@@ -34,39 +34,29 @@
     <p class="cm-subtitle">Lower-acuity patients didn’t want therapy — but still needed everyday support.</p>
   </header>
 
-  <div style="height:var(--space-112)"></div>
+  <div style="height:var(--space-64)"></div>
 
-  <div class="cm-row">
-    <div class="cm-row-media">
-    <figure class="cm-figure">
-    <div class="cm-imgbg"><image-slot id="ed-moments-1" src="../assets/images/thumb-moments-1.png" shape="rect" radius="2" style="display:block;width:min(100%, calc(600px * 1165 / 515));margin-inline:auto;aspect-ratio:1165/515;height:auto" placeholder="Drop image"></image-slot></div>
-  </figure>
-    </div>
-    <div class="cm-row-text"><p class="cm-beat">So instead of asking them to pick a category, we asked: how are you feeling?</p></div>
-  </div>
+  <p class="cm-beat">So instead of asking them to pick a category, we asked: how are you feeling?</p>
 
-  <div class="cm-divider" aria-hidden="true"></div>
+  <div style="height:var(--space-32)"></div>
+
+  <figure class="cm-card"><image-slot id="pp-mom-1" src="../assets/images/thumb-moments-1.png" shape="rect" radius="2" fit="contain" style="display:block;width:100%;height:min(520px,62vw)" placeholder="Drop image"></image-slot></figure>
+
+  <div style="height:var(--space-64)"></div>
 
   <p class="cm-beat">Each answer maps to the right exercises, in a calm system built for small screens.</p>
 
-  <div style="margin-top:var(--space-32)">
-  <figure class="cm-figure">
-    <div class="cm-imgbg"><image-slot id="ed-moments-2" src="../assets/images/ed-moments-flows.png" shape="rect" radius="2" style="display:block;width:min(100%, calc(600px * 805 / 954));margin-inline:auto;aspect-ratio:805/954;height:auto" placeholder="Drop image"></image-slot></div>
-  </figure>
-  </div>
+  <div style="height:var(--space-32)"></div>
 
-  <div style="margin-top:var(--space-32)">
-  <figure class="cm-figure">
-    <div class="cm-imgbg"><image-slot id="ed-moments-3" src="../assets/images/thumb-moments-2.png" shape="rect" radius="2" style="display:block;width:min(100%, calc(600px * 1010 / 790));margin-inline:auto;aspect-ratio:1010/790;height:auto" placeholder="Drop image"></image-slot></div>
-  </figure>
-  </div>
+  <figure class="cm-card"><image-slot id="pp-mom-2" src="../assets/images/ed-moments-flows.png" shape="rect" radius="2" fit="contain" style="display:block;width:100%;height:min(520px,62vw)" placeholder="Drop image"></image-slot></figure>
+
+  <div style="height:var(--space-32)"></div>
+
+  <figure class="cm-card"><image-slot id="pp-mom-3" src="../assets/images/thumb-moments-2.png" shape="rect" radius="2" fit="contain" style="display:block;width:100%;height:min(520px,62vw)" placeholder="Drop image"></image-slot></figure>
 
   <section class="cm-result-block" style="margin-top:var(--space-112)">
-
     <p class="cm-result">136% more app downloads.</p>
-
     <p class="cm-support">“This feels nice and peaceful and clear — other companies don’t have that.”</p>
-
   </section>
 
   <footer class="cm-footer" style="margin-top:var(--space-112)">
@@ -75,7 +65,6 @@
       <a href="#">LinkedIn</a>
       <a href="#">Resume</a>
     </div>
-    <p class="cm-footer-line">Celia Marais, product designer in New York.</p>
   </footer>
 </div>
 </div>
