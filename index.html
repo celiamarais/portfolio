@@ -32,7 +32,7 @@
   @media (max-width:640px){:root{--text-support:400 16px/1.55 var(--font-sans);--text-link:500 16px/1.55 var(--font-sans);--text-footer:400 13px/1.6 var(--font-sans)}.cm-tile-name{font-size:16px}.cm-support,.cm-link{font-size:16px;line-height:1.55}.cm-footer,.cm-footer a{font-size:13px}}</style>
 </helmet>
 
-<div onMouseMove="{{ spawnBurst }}" onClick="{{ toggleBurst }}" style="font-family:var(--font-sans);background:var(--paper);color:var(--ink);position:relative;min-height:100vh">
+<div onMouseMove="{{ spawnBurst }}" style="font-family:var(--font-sans);background:var(--paper);color:var(--ink);position:relative;min-height:100vh">
   <div ref="{{ bgRef }}" style="position:fixed;inset:-25%;z-index:0;pointer-events:none;filter:blur(28px);opacity:0.5">
     <div class="cm-bg" style="animation-delay:0s;background:conic-gradient(from 210deg at 47% 34%, #fbeee6 0deg, #f6d9cd 55deg, #efc4b1 120deg, #f3ded6 200deg, #fbf3ea 275deg, #fbeee6 360deg)"></div>
     <div class="cm-bg" style="animation-delay:-30s;background:conic-gradient(from 210deg at 47% 34%, #eef2e6 0deg, #dce6d2 55deg, #c9d9c0 120deg, #dfe8d8 200deg, #f1f4ea 275deg, #eef2e6 360deg)"></div>
@@ -56,7 +56,7 @@
     <header class="cm-header" style="display:flex;flex-direction:column;gap:var(--space-32)">
       <p class="cm-story">I'm a product designer with a background in art direction, a penchant for design systems and a knack for hairy problems.</p>
       
-      <p class="cm-support">I've built products that help people make purchase decisions, find care when they're in crisis, and products that help teams work better and faster. I solve problems for people by turning complex systems into simple, delightful experiences. I’m always looking for ways to improve processes, I welcome limitations and find adaptable ways around them, and I lead with empathy.</p>
+      <p class="cm-support">At Meta and at startups, I've built products that help people make purchase decisions, find care when they're in crisis, and products that help teams work better and faster. I solve problems for people by turning complex systems into simple, delightful experiences. I’m always looking for ways to improve processes, I welcome limitations and find adaptable ways around them, and I lead with empathy.</p>
     </header>
 
     <sc-for list="{{ groups }}" as="g" hint-placeholder-count="4">
@@ -99,19 +99,19 @@ const RC = 'case study';
 const T = (name, page, img, alt, line, link, wide) => ({ name, href: P(page), img, alt, line, link: link === undefined ? RC : link, wide: !!wide });
 const GROUPS_RAW = [
   { label: 'Meta', pad: 112, tiles: [
-    T('Facebook Web Checkout', 'Facebook Web Checkout', 'assets/images/fig5-t-fb.png', 'Facebook web checkout on a phone', 'I led a stepped, responsive redesign of the global web checkout and the component library behind it, and transactions rose significantly.'),
-    Object.assign(T('Commerce Tools and Vision work', 'Processes and People', 'assets/images/fig5-t-cxp.png', 'CXP logo', 'I built a Figma product system and an org-wide directory, and Commerce adopted both as its standard. Engineers had no easy way to create test orders, so I designed a tool that makes them in a few taps. (Email me for the password.) I reimagined post-purchase around visibility, delight and business messaging.', 'Processes and People'), { link2: 'Vision Work', href2: P('Vision Work') })
+    T('Facebook Web Checkout', 'Facebook Web Checkout', 'assets/images/fig5-t-fb.png', 'Facebook web checkout screens and components', 'I led a stepped, responsive redesign of the global web checkout and the component library behind it, and transactions rose significantly.'),
+    Object.assign(T('Commerce Tools and Vision work', 'Processes and People', 'assets/images/fig5-t-cxp.png', 'Instagram and Facebook logos', 'I built a Figma product system and an org-wide directory, and Commerce adopted both as its standard. Engineers had no easy way to create test orders, so I designed a tool that makes them in a few taps. (Email me for the password.) I reimagined post-purchase around visibility, delight and business messaging.', 'Processes and People'), { link2: 'Vision Work', href2: P('Vision Work') })
   ]},
   { label: 'Ernesta', pad: 112, tiles: [
-    T('Ernesta Design System', 'Ernesta Design System', 'assets/images/fig5-t-eds.png', 'Ernesta design system libraries', 'I designed and built the design system: foundations, components and page templates, with engineering.', undefined, true),
-    T('Shopping filters and assortment nomenclature', 'Ernesta Filters', 'assets/images/fig5-t-efl.png', 'Filtered results for a 9-foot round wool rug', 'Filters built on a lot of work in taxonomy and nomenclature, with buyers, marketing and user research.'),
-    T('Internal tools', 'Ernesta Tools', 'assets/images/fig5-t-ern.png', 'Ernesta quote creator', 'I halved quote time on a rote but essential task, and worked around tech limits to give trade customers tear sheets.')
+    T('Ernesta Design System', 'Ernesta Design System', 'assets/images/fig5-t-eds.png', 'Ernesta design system components', 'I designed and built the design system: foundations, components and page templates, with engineering.', undefined, true),
+    T('Shopping filters and assortment nomenclature', 'Ernesta Filters', 'assets/images/fig5-t-efl.png', 'Ernesta filter screens and results', 'Filters built on a lot of work in taxonomy and nomenclature, with buyers, marketing and user research.'),
+    T('Internal tools', 'Ernesta Tools', 'assets/images/fig5-t-ern.png', 'Ernesta quote creator and tear sheet', 'I halved quote time on a rote but essential task, and worked around tech limits to give trade customers tear sheets.')
   ]},
   { label: 'Spring Health', pad: 112, tiles: [
-    T('Spring Health App', 'Spring Mobile App', 'assets/images/fig5-t-spr.png', 'Spring Health sign-in and onboarding screens, with the Moments design system', 'Care plans, assessments and therapy booking lived only on a desktop portal. As the first design hire, I designed Spring Health’s first app. I also designed Moments, for lower-acuity patients who didn’t want therapy but still needed everyday support.', undefined, true)
+    T('Spring Health App', 'Spring Mobile App', 'assets/images/fig5-t-spr.png', 'Spring Health sign-in and onboarding screens, with the Moments design system', 'Care plans, assessments and therapy booking lived only on a desktop portal. As the first design hire, I brought these to mobile, and also designed the Moments app, for lower-acuity patients who didn’t want therapy but still needed everyday support.', undefined, true)
   ]},
   { label: 'Personal work', pad: 112, tiles: [
-    T('Visual Design', 'Visual Design', 'assets/images/fig5-t-vd.png', 'Team poster', 'Outside product work I make posters, photographs and paintings.', ''),
+    T('Visual Design', 'Visual Design', 'assets/images/fig5-t-vd.png', 'Posters', 'Outside product work I make posters, photographs and paintings.', ''),
     T('Paintings', 'Visual Design', 'https://images.squarespace-cdn.com/content/v1/695ff5f7d08e7045d7752942/cf621db0-2931-47e7-8999-fa64343c2d8c/A+landscape+in+green+and+pink.jpg?format=1500w', 'A landscape in green and pink, watercolor painting', 'Watercolor, ink and gouache, mostly imaginary places.', 'See the work')
   ]}
 ];
@@ -125,10 +125,10 @@ const BRAND_STYLE = {
 class Component extends DCLogic {
   state = { copied: false, lightbox: false };
   _burstOn = true;
-
-  toggleBurst = (e) => {
-    if (e.target.closest && e.target.closest('a, image-slot')) return;
-    this._burstOn = !this._burstOn;
+  _palette = ['#f6d9cd', '#efc4b1', '#dce6d2', '#c9d9c0', '#e2d7ea', '#d3c4e0', '#f8dcc0', '#f2c9a2'];
+  _colorAt = (offset) => {
+    const step = Math.floor(performance.now() / 2600) + (offset || 0);
+    return this._palette[((step % this._palette.length) + this._palette.length) % this._palette.length];
   };
 
   bgRef = React.createRef();
@@ -143,11 +143,18 @@ class Component extends DCLogic {
     };
     this._raf = requestAnimationFrame(tick);
     this._fallback = setTimeout(() => this._sections.forEach((el) => this.reveal(el)), 1500);
+    const auto = () => {
+      const w = window.innerWidth || 1200, h = window.innerHeight || 800;
+      this.makeBlob(Math.random() * w, Math.random() * h, true);
+      this._autoT = setTimeout(auto, 1400 + Math.random() * 900);
+    };
+    this._autoT = setTimeout(auto, 300);
   }
 
   componentWillUnmount() {
     cancelAnimationFrame(this._raf);
     clearTimeout(this._fallback);
+    clearTimeout(this._autoT);
     clearTimeout(this._copyT);
   }
 
@@ -182,33 +189,39 @@ class Component extends DCLogic {
   };
 
   spawnBurst = (e) => {
-    if (!this._burstOn) return;
-    const layer = this.burstRef.current;
-    if (!layer) return;
     const now = performance.now();
     if (this._lastBurst && now - this._lastBurst < 90) return;
     this._lastBurst = now;
-    const d = 1100;
+    this.makeBlob(e.clientX, e.clientY, false);
+  };
+
+  makeBlob = (x, y, ambient) => {
+    const layer = this.burstRef.current;
+    if (!layer) return;
+    const d = ambient ? 900 + Math.random() * 500 : 1100;
     const el = document.createElement('div');
+    let k = Math.floor(Math.random() * 3);
     el.style.cssText = [
       'position:absolute',
-      'left:' + (e.clientX - d / 2) + 'px',
-      'top:' + (e.clientY - d / 2) + 'px',
+      'left:' + (x - d / 2) + 'px',
+      'top:' + (y - d / 2) + 'px',
       'width:' + d + 'px', 'height:' + d + 'px',
       'border-radius:50%', 'pointer-events:none', 'filter:blur(28px)',
       'opacity:0', 'transform:scale(0.6)',
-      'transition:opacity 1.1s cubic-bezier(0.16,1,0.3,1), transform 1.4s cubic-bezier(0.16,1,0.3,1)',
-      'background:conic-gradient(from 210deg at 50% 50%, #f7ecdc 0deg, #fbe4d3 55deg, #efc4a8 120deg, #ecc9b5 200deg, #f2e4cd 275deg, #f7ecdc 360deg)',
-      '-webkit-mask-image:radial-gradient(circle, #000 40%, transparent 72%)',
-      'mask-image:radial-gradient(circle, #000 40%, transparent 72%)'
+      'transition:opacity 1.6s cubic-bezier(0.16,1,0.3,1), transform 2s cubic-bezier(0.16,1,0.3,1), background-color 2.6s ease',
+      'background-color:' + this._colorAt(k),
+      '-webkit-mask-image:radial-gradient(circle, #000 30%, transparent 70%)',
+      'mask-image:radial-gradient(circle, #000 30%, transparent 70%)'
     ].join(';');
     layer.appendChild(el);
-    requestAnimationFrame(() => { el.style.opacity = '0.2'; el.style.transform = 'scale(1)'; });
+    const fade = setInterval(() => { k += 1; el.style.backgroundColor = this._colorAt(k); }, 2600);
+    requestAnimationFrame(() => { el.style.opacity = ambient ? '0.16' : '0.2'; el.style.transform = 'scale(1)'; });
+    const hold = ambient ? 5200 : 2600;
     setTimeout(() => {
-      el.style.transition = 'opacity 4.5s ease';
+      el.style.transition = 'opacity 4.5s ease, background-color 2.6s ease';
       el.style.opacity = '0';
-      setTimeout(() => el.remove(), 4700);
-    }, 2600);
+      setTimeout(() => { clearInterval(fade); el.remove(); }, 4700);
+    }, hold);
   };
 
   copyEmail = (e) => {
@@ -228,7 +241,6 @@ class Component extends DCLogic {
       bgRef: this.bgRef,
       burstRef: this.burstRef,
       spawnBurst: this.spawnBurst,
-      toggleBurst: this.toggleBurst,
       collectRef: this.collectRef,
       copyEmail: this.copyEmail,
       emailLabel: this.state.copied ? 'Copied' : 'Email',
