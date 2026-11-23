@@ -21,6 +21,13 @@
     @keyframes cm-bg-fade{0%{opacity:0}10%{opacity:1}25%{opacity:1}35%{opacity:0}100%{opacity:0}}
     @media (prefers-reduced-motion: reduce){.cm-bg{animation:none}.cm-bg:first-child{opacity:1}}
     .cm-story{font:400 clamp(22px,4vw,27px)/1.25 var(--font-sans);letter-spacing:-.01em}
+    .cm-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:56px 20px;padding-top:32px}
+    .cm-tile{display:flex;flex-direction:column;gap:12px}
+    .cm-cover{display:block;aspect-ratio:4/5;background:#F0EDEB;border-radius:var(--radius-image);padding:28px;box-sizing:border-box;margin-bottom:4px;transition:transform .4s cubic-bezier(0.16,1,0.3,1)}
+    .cm-cover:hover{transform:translateY(-3px)}
+    .cm-cover img{display:block;width:100%;height:100%;object-fit:contain}
+    .cm-tile-name{font:500 18px/1.4 var(--font-sans);margin:0;color:var(--ink)}
+    @media (max-width:640px){.cm-grid{grid-template-columns:1fr;gap:48px}}
   </style>
 </helmet>
 
@@ -48,19 +55,19 @@
     <header class="cm-header" style="display:flex;flex-direction:column;gap:var(--space-32)">
       <p class="cm-story">I'm a product designer with a background in art direction, a penchant for design systems and a knack for hairy problems.</p>
       
-      <p class="cm-support">I've built products that help people make purchase decisions, find care when they're in crisis, and products help teams work better and faster. I solve problems for people by turning complex systems into simple, delightful experiences.</p>
+      <p class="cm-support">I've built products that help people make purchase decisions, find care when they're in crisis, and products help teams work better and faster. I solve problems for people by turning complex systems into simple, delightful experiences. I’m always looking for ways to improve processes, I welcome limitations and find adaptable ways around them, and I lead with empathy.</p>
     </header>
 
     <sc-for list="{{ groups }}" as="g" hint-placeholder-count="4">
       <section style="{{ g.style }}">
         <div class="cm-group-label">{{ g.label }}</div>
-        <div ref="{{ collectRef }}" style="padding-top:64px;display:flex;flex-direction:column;gap:16px;opacity:0;transform:translateY(28px);transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1)">
-          <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="4">
-            <sc-if value="{{ it.isName }}"><h3 class="cm-story" style="margin:0">{{ it.text }}</h3></sc-if>
-            <sc-if value="{{ it.isLine }}"><p class="cm-support" style="margin:0"><sc-for list="{{ it.segs }}" as="s" hint-placeholder-count="1"><sc-if value="{{ s.plain }}">{{ s.t }}</sc-if><sc-if value="{{ s.isLink }}"><a href="{{ s.href }}" class="cm-link">{{ s.t }}</a></sc-if></sc-for></p></sc-if>
-            <sc-if value="{{ it.isImg }}"><a href="{{ it.href }}" aria-label="{{ it.label }}" style="display:block;{{ it.wrap }}"><img src="{{ it.src }}" alt="{{ it.alt }}" style="display:block;width:100%;height:auto"></a></sc-if>
-            <sc-if value="{{ it.isGap }}"><div style="height:0"></div></sc-if>
-            <sc-if value="{{ it.isPh }}"><div style="width:100%;aspect-ratio:820/654;background:var(--blush);border-radius:var(--radius-image)"></div></sc-if>
+        <div ref="{{ collectRef }}" class="cm-grid" style="opacity:0;transform:translateY(28px);transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1)">
+          <sc-for list="{{ g.tiles }}" as="p" hint-placeholder-count="2">
+            <article class="cm-tile">
+              <a href="{{ p.href }}" class="cm-cover" aria-label="{{ p.label }}"><img src="{{ p.img }}" alt="{{ p.alt }}" loading="lazy"></a>
+              <h3 class="cm-tile-name">{{ p.name }}</h3>
+              <p class="cm-support" style="margin:0">{{ p.line }}<sc-if value="{{ p.hasLink }}"> <a href="{{ p.href }}" class="cm-link">{{ p.link }}</a></sc-if></p>
+            </article>
           </sc-for>
         </div>
       </section>
@@ -85,40 +92,29 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 
-const SLUG = {"Facebook Web Checkout": "facebook-checkout", "Processes and People": "processes-and-people", "Meta Hackathon": "test-tools", "Payment Failure Flow": "payment-failure", "Vision Work": "vision-work", "Ernesta Tools": "ernesta-tools", "Spring Mobile App": "spring-health-app", "Spring Moments": "moments", "Visual Design": "visual-design"};
+const SLUG = {"Facebook Web Checkout": "facebook-checkout", "Processes and People": "processes-and-people", "Meta Hackathon": "test-tools", "Payment Failure Flow": "payment-failure", "Vision Work": "vision-work", "Ernesta Tools": "ernesta-tools", "Spring Mobile App": "spring-health-app", "Spring Moments": "moments", "Visual Design": "visual-design", "Ernesta Design System": "ernesta-design-system", "Ernesta Filters": "ernesta-filters"};
 const P = (n) => './projects/' + SLUG[n] + '.html';
 const RC = 'Read the case study';
-const L = (...segs) => ({ kind: 'line', segs });
-const I = (src, href, alt, wrap) => ({ kind: 'img', src, href, alt, wrap: wrap || '' });
+const T = (name, page, img, alt, line, link) => ({ name, href: P(page), img, alt, line, link: link === undefined ? RC : link });
 const GROUPS_RAW = [
-  { label: 'Meta', pad: 64, items: [
-    L(["I led a stepped, responsive redesign and the component library behind it, and transactions rose significantly. "], [RC, P('Facebook Web Checkout')]),
-    I('assets/images/fig-home-fb.png', P('Facebook Web Checkout'), 'Facebook web checkout on desktop, tablet and phone'),
-    L(["I built a Figma product system and an org-wide directory, and Commerce adopted both as its standard. "], [RC, P('Processes and People')]),
-    I('assets/images/fig-home-pp.png', P('Processes and People'), 'Org-wide directory of people, teams and surface owners'),
-    L(["Engineers had no easy way to create test orders, so I designed a tool that makes them in a few taps. "], ['Test tools', P('Meta Hackathon')], [". I reimagined post-purchase around visibility, delight and business messaging. "], [RC, P('Vision Work')]),
-    I('assets/images/fig-home-tt.png', P('Vision Work'), 'Test order tool and live order tracking screens')
+  { label: 'Meta', pad: 112, tiles: [
+    T('Facebook Web Checkout', 'Facebook Web Checkout', 'assets/images/fb-checkout-nux-review-1201.png', 'Stepped Facebook checkout on desktop', 'I led a stepped, responsive redesign and the component library behind it, and transactions rose significantly.'),
+    T('Processes and People', 'Processes and People', 'assets/images/marine-org-directory.png', 'Org-wide directory of people, teams and surface owners', 'I built a Figma product system and an org-wide directory, and Commerce adopted both as its standard.'),
+    T('Test Tools', 'Meta Hackathon', 'assets/images/thumb-hackathon-2.png', 'Internal tool for creating test orders', 'Engineers had no easy way to create test orders, so I designed a tool that makes them in a few taps.', 'Test tools'),
+    T('Vision Work', 'Vision Work', 'assets/images/thumb-vision-1.png', 'Live order tracking on lock screen and map', 'I reimagined post-purchase around visibility, delight and business messaging.')
   ]},
-  { label: 'Ernesta', pad: 64, items: [
-    L(["I designed and built the B2B area, the design system"]),
-    I('assets/images/fig-home-ern1.png', P('Ernesta Tools'), 'Ernesta rug catalogue'),
-    L(["I designed and built tools that generate quotes and spec sheets. "], [RC, P('Ernesta Tools')]),
-    I('assets/images/fig-home-ern2.png', P('Ernesta Tools'), 'Quote tool and spec sheet', 'width:min(100%,364px)'),
-    L(["Filters"]),
-    I('assets/images/fig-home-ern3.png', P('Ernesta Tools'), 'Ernesta quote creator')
+  { label: 'Ernesta', pad: 112, tiles: [
+    T('Ernesta Design System', 'Ernesta Design System', 'assets/images/tile-ds-buttons.png', 'Ernesta design system buttons in every state', 'I designed and built the design system: foundations, components and page templates, with engineering.'),
+    T('Ernesta Filters', 'Ernesta Filters', 'assets/images/tile-filters-results.jpg', 'Filtered results for a 9-foot round wool rug', 'Filters built on a lot of work in taxonomy and nomenclature, with buyers, marketing and user research.'),
+    T('Ernesta Process Tools', 'Ernesta Tools', 'assets/images/quote-creator-image-295.png', 'Ernesta quote creator', 'I designed and built tools that generate quotes and spec sheets.')
   ]},
-  { label: 'Spring Health', pad: 112, items: [
-    L(["Care plans, assessments and therapy booking lived only on a desktop portal. As the first design hire, I took Spring Health native on iOS and Android. "], [RC, P('Spring Mobile App')]),
-    I('assets/images/fig-home-spr1.png', P('Spring Mobile App'), 'Spring Health sign-in and onboarding screens'),
-    L(["Care plans, assessments and therapy booking lived only on a desktop portal. As the first design hire, I took Spring Health native on iOS and Android. "], [RC, P('Spring Mobile App')]),
-    I('assets/images/fig-home-spr2.png', P('Spring Mobile App'), 'Moments design system and screens')
+  { label: 'Spring Health', pad: 112, tiles: [
+    T('Spring Health App', 'Spring Mobile App', 'assets/images/thumb-spring-app-1.png', 'Spring Health sign-in and onboarding screens', 'Care plans, assessments and therapy booking lived only on a desktop portal. As the first design hire, I took Spring Health native on iOS and Android.'),
+    T('Moments', 'Spring Mobile App', 'assets/images/thumb-moments-2.png', 'Moments design system and screens', 'I also designed Moments, for lower-acuity patients who didn’t want therapy but still needed everyday support.')
   ]},
-  { label: 'Personal work', pad: 112, items: [
-    { kind: 'name', text: 'Visual Design' },
-    L(["Outside product work I make posters, photographs and paintings."]),
-    L(["Watercolor, ink and gouache, mostly imaginary places. "], ['See the work', P('Visual Design')]),
-    { kind: 'gap' },
-    { kind: 'ph' }
+  { label: 'Personal work', pad: 112, tiles: [
+    T('Visual Design', 'Visual Design', 'assets/images/vision-poster-04.png', 'Team poster', 'Outside product work I make posters, photographs and paintings.', ''),
+    T('Paintings', 'Visual Design', 'https://images.squarespace-cdn.com/content/v1/695ff5f7d08e7045d7752942/cf621db0-2931-47e7-8999-fa64343c2d8c/A+landscape+in+green+and+pink.jpg?format=1500w', 'A landscape in green and pink, watercolor painting', 'Watercolor, ink and gouache, mostly imaginary places.', 'See the work')
   ]}
 ];
 
@@ -245,11 +241,7 @@ class Component extends DCLogic {
       groups: GROUPS_RAW.map((g) => ({
         label: g.label,
         style: 'padding-top:' + g.pad + 'px',
-        items: g.items.map((it) => ({
-          isLine: it.kind === 'line', isImg: it.kind === 'img', isName: it.kind === 'name', isGap: it.kind === 'gap', isPh: it.kind === 'ph',
-          text: it.text || '', src: it.src || '', href: it.href || '#', alt: it.alt || '', wrap: it.wrap || '', label: it.alt ? 'Open: ' + it.alt : '',
-          segs: (it.segs || []).map((s) => ({ t: s[0], href: s[1] || '', isLink: !!s[1], plain: !s[1] }))
-        }))
+        tiles: g.tiles.map((p) => ({ ...p, label: 'Open ' + p.name, hasLink: !!p.link }))
       }))
     };
   }
