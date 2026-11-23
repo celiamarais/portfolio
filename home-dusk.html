@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="assets/js/support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+  <link rel="stylesheet" href="assets/ds/celia-marais-portfolio/tokens.css">
+  <link rel="stylesheet" href="assets/ds/celia-marais-portfolio/components/bundle.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla:wght@300..700&amp;display=swap">
+  <script src="assets/js/image-slot.js"></script>
+  <style>
+    body{margin:0}
+    a{text-decoration:none}
+    ::selection{background:rgba(243,222,214,0.6)}
+    .cm-bg{position:absolute;inset:0;opacity:0;animation:cm-bg-fade 120s ease-in-out infinite}
+    @keyframes cm-bg-fade{0%{opacity:0}10%{opacity:1}25%{opacity:1}35%{opacity:0}100%{opacity:0}}
+    @media (prefers-reduced-motion: reduce){.cm-bg{animation:none}.cm-bg:first-child{opacity:1}}
+    .cm-story{font:400 clamp(22px,4vw,27px)/1.25 var(--font-sans);letter-spacing:-.01em}
+    .cm-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:56px 20px;padding-top:32px}
+    .cm-tile{display:flex;flex-direction:column;gap:12px}
+    .cm-cover{display:block;margin-bottom:4px;transition:transform .4s cubic-bezier(0.16,1,0.3,1)}
+    .cm-cover:hover{transform:translateY(-3px)}
+    .cm-cover img{display:block;width:100%;height:auto}
+    .cm-tile-name{font:500 18px/1.4 var(--font-sans);margin:0;color:var(--ink)}
+    @media (max-width:640px){.cm-grid{grid-template-columns:1fr;gap:48px}}@property --paper{syntax:"<color>";inherits:true;initial-value:#fffdfb}@property --ink{syntax:"<color>";inherits:true;initial-value:#231d1a}@property --ink-body{syntax:"<color>";inherits:true;initial-value:#231d1acc}@property --ink-soft{syntax:"<color>";inherits:true;initial-value:#706b69}@property --ink-caption{syntax:"<color>";inherits:true;initial-value:#7b7774}@property --ink-faint{syntax:"<color>";inherits:true;initial-value:#86827f}@property --hairline{syntax:"<color>";inherits:true;initial-value:rgba(35,29,26,0.12)}@keyframes cm-dusk{0%{--paper:#fffdfb;--ink:#231d1a;--ink-body:#231d1acc;--ink-soft:#706b69;--ink-caption:#7b7774;--ink-faint:#86827f;--hairline:rgba(35,29,26,0.12)}100%{--paper:#1b1715;--ink:#f1ebe6;--ink-body:#f1ebe6cc;--ink-soft:#b0a8a2;--ink-caption:#a29a94;--ink-faint:#948c86;--hairline:rgba(241,235,230,0.14)}}html{animation:cm-dusk 60s cubic-bezier(.45,0,.55,1) forwards}body{background:var(--paper)}.cm-dusk-veil{position:fixed;inset:0;z-index:0;pointer-events:none;background:#1b1715;opacity:0;animation:cm-veil 60s cubic-bezier(.45,0,.55,1) forwards}@keyframes cm-veil{0%{opacity:0}100%{opacity:.93}}.cm-cover img{animation:cm-dim 60s cubic-bezier(.45,0,.55,1) forwards}@keyframes cm-dim{0%{filter:brightness(1)}100%{filter:brightness(.86)}}
+  </style>
+</helmet>
+
+<div onMouseMove="{{ spawnBurst }}" onClick="{{ toggleBurst }}" style="font-family:var(--font-sans);background:var(--paper);color:var(--ink);position:relative;min-height:100vh">
+  <div ref="{{ bgRef }}" style="position:fixed;inset:-25%;z-index:0;pointer-events:none;filter:blur(28px);opacity:0.5">
+    <div class="cm-bg" style="animation-delay:0s;background:conic-gradient(from 210deg at 47% 34%, #fbeee6 0deg, #f6d9cd 55deg, #efc4b1 120deg, #f3ded6 200deg, #fbf3ea 275deg, #fbeee6 360deg)"></div>
+    <div class="cm-bg" style="animation-delay:-30s;background:conic-gradient(from 210deg at 47% 34%, #eef2e6 0deg, #dce6d2 55deg, #c9d9c0 120deg, #dfe8d8 200deg, #f1f4ea 275deg, #eef2e6 360deg)"></div>
+    <div class="cm-bg" style="animation-delay:-60s;background:conic-gradient(from 210deg at 47% 34%, #f2edf5 0deg, #e2d7ea 55deg, #d3c4e0 120deg, #e6dcee 200deg, #f5f1f7 275deg, #f2edf5 360deg)"></div>
+    <div class="cm-bg" style="animation-delay:-90s;background:conic-gradient(from 210deg at 47% 34%, #fdf0e2 0deg, #f8dcc0 55deg, #f2c9a2 120deg, #f6dcc4 200deg, #fcf1e4 275deg, #fdf0e2 360deg)"></div>
+  </div>
+  <div style="position:fixed;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg, rgba(255,251,246,0.62) 0%, rgba(255,251,246,0.32) 45%, rgba(255,251,246,0.7) 100%)"></div>
+  <div class="cm-dusk-veil"></div>
+  <div ref="{{ burstRef }}" style="position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden"></div>
+
+  <div class="cm-page" style="position:relative;z-index:1;background:transparent">
+
+    <nav aria-label="Site" class="cm-nav">
+      <a href="#" class="cm-name">Celia Marais</a>
+      <div class="cm-links">
+        <a href="#" onClick="{{ copyEmail }}">{{ emailLabel }}</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">Resume</a>
+      </div>
+    </nav>
+
+    <header class="cm-header" style="display:flex;flex-direction:column;gap:var(--space-32)">
+      <p class="cm-story">I'm a product designer with a background in art direction, a penchant for design systems and a knack for hairy problems.</p>
+      
+      <p class="cm-support">I've built products that help people make purchase decisions, find care when they're in crisis, and products help teams work better and faster. I solve problems for people by turning complex systems into simple, delightful experiences. I’m always looking for ways to improve processes, I welcome limitations and find adaptable ways around them, and I lead with empathy.</p>
+    </header>
+
+    <sc-for list="{{ groups }}" as="g" hint-placeholder-count="4">
+      <section style="{{ g.style }}">
+        <div class="cm-group-label">{{ g.label }}</div>
+        <div ref="{{ collectRef }}" class="cm-grid" style="opacity:0;transform:translateY(28px);transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1)">
+          <sc-for list="{{ g.tiles }}" as="p" hint-placeholder-count="2">
+            <article class="cm-tile" style="{{ p.tstyle }}">
+              <a href="{{ p.href }}" class="cm-cover" aria-label="{{ p.label }}"><img src="{{ p.img }}" alt="{{ p.alt }}" loading="lazy"></a>
+              <h3 class="cm-tile-name">{{ p.name }}</h3>
+              <p class="cm-support" style="margin:0">{{ p.line }}<sc-if value="{{ p.hasLink }}"> <a href="{{ p.href }}" class="cm-link">{{ p.link }}</a></sc-if></p>
+            </article>
+          </sc-for>
+        </div>
+      </section>
+    </sc-for>
+
+    <footer class="cm-footer" style="margin-top:var(--space-112)">
+      <div class="cm-links">
+        <a href="#" onClick="{{ copyEmail }}">{{ emailLabel }}</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">Resume</a>
+      </div>
+    </footer>
+  </div>
+
+  <div style="position:fixed;bottom:28px;left:50%;transform:translateX(-50%);z-index:100;pointer-events:none">
+    <sc-if value="{{ copied }}">
+      <div style="background:var(--ink);color:var(--paper);font:var(--text-meta);letter-spacing:var(--tracking-meta);border-radius:2px;padding:12px 18px">Email copied to clipboard</div>
+    </sc-if>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+
+const SLUG = {"Facebook Web Checkout": "facebook-checkout", "Processes and People": "processes-and-people", "Meta Hackathon": "test-tools", "Payment Failure Flow": "payment-failure", "Vision Work": "vision-work", "Ernesta Tools": "ernesta-tools", "Spring Mobile App": "spring-health-app", "Spring Moments": "moments", "Visual Design": "visual-design", "Ernesta Design System": "ernesta-design-system", "Ernesta Filters": "ernesta-filters"};
+const P = (n) => './projects/' + SLUG[n] + '.html';
+const RC = 'Read the case study';
+const T = (name, page, img, alt, line, link, wide) => ({ name, href: P(page), img, alt, line, link: link === undefined ? RC : link, wide: !!wide });
+const GROUPS_RAW = [
+  { label: 'Meta', pad: 112, tiles: [
+    T('Facebook Web Checkout', 'Facebook Web Checkout', 'assets/images/fig5-t-fb.png', 'Facebook web checkout on a phone', 'I led a stepped, responsive redesign and the component library behind it, and transactions rose significantly.'),
+    T('Commerce Tools and Vision work', 'Processes and People', 'assets/images/fig5-t-cxp.png', 'CXP logo', 'I built a Figma product system and an org-wide directory, and Commerce adopted both as its standard. Engineers had no easy way to create test orders, so I designed a tool that makes them in a few taps. (Email for password). I reimagined post-purchase around visibility, delight and business messaging.')
+  ]},
+  { label: 'Ernesta', pad: 112, tiles: [
+    T('Ernesta Filters', 'Ernesta Filters', 'assets/images/fig5-t-efl.png', 'Filtered results for a 9-foot round wool rug', 'Filters built on a lot of work in taxonomy and nomenclature, with buyers, marketing and user research.'),
+    T('Ernesta Process Tools', 'Ernesta Tools', 'assets/images/fig5-t-ern.png', 'Ernesta quote creator', 'I designed and built tools that generate quotes and spec sheets.'),
+    T('Ernesta Design System', 'Ernesta Design System', 'assets/images/fig5-t-eds.png', 'Ernesta design system libraries', 'I designed and built the design system: foundations, components and page templates, with engineering.', undefined, true)
+  ]},
+  { label: 'Spring Health', pad: 112, tiles: [
+    T('Spring Health App', 'Spring Mobile App', 'assets/images/fig5-t-spr.png', 'Spring Health sign-in and onboarding screens, with the Moments design system', 'Care plans, assessments and therapy booking lived only on a desktop portal. As the first design hire, I took Spring Health native on iOS and Android. I also designed Moments, for lower-acuity patients who didn’t want therapy but still needed everyday support.', undefined, true)
+  ]},
+  { label: 'Personal work', pad: 112, tiles: [
+    T('Visual Design', 'Visual Design', 'assets/images/fig5-t-vd.png', 'Team poster', 'Outside product work I make posters, photographs and paintings.', ''),
+    T('Paintings', 'Visual Design', 'https://images.squarespace-cdn.com/content/v1/695ff5f7d08e7045d7752942/cf621db0-2931-47e7-8999-fa64343c2d8c/A+landscape+in+green+and+pink.jpg?format=1500w', 'A landscape in green and pink, watercolor painting', 'Watercolor, ink and gouache, mostly imaginary places.', 'See the work')
+  ]}
+];
+
+const BRAND_STYLE = {
+  meta: { fontFamily: 'Karla,sans-serif', fontWeight: 700, letterSpacing: '-0.01em' },
+  ernesta: { fontFamily: 'Georgia,serif', fontStyle: 'italic', fontWeight: 400, letterSpacing: '0' },
+  springhealth: { fontFamily: 'Karla,sans-serif', fontWeight: 600, letterSpacing: '0.01em', color: 'rgb(55,131,124)' }
+};
+
+class Component extends DCLogic {
+  state = { copied: false, lightbox: false };
+  _burstOn = true;
+
+  toggleBurst = (e) => {
+    if (e.target.closest && e.target.closest('a, image-slot')) return;
+    this._burstOn = !this._burstOn;
+  };
+
+  bgRef = React.createRef();
+  burstRef = React.createRef();
+  _sections = [];
+
+  componentDidMount() {
+    const tick = () => {
+      this.revealVisible();
+      this.syncRatios();
+      this._raf = requestAnimationFrame(tick);
+    };
+    this._raf = requestAnimationFrame(tick);
+    this._fallback = setTimeout(() => this._sections.forEach((el) => this.reveal(el)), 1500);
+  }
+
+  componentWillUnmount() {
+    cancelAnimationFrame(this._raf);
+    clearTimeout(this._fallback);
+    clearTimeout(this._copyT);
+  }
+
+  reveal(el) {
+    if (!el) return;
+    el.style.opacity = '1';
+    el.style.transform = 'translateY(0)';
+  }
+
+  revealVisible = () => {
+    const vh = window.innerHeight || 800;
+    this._sections.forEach((el) => {
+      const r = el.getBoundingClientRect();
+      if (r.top < vh * 0.95 && r.bottom > -200) this.reveal(el);
+    });
+  };
+
+  collectRef = (el) => {
+    if (el && !this._sections.includes(el)) this._sections.push(el);
+  };
+
+  syncRatios = () => {
+    document.querySelectorAll('image-slot').forEach((slot) => {
+      const img = slot.shadowRoot && slot.shadowRoot.querySelector('img');
+      if (!img || !img.naturalWidth || !img.naturalHeight) return;
+      const r = img.naturalWidth + ' / ' + img.naturalHeight;
+      if (slot.style.aspectRatio !== r) {
+        slot.style.aspectRatio = r;
+        slot.style.height = 'auto';
+      }
+    });
+  };
+
+  spawnBurst = (e) => {
+    if (!this._burstOn) return;
+    const layer = this.burstRef.current;
+    if (!layer) return;
+    const now = performance.now();
+    if (this._lastBurst && now - this._lastBurst < 90) return;
+    this._lastBurst = now;
+    const d = 1100;
+    const el = document.createElement('div');
+    el.style.cssText = [
+      'position:absolute',
+      'left:' + (e.clientX - d / 2) + 'px',
+      'top:' + (e.clientY - d / 2) + 'px',
+      'width:' + d + 'px', 'height:' + d + 'px',
+      'border-radius:50%', 'pointer-events:none', 'filter:blur(28px)',
+      'opacity:0', 'transform:scale(0.6)',
+      'transition:opacity 1.1s cubic-bezier(0.16,1,0.3,1), transform 1.4s cubic-bezier(0.16,1,0.3,1)',
+      'background:conic-gradient(from 210deg at 50% 50%, #f7ecdc 0deg, #fbe4d3 55deg, #efc4a8 120deg, #ecc9b5 200deg, #f2e4cd 275deg, #f7ecdc 360deg)',
+      '-webkit-mask-image:radial-gradient(circle, #000 40%, transparent 72%)',
+      'mask-image:radial-gradient(circle, #000 40%, transparent 72%)'
+    ].join(';');
+    layer.appendChild(el);
+    requestAnimationFrame(() => { el.style.opacity = '0.2'; el.style.transform = 'scale(1)'; });
+    setTimeout(() => {
+      el.style.transition = 'opacity 4.5s ease';
+      el.style.opacity = '0';
+      setTimeout(() => el.remove(), 4700);
+    }, 2600);
+  };
+
+  copyEmail = (e) => {
+    e.preventDefault();
+    navigator.clipboard.writeText('celia.marais@email.com').catch(() => {});
+    this.setState({ copied: true });
+    clearTimeout(this._copyT);
+    this._copyT = setTimeout(() => this.setState({ copied: false }), 1800);
+  };
+
+  openLightbox = (e) => { e.preventDefault(); this.setState({ lightbox: true }); };
+  closeLightbox = () => this.setState({ lightbox: false });
+  stopClick = (e) => e.stopPropagation();
+
+  renderVals() {
+    return {
+      bgRef: this.bgRef,
+      burstRef: this.burstRef,
+      spawnBurst: this.spawnBurst,
+      toggleBurst: this.toggleBurst,
+      collectRef: this.collectRef,
+      copyEmail: this.copyEmail,
+      emailLabel: this.state.copied ? 'Copied' : 'Email',
+      copied: this.state.copied,
+      hasLightbox: this.state.lightbox,
+      closeLightbox: this.closeLightbox,
+      stopClick: this.stopClick,
+      groups: GROUPS_RAW.map((g) => ({
+        label: g.label,
+        style: 'padding-top:' + g.pad + 'px',
+        tiles: g.tiles.map((p) => ({ ...p, label: 'Open ' + p.name, hasLink: !!p.link, tstyle: p.wide ? 'grid-column:1/-1' : '' }))
+      }))
+    };
+  }
+}
+
+</script>
+</body>
+</html>

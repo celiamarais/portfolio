@@ -32,13 +32,13 @@
 </helmet>
 
 <div onMouseMove="{{ spawnBurst }}" onClick="{{ toggleBurst }}" style="font-family:var(--font-sans);background:var(--paper);color:var(--ink);position:relative;min-height:100vh">
-  <div ref="{{ bgRef }}" style="position:fixed;inset:-25%;z-index:0;pointer-events:none;filter:blur(28px);opacity:0.8">
+  <div ref="{{ bgRef }}" style="position:fixed;inset:-25%;z-index:0;pointer-events:none;filter:blur(28px);opacity:0.5">
     <div class="cm-bg" style="animation-delay:0s;background:conic-gradient(from 210deg at 47% 34%, #fbeee6 0deg, #f6d9cd 55deg, #efc4b1 120deg, #f3ded6 200deg, #fbf3ea 275deg, #fbeee6 360deg)"></div>
     <div class="cm-bg" style="animation-delay:-30s;background:conic-gradient(from 210deg at 47% 34%, #eef2e6 0deg, #dce6d2 55deg, #c9d9c0 120deg, #dfe8d8 200deg, #f1f4ea 275deg, #eef2e6 360deg)"></div>
     <div class="cm-bg" style="animation-delay:-60s;background:conic-gradient(from 210deg at 47% 34%, #f2edf5 0deg, #e2d7ea 55deg, #d3c4e0 120deg, #e6dcee 200deg, #f5f1f7 275deg, #f2edf5 360deg)"></div>
     <div class="cm-bg" style="animation-delay:-90s;background:conic-gradient(from 210deg at 47% 34%, #fdf0e2 0deg, #f8dcc0 55deg, #f2c9a2 120deg, #f6dcc4 200deg, #fcf1e4 275deg, #fdf0e2 360deg)"></div>
   </div>
-  <div style="position:fixed;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg, rgba(250,243,231,0.42) 0%, rgba(250,243,231,0.06) 45%, rgba(250,243,231,0.55) 100%)"></div>
+  <div style="position:fixed;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg, rgba(255,251,246,0.62) 0%, rgba(255,251,246,0.32) 45%, rgba(255,251,246,0.7) 100%)"></div>
   <div ref="{{ burstRef }}" style="position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden"></div>
 
   <div class="cm-page" style="position:relative;z-index:1;background:transparent">
@@ -63,7 +63,7 @@
         <div class="cm-group-label">{{ g.label }}</div>
         <div ref="{{ collectRef }}" class="cm-grid" style="opacity:0;transform:translateY(28px);transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1)">
           <sc-for list="{{ g.tiles }}" as="p" hint-placeholder-count="2">
-            <article class="cm-tile">
+            <article class="cm-tile" style="{{ p.tstyle }}">
               <a href="{{ p.href }}" class="cm-cover" aria-label="{{ p.label }}"><img src="{{ p.img }}" alt="{{ p.alt }}" loading="lazy"></a>
               <h3 class="cm-tile-name">{{ p.name }}</h3>
               <p class="cm-support" style="margin:0">{{ p.line }}<sc-if value="{{ p.hasLink }}"> <a href="{{ p.href }}" class="cm-link">{{ p.link }}</a></sc-if></p>
@@ -95,7 +95,7 @@
 const SLUG = {"Facebook Web Checkout": "facebook-checkout", "Processes and People": "processes-and-people", "Meta Hackathon": "test-tools", "Payment Failure Flow": "payment-failure", "Vision Work": "vision-work", "Ernesta Tools": "ernesta-tools", "Spring Mobile App": "spring-health-app", "Spring Moments": "moments", "Visual Design": "visual-design", "Ernesta Design System": "ernesta-design-system", "Ernesta Filters": "ernesta-filters"};
 const P = (n) => './projects/' + SLUG[n] + '.html';
 const RC = 'Read the case study';
-const T = (name, page, img, alt, line, link) => ({ name, href: P(page), img, alt, line, link: link === undefined ? RC : link });
+const T = (name, page, img, alt, line, link, wide) => ({ name, href: P(page), img, alt, line, link: link === undefined ? RC : link, wide: !!wide });
 const GROUPS_RAW = [
   { label: 'Meta', pad: 112, tiles: [
     T('Facebook Web Checkout', 'Facebook Web Checkout', 'assets/images/fig5-t-fb.png', 'Facebook web checkout on a phone', 'I led a stepped, responsive redesign and the component library behind it, and transactions rose significantly.'),
@@ -104,11 +104,10 @@ const GROUPS_RAW = [
   { label: 'Ernesta', pad: 112, tiles: [
     T('Ernesta Filters', 'Ernesta Filters', 'assets/images/fig5-t-efl.png', 'Filtered results for a 9-foot round wool rug', 'Filters built on a lot of work in taxonomy and nomenclature, with buyers, marketing and user research.'),
     T('Ernesta Process Tools', 'Ernesta Tools', 'assets/images/fig5-t-ern.png', 'Ernesta quote creator', 'I designed and built tools that generate quotes and spec sheets.'),
-    T('Ernesta Design System', 'Ernesta Design System', 'assets/images/fig5-t-eds.png', 'Ernesta design system libraries', 'I designed and built the design system: foundations, components and page templates, with engineering.')
+    T('Ernesta Design System', 'Ernesta Design System', 'assets/images/fig5-t-eds.png', 'Ernesta design system libraries', 'I designed and built the design system: foundations, components and page templates, with engineering.', undefined, true)
   ]},
   { label: 'Spring Health', pad: 112, tiles: [
-    T('Spring Health App', 'Spring Mobile App', 'assets/images/fig5-t-spr.png', 'Spring Health screens', 'Care plans, assessments and therapy booking lived only on a desktop portal. As the first design hire, I took Spring Health native on iOS and Android.'),
-    T('Moments', 'Spring Mobile App', 'assets/images/fig5-t-mom.png', 'Moments screens', 'I also designed Moments, for lower-acuity patients who didn’t want therapy but still needed everyday support.')
+    T('Spring Health App', 'Spring Mobile App', 'assets/images/fig5-t-spr.png', 'Spring Health sign-in and onboarding screens, with the Moments design system', 'Care plans, assessments and therapy booking lived only on a desktop portal. As the first design hire, I took Spring Health native on iOS and Android. I also designed Moments, for lower-acuity patients who didn’t want therapy but still needed everyday support.', undefined, true)
   ]},
   { label: 'Personal work', pad: 112, tiles: [
     T('Visual Design', 'Visual Design', 'assets/images/fig5-t-vd.png', 'Team poster', 'Outside product work I make posters, photographs and paintings.', ''),
@@ -203,7 +202,7 @@ class Component extends DCLogic {
       'mask-image:radial-gradient(circle, #000 40%, transparent 72%)'
     ].join(';');
     layer.appendChild(el);
-    requestAnimationFrame(() => { el.style.opacity = '0.45'; el.style.transform = 'scale(1)'; });
+    requestAnimationFrame(() => { el.style.opacity = '0.2'; el.style.transform = 'scale(1)'; });
     setTimeout(() => {
       el.style.transition = 'opacity 4.5s ease';
       el.style.opacity = '0';
@@ -239,7 +238,7 @@ class Component extends DCLogic {
       groups: GROUPS_RAW.map((g) => ({
         label: g.label,
         style: 'padding-top:' + g.pad + 'px',
-        tiles: g.tiles.map((p) => ({ ...p, label: 'Open ' + p.name, hasLink: !!p.link }))
+        tiles: g.tiles.map((p) => ({ ...p, label: 'Open ' + p.name, hasLink: !!p.link, tstyle: p.wide ? 'grid-column:1/-1' : '' }))
       }))
     };
   }
