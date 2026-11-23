@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../assets/ds/celia-marais-portfolio/components/bundle.css">
   <script src="../assets/js/image-slot.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla:wght@300..700&amp;display=swap">
-  <style>a{text-decoration:none}body{margin:0;background:var(--paper)}::selection{background:rgba(243,222,214,0.6)}.cm-close{position:fixed;top:20px;right:20px;z-index:50;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ink);background:var(--paper);box-shadow:inset 0 0 0 1px var(--hairline);transition:background .2s}.cm-close:hover{background:var(--blush)}.cm-close:focus-visible{outline:2px solid var(--ink);outline-offset:3px}@media (max-width:900px){.cm-nav{padding-right:56px}}.cm-title,.cm-subtitle,.cm-result{font:400 clamp(22px,4vw,27px)/1.25 var(--font-sans);letter-spacing:-.01em}.cm-title{margin:0;color:var(--ink)}.cm-subtitle{color:var(--ink-soft);margin:8px 0 0}.cm-beat{display:block;font:var(--text-support);color:var(--ink);margin:0}.cm-beat b{font-weight:700}.cm-fig{margin:0}.cm-fig img{display:block;width:100%;height:auto}.cm-fig-card{margin:0;background:rgba(35,29,26,.04);border-radius:var(--radius-image);padding:64px}.cm-result-block .cm-support{color:var(--ink-body)}@media (max-width:700px){.cm-fig-card{padding:20px}}</style>
+  <style>a{text-decoration:none}body{margin:0;background:var(--paper)}::selection{background:rgba(243,222,214,0.6)}.cm-close{position:fixed;top:20px;right:20px;z-index:50;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ink);background:var(--paper);box-shadow:inset 0 0 0 1px var(--hairline);transition:background .2s}.cm-close:hover{background:var(--blush)}.cm-close:focus-visible{outline:2px solid var(--ink);outline-offset:3px}@media (max-width:900px){.cm-nav{padding-right:56px}}.cm-title,.cm-subtitle,.cm-result{font:400 clamp(22px,4vw,27px)/1.25 var(--font-sans);letter-spacing:-.01em}.cm-title{margin:0;color:var(--ink)}.cm-subtitle{color:var(--ink-soft);margin:8px 0 0}.cm-beat{display:block;font:var(--text-support);color:var(--ink);margin:0}.cm-beat b{font-weight:700}.cm-fig{margin:0}.cm-fig img{display:block;width:100%;height:auto}.cm-fig-card{margin:0;background:rgba(35,29,26,.04);border-radius:var(--radius-image);padding:64px}.cm-result-block .cm-support{color:var(--ink-body)}@media (max-width:700px){.cm-fig-card{padding:20px}}@media (max-width:420px){.cm-fig-card{--pw:220px}}</style>
 </helmet>
 
 <div style="background:var(--paper);min-height:100vh;width:100%">
@@ -60,7 +60,21 @@
 
   <div style="height:var(--space-64)"></div>
 
-  <figure class="cm-fig"><img src="../assets/images/fig5-pp-4.png" alt="Create test order prototype flow" width="820" height="1048" loading="lazy"></figure>
+  <figure class="cm-fig-card">
+    <div style="display:flex;justify-content:center">
+      <button type="button" onClick="{{ fc.next }}" aria-label="Create test order prototype: tap to go to the next step" style="all:unset;cursor:pointer;position:relative;display:block;width:var(--pw,248px);aspect-ratio:413/894;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 28px 56px -16px rgba(35,29,26,.2),0 8px 20px rgba(35,29,26,.06)">
+        <sc-for list="{{ fc.screens }}" as="s" hint-placeholder-count="8"><img src="{{ s.src }}" alt="" style="position:absolute;left:0;top:0;width:100%;height:100%;display:block;transition:opacity .35s ease;{{ s.style }}"></sc-for>
+        <div style="position:absolute;width:40px;height:40px;margin:-20px 0 0 -20px;border-radius:50%;background:rgba(24,119,242,.22);box-shadow:0 0 0 2px rgba(24,119,242,.55);pointer-events:none;transition:opacity .25s ease,transform .25s ease;{{ fc.ring }}"></div>
+      </button>
+    </div>
+    <figcaption style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:14px;font:var(--text-caption);color:var(--ink-soft)">
+      <span>Create test order, prototype: {{ fc.caption }}</span>
+      <span style="display:flex;gap:14px">
+        <button type="button" onClick="{{ fc.toggle }}" style="all:unset;cursor:pointer;color:var(--ink);border-bottom:1px solid var(--ink);font-weight:500">{{ fc.toggleLabel }}</button>
+        <button type="button" onClick="{{ fc.replay }}" style="all:unset;cursor:pointer;color:var(--ink);border-bottom:1px solid var(--ink);font-weight:500">Replay</button>
+      </span>
+    </figcaption>
+  </figure>
 
   <div style="height:var(--space-32)"></div>
 
@@ -68,7 +82,21 @@
 
   <div style="height:var(--space-64)"></div>
 
-  <figure class="cm-fig"><img src="../assets/images/fig5-pp-5.png" alt="Manage test order prototype flow" width="820" height="1048" loading="lazy"></figure>
+  <figure class="cm-fig-card">
+    <div style="display:flex;justify-content:center">
+      <button type="button" onClick="{{ fm.next }}" aria-label="Manage test order prototype: tap to go to the next step" style="all:unset;cursor:pointer;position:relative;display:block;width:var(--pw,248px);aspect-ratio:413/894;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 28px 56px -16px rgba(35,29,26,.2),0 8px 20px rgba(35,29,26,.06)">
+        <sc-for list="{{ fm.screens }}" as="s" hint-placeholder-count="8"><img src="{{ s.src }}" alt="" style="position:absolute;left:0;top:0;width:100%;height:100%;display:block;transition:opacity .35s ease;{{ s.style }}"></sc-for>
+        <div style="position:absolute;width:40px;height:40px;margin:-20px 0 0 -20px;border-radius:50%;background:rgba(24,119,242,.22);box-shadow:0 0 0 2px rgba(24,119,242,.55);pointer-events:none;transition:opacity .25s ease,transform .25s ease;{{ fm.ring }}"></div>
+      </button>
+    </div>
+    <figcaption style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:14px;font:var(--text-caption);color:var(--ink-soft)">
+      <span>Manage test order, prototype: {{ fm.caption }}</span>
+      <span style="display:flex;gap:14px">
+        <button type="button" onClick="{{ fm.toggle }}" style="all:unset;cursor:pointer;color:var(--ink);border-bottom:1px solid var(--ink);font-weight:500">{{ fm.toggleLabel }}</button>
+        <button type="button" onClick="{{ fm.replay }}" style="all:unset;cursor:pointer;color:var(--ink);border-bottom:1px solid var(--ink);font-weight:500">Replay</button>
+      </span>
+    </figcaption>
+  </figure>
 
   <div style="height:var(--space-32)"></div>
 
@@ -89,5 +117,98 @@
 </div>
 
 </x-dc>
+<script type="text/x-dc" data-dc-script>
+// step: [screen, tapX, tapY, caption] in 413x894 screen units; null tap = no tap (auto-advance)
+const FLOWS = {
+  fc: { n: 8, pre: 'c', steps: [
+    [1, 206, 128, 'open the debug banner'],
+    [2, 357, 456, 'force a payment failure'],
+    [3, 206, 591, 'pick a seller type'],
+    [4, 205, 828, 'keep Shopify'],
+    [3, 206, 669, 'pick a return type'],
+    [5, 205, 828, 'keep BYOR'],
+    [3, 204, 828, 'create the order'],
+    [6, null, null, 'creating'],
+    [7, 206, 176, 'the new test order'],
+    [8, null, null, 'ready to dogfood']
+  ]},
+  fm: { n: 12, pre: 'm', steps: [
+    [1, 206, 128, 'manage this test order'],
+    [2, 204, 326, 'change order state'],
+    [3, 357, 516, 'out for delivery'],
+    [4, 204, 828, 'update order'],
+    [5, null, null, 'updating'],
+    [6, 204, 128, 'out for delivery'],
+    [7, 204, 326, 'change order state'],
+    [8, 204, 578, 'refunds'],
+    [9, 357, 308, 'partial refund'],
+    [10, 204, 828, 'update order'],
+    [11, null, null, 'updating'],
+    [12, null, null, 'refund received']
+  ]}
+};
+
+class Component extends DCLogic {
+  state = { fc: this.init(), fm: this.init() };
+  _t = {};
+
+  init() { return { i: 0, tap: 'off', playing: true }; }
+
+  set(k, p) { this.setState((s) => ({ [k]: { ...s[k], ...p } })); }
+
+  schedule(k) {
+    clearTimeout(this._t[k]);
+    const st = this.state[k];
+    if (!st.playing) return;
+    const step = FLOWS[k].steps[st.i];
+    const last = st.i === FLOWS[k].steps.length - 1;
+    if (st.tap === 'off') {
+      if (step[1] === null) { this._t[k] = setTimeout(() => this.advance(k), last ? 2600 : 1100); return; }
+      this._t[k] = setTimeout(() => { this.set(k, { tap: 'in' }); this.schedule(k); }, 1300);
+    } else if (st.tap === 'in') {
+      this._t[k] = setTimeout(() => this.advance(k), 520);
+    }
+  }
+
+  advance(k) {
+    const n = FLOWS[k].steps.length;
+    const i = (this.state[k].i + 1) % n;
+    this.set(k, { i, tap: 'off' });
+    setTimeout(() => this.schedule(k), 0);
+  }
+
+  componentDidMount() {
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) { this.setState({ fc: { ...this.init(), playing: false }, fm: { ...this.init(), playing: false } }); return; }
+    this.schedule('fc'); this.schedule('fm');
+  }
+
+  componentWillUnmount() { Object.values(this._t).forEach(clearTimeout); }
+
+  vals(k) {
+    const F = FLOWS[k], st = this.state[k], step = F.steps[st.i];
+    const screens = [];
+    for (let j = 1; j <= F.n; j++) screens.push({ src: '../assets/images/hack-' + F.pre + j + '.png', style: 'opacity:' + (step[0] === j ? 1 : 0) + ';' });
+    let ring = 'opacity:0;transform:scale(.6);left:50%;top:50%;';
+    if (step[1] !== null) {
+      ring = 'left:' + (step[1] / 413 * 100) + '%;top:' + (step[2] / 894 * 100) + '%;' +
+        (st.tap === 'in' ? 'opacity:1;transform:scale(1);' : 'opacity:0;transform:scale(.6);');
+    }
+    return {
+      screens, ring,
+      caption: step[3] + ' (' + (st.i + 1) + '/' + F.steps.length + ')',
+      toggleLabel: st.playing ? 'Pause' : 'Play',
+      toggle: () => {
+        if (st.playing) { clearTimeout(this._t[k]); this.set(k, { playing: false, tap: 'off' }); }
+        else { this.set(k, { playing: true }); setTimeout(() => this.schedule(k), 0); }
+      },
+      replay: () => { clearTimeout(this._t[k]); this.set(k, { i: 0, tap: 'off', playing: true }); setTimeout(() => this.schedule(k), 0); },
+      next: () => { clearTimeout(this._t[k]); this.advance(k); }
+    };
+  }
+
+  renderVals() { return { fc: this.vals('fc'), fm: this.vals('fm') }; }
+}
+</script>
 </body>
 </html>
