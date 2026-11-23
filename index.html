@@ -51,19 +51,18 @@
       <p class="cm-support">I've built products that help people make purchase decisions, find care when they're in crisis, and products help teams work better and faster. I solve problems for people by turning complex systems into simple, delightful experiences.</p>
     </header>
 
-    <sc-for list="{{ groups }}" as="g" hint-placeholder-count="3">
-      <section style="margin-top:var(--space-112)">
-        <sc-for list="{{ g.projects }}" as="p" hint-placeholder-count="3">
-          <article ref="{{ collectRef }}" style="padding-top:64px;opacity:0;transform:translateY(28px);transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1)">
-            <h3 class="cm-story" style="font:400 24px/1.3 var(--font-sans);letter-spacing:-0.005em;margin-bottom:var(--space-16)">{{ p.name }}</h3>
-            <sc-for list="{{ p.lines }}" as="l" hint-placeholder-count="2">
-              <p class="cm-support" style="margin-bottom:var(--space-16)"><span>{{ l.text }}</span><sc-if value="{{ l.hasLink }}"> <a href="{{ l.href }}" class="cm-link">{{ l.label }}</a></sc-if></p>
-            </sc-for>
-            <a href="{{ p.href }}" aria-label="{{ p.imgLabel }}" style="display:block;margin-top:var(--space-32)">
-              <img src="{{ p.img }}" alt="{{ p.imgAlt }}" style="display:block;width:100%;height:auto;max-height:600px;object-fit:contain;background:#efedea;border-radius:var(--radius-image)">
-            </a>
-          </article>
-        </sc-for>
+    <sc-for list="{{ groups }}" as="g" hint-placeholder-count="4">
+      <section style="{{ g.style }}">
+        <div class="cm-group-label">{{ g.label }}</div>
+        <div ref="{{ collectRef }}" style="padding-top:64px;display:flex;flex-direction:column;gap:16px;opacity:0;transform:translateY(28px);transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1)">
+          <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="4">
+            <sc-if value="{{ it.isName }}"><h3 class="cm-story" style="margin:0">{{ it.text }}</h3></sc-if>
+            <sc-if value="{{ it.isLine }}"><p class="cm-support" style="margin:0"><sc-for list="{{ it.segs }}" as="s" hint-placeholder-count="1"><sc-if value="{{ s.plain }}">{{ s.t }}</sc-if><sc-if value="{{ s.isLink }}"><a href="{{ s.href }}" class="cm-link">{{ s.t }}</a></sc-if></sc-for></p></sc-if>
+            <sc-if value="{{ it.isImg }}"><a href="{{ it.href }}" aria-label="{{ it.label }}" style="display:block;{{ it.wrap }}"><img src="{{ it.src }}" alt="{{ it.alt }}" style="display:block;width:100%;height:auto"></a></sc-if>
+            <sc-if value="{{ it.isGap }}"><div style="height:0"></div></sc-if>
+            <sc-if value="{{ it.isPh }}"><div style="width:100%;aspect-ratio:820/654;background:var(--blush);border-radius:var(--radius-image)"></div></sc-if>
+          </sc-for>
+        </div>
       </section>
     </sc-for>
 
@@ -73,7 +72,6 @@
         <a href="#">LinkedIn</a>
         <a href="#">Resume</a>
       </div>
-      <p class="cm-footer-line">Celia Marais, product designer in New York.</p>
     </footer>
   </div>
 
@@ -89,45 +87,38 @@
 
 const SLUG = {"Facebook Web Checkout": "facebook-checkout", "Processes and People": "processes-and-people", "Meta Hackathon": "test-tools", "Payment Failure Flow": "payment-failure", "Vision Work": "vision-work", "Ernesta Tools": "ernesta-tools", "Spring Mobile App": "spring-health-app", "Spring Moments": "moments", "Visual Design": "visual-design"};
 const P = (n) => './projects/' + SLUG[n] + '.html';
+const RC = 'Read the case study';
+const L = (...segs) => ({ kind: 'line', segs });
+const I = (src, href, alt, wrap) => ({ kind: 'img', src, href, alt, wrap: wrap || '' });
 const GROUPS_RAW = [
-  { company: 'Meta', brand: 'meta', projects: [
-    { name: 'Facebook Web Checkout', href: P('Facebook Web Checkout'), img: 'assets/images/fb-checkout-nux-review-1201.png', imgAlt: 'Stepped Facebook checkout on desktop',
-      lines: [
-        { text: "Facebook's web checkout lagged behind its own apps, even though desktop shoppers spend more. I led a stepped, responsive redesign and the component library behind it, and transactions rose significantly.", label: 'Read the case study', href: P('Facebook Web Checkout') } ] },
-    { name: 'Processes and People', href: P('Processes and People'), img: 'assets/images/elevate-post-purchase-library.png', imgAlt: 'Post-purchase component library in Figma',
-      lines: [
-        { text: "Meta's Post Purchase team had outdated mockups, undocumented flows and no map of who owned what." },
-        { text: "I built a Figma product system and an org-wide directory, and Commerce adopted both as its standard.", label: 'Read the case study', href: P('Processes and People') } ] },
-    { name: 'Test Tools & Payment Failure', href: P('Meta Hackathon'), img: 'assets/images/thumb-hackathon-2.png', imgAlt: 'Internal tool for creating test orders',
-      lines: [
-        { text: "Engineers had no easy way to create test orders, so I designed a tool that makes them in a few taps.", label: 'Test tools', href: P('Meta Hackathon') },
-        { text: "When payments failed, few buyers came back; a longer window, clearer nudges and a simpler flow lifted every target metric.", label: 'Payment failure', href: P('Payment Failure Flow') } ] },
-    { name: 'Vision Work', href: P('Vision Work'), img: 'assets/images/thumb-vision-1.png', imgAlt: 'Live order tracking on lock screen and map',
-      lines: [
-        { text: "Confusing order tracking hurt buyer trust and drove help requests." },
-        { text: "I reimagined post-purchase around visibility, delight and business messaging.", label: 'Read the case study', href: P('Vision Work') } ] }
+  { label: 'Meta', pad: 64, items: [
+    L(["I led a stepped, responsive redesign and the component library behind it, and transactions rose significantly. "], [RC, P('Facebook Web Checkout')]),
+    I('assets/images/fig-home-fb.png', P('Facebook Web Checkout'), 'Facebook web checkout on desktop, tablet and phone'),
+    L(["I built a Figma product system and an org-wide directory, and Commerce adopted both as its standard. "], [RC, P('Processes and People')]),
+    I('assets/images/fig-home-pp.png', P('Processes and People'), 'Org-wide directory of people, teams and surface owners'),
+    L(["Engineers had no easy way to create test orders, so I designed a tool that makes them in a few taps. "], ['Test tools', P('Meta Hackathon')], [". I reimagined post-purchase around visibility, delight and business messaging. "], [RC, P('Vision Work')]),
+    I('assets/images/fig-home-tt.png', P('Vision Work'), 'Test order tool and live order tracking screens')
   ]},
-  { company: 'Ernesta', brand: 'ernesta', projects: [
-    { name: 'Ernesta Tools', href: P('Ernesta Tools'), img: 'assets/images/quote-creator-image-295.png', imgAlt: 'Ernesta B2B quote tool',
-      lines: [
-        { text: "Ernesta's B2B customers had no home on the site, and no system behind it." },
-        { text: "I designed and built the B2B area, the design system, and tools that generate quotes and spec sheets.", label: 'Read the case study', href: P('Ernesta Tools') } ] }
+  { label: 'Ernesta', pad: 64, items: [
+    L(["I designed and built the B2B area, the design system"]),
+    I('assets/images/fig-home-ern1.png', P('Ernesta Tools'), 'Ernesta rug catalogue'),
+    L(["I designed and built tools that generate quotes and spec sheets. "], [RC, P('Ernesta Tools')]),
+    I('assets/images/fig-home-ern2.png', P('Ernesta Tools'), 'Quote tool and spec sheet', 'width:min(100%,364px)'),
+    L(["Filters"]),
+    I('assets/images/fig-home-ern3.png', P('Ernesta Tools'), 'Ernesta quote creator')
   ]},
-  { company: 'Spring Health', brand: 'springhealth', projects: [
-    { name: 'Spring Health App', href: P('Spring Mobile App'), img: 'assets/images/thumb-spring-app-1.png', imgAlt: 'Spring Health sign-in and onboarding screens',
-      lines: [
-        { text: "Care plans, assessments and therapy booking lived only on a desktop portal." },
-        { text: "As the first design hire, I took Spring Health native on iOS and Android.", label: 'Read the case study', href: P('Spring Mobile App') } ] },
-    { name: 'Moments', href: P('Spring Moments'), img: 'assets/images/thumb-moments-2.png', imgAlt: 'Moments design system and screens',
-      lines: [
-        { text: "Lower-acuity patients didn't want therapy, but still needed everyday support." },
-        { text: "We asked how they were feeling instead, and app downloads rose 136%.", label: 'Read the case study', href: P('Spring Moments') } ] }
+  { label: 'Spring Health', pad: 112, items: [
+    L(["Care plans, assessments and therapy booking lived only on a desktop portal. As the first design hire, I took Spring Health native on iOS and Android. "], [RC, P('Spring Mobile App')]),
+    I('assets/images/fig-home-spr1.png', P('Spring Mobile App'), 'Spring Health sign-in and onboarding screens'),
+    L(["Care plans, assessments and therapy booking lived only on a desktop portal. As the first design hire, I took Spring Health native on iOS and Android. "], [RC, P('Spring Mobile App')]),
+    I('assets/images/fig-home-spr2.png', P('Spring Mobile App'), 'Moments design system and screens')
   ]},
-  { company: 'Personal', brand: 'personal', projects: [
-    { name: 'Visual Design', href: P('Visual Design'), img: 'https://images.squarespace-cdn.com/content/v1/695ff5f7d08e7045d7752942/cf621db0-2931-47e7-8999-fa64343c2d8c/A+landscape+in+green+and+pink.jpg?format=1500w', imgAlt: 'A landscape in green and pink, watercolor painting',
-      lines: [
-        { text: "Outside product work I make posters, photographs and paintings." },
-        { text: "Watercolor, ink and gouache, mostly imaginary places.", label: 'See the work', href: P('Visual Design') } ] }
+  { label: 'Personal work', pad: 112, items: [
+    { kind: 'name', text: 'Visual Design' },
+    L(["Outside product work I make posters, photographs and paintings."]),
+    L(["Watercolor, ink and gouache, mostly imaginary places. "], ['See the work', P('Visual Design')]),
+    { kind: 'gap' },
+    { kind: 'ph' }
   ]}
 ];
 
@@ -251,19 +242,15 @@ class Component extends DCLogic {
       hasLightbox: this.state.lightbox,
       closeLightbox: this.closeLightbox,
       stopClick: this.stopClick,
-      groups: (() => {
-        return GROUPS_RAW.map((g) => {
-          const brandLabel = g.brand === 'meta' ? 'Meta' : g.brand === 'ernesta' ? 'Ernesta' : g.brand === 'springhealth' ? 'Spring Health' : g.brand === 'personal' ? 'Personal work' : g.company;
-          return {
-            brandLabel, suffix: '',
-            projects: g.projects.map((p) => ({
-              ...p,
-              imgLabel: 'Open the ' + p.name + ' case study',
-              lines: p.lines.map((l) => ({ text: l.text, hasLink: !!l.label, label: l.label || '', href: l.href || p.href }))
-            }))
-          };
-        });
-      })()
+      groups: GROUPS_RAW.map((g) => ({
+        label: g.label,
+        style: 'padding-top:' + g.pad + 'px',
+        items: g.items.map((it) => ({
+          isLine: it.kind === 'line', isImg: it.kind === 'img', isName: it.kind === 'name', isGap: it.kind === 'gap', isPh: it.kind === 'ph',
+          text: it.text || '', src: it.src || '', href: it.href || '#', alt: it.alt || '', wrap: it.wrap || '', label: it.alt ? 'Open: ' + it.alt : '',
+          segs: (it.segs || []).map((s) => ({ t: s[0], href: s[1] || '', isLink: !!s[1], plain: !s[1] }))
+        }))
+      }))
     };
   }
 }

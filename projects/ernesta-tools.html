@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../assets/ds/celia-marais-portfolio/components/bundle.css">
   <script src="../assets/js/image-slot.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla:wght@300..700&amp;display=swap">
-  <style>a{text-decoration:none}body{margin:0;background:var(--paper)}::selection{background:rgba(243,222,214,0.6)}.cm-close{position:fixed;top:20px;right:20px;z-index:50;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ink);background:var(--paper);box-shadow:inset 0 0 0 1px var(--hairline);transition:background .2s}.cm-close:hover{background:var(--blush)}.cm-close:focus-visible{outline:2px solid var(--ink);outline-offset:3px}@media (max-width:900px){.cm-nav{padding-right:56px}}.cm-title,.cm-subtitle,.cm-result{font:400 clamp(22px,4vw,27px)/1.25 var(--font-sans);letter-spacing:-.01em}.cm-title{margin:0;color:var(--ink)}.cm-subtitle{color:var(--ink-soft);margin:8px 0 0}.cm-beat{display:block;font:var(--text-support);color:var(--ink);margin:0}.cm-beat b{font-weight:700}.cm-card{margin:0;background:#dedcda;border-radius:var(--radius-image);box-shadow:0 1px 3px -1px rgba(0,0,0,.12);padding:32px}.cm-card image-slot::part(frame){background:transparent}.cm-strip{display:flex;gap:24px;justify-content:center;align-items:flex-start}.cm-strip>div{min-width:0}.cm-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:60px}.cm-result-block .cm-support{color:var(--ink-body)}@media (max-width:700px){.cm-card{padding:16px}.cm-pair{grid-template-columns:1fr;gap:32px}.cm-strip{gap:10px}}</style>
+  <style>a{text-decoration:none}body{margin:0;background:var(--paper)}::selection{background:rgba(243,222,214,0.6)}.cm-close{position:fixed;top:20px;right:20px;z-index:50;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ink);background:var(--paper);box-shadow:inset 0 0 0 1px var(--hairline);transition:background .2s}.cm-close:hover{background:var(--blush)}.cm-close:focus-visible{outline:2px solid var(--ink);outline-offset:3px}@media (max-width:900px){.cm-nav{padding-right:56px}}.cm-title,.cm-subtitle,.cm-result{font:400 clamp(22px,4vw,27px)/1.25 var(--font-sans);letter-spacing:-.01em}.cm-title{margin:0;color:var(--ink)}.cm-subtitle{color:var(--ink-soft);margin:8px 0 0}.cm-beat{display:block;font:var(--text-support);color:var(--ink);margin:0}.cm-beat b{font-weight:700}.cm-fig{margin:0}.cm-fig img{display:block;width:100%;height:auto}.cm-fig-card{margin:0;background:rgba(240,237,235,.2);border-radius:var(--radius-image);padding:64px}.cm-result-block .cm-support{color:var(--ink-body)}@media (max-width:700px){.cm-fig-card{padding:20px}}</style>
 </helmet>
 
 <div style="background:var(--paper);min-height:100vh;width:100%">
@@ -36,19 +36,15 @@
 
   <div style="height:var(--space-64)"></div>
 
-  <p class="cm-beat">Systematized design processes with a streamlined design and product system and web component library.</p>
+  <figure class="cm-fig"><img src="../assets/images/fig-ern-1.png" alt="Ernesta design and product system" width="820" height="648" loading="lazy"></figure>
 
   <div style="height:var(--space-32)"></div>
 
-  <figure class="cm-card"><image-slot id="pp-ern-1" src="../assets/images/thumb-ernesta-2.png" shape="rect" radius="2" fit="contain" style="display:block;width:100%;height:min(520px,62vw)" placeholder="Drop image"></image-slot></figure>
+  <p class="cm-beat">Systematized design processes with a streamlined design and product system and web component library.</p>
 
   <div style="height:var(--space-64)"></div>
 
-  <p class="cm-beat">Cut the time to generate quotes for trade customers by half. That cut the time employees spent on a rote task, so they could focus on better attending to customers.</p>
-
-  <div style="height:var(--space-32)"></div>
-
-  <figure class="cm-card">
+  <figure class="cm-fig-card">
     <div aria-hidden="true" style="position:relative;background:#f5f5f5;border-radius:6px;box-shadow:0 0 0 1px rgba(35,29,26,0.10);padding:20px;font:400 13px/1.35 -apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;color:#222;overflow:hidden">
       <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px">
         <div style="font-weight:700;font-size:20px;letter-spacing:-0.01em">Create quote</div>
@@ -117,13 +113,25 @@
     </figcaption>
   </figure>
 
+  <div style="height:var(--space-32)"></div>
+
+  <p class="cm-beat">Cut the time to generate quotes for trade customers by half. That cut the time employees spent on a rote task, so they could focus on better attending to customers.</p>
+
   <div style="height:var(--space-64)"></div>
 
-  <p class="cm-beat">Tear sheets, a table-stakes tool for interior design professionals, weren’t available and had been deprioritized because of tech debt on the catalogue side. I found a way around these limitations by linking our live inventory to Figma, so we could generate dozens of quotes automatically.</p>
+  <figure class="cm-fig"><img src="../assets/images/fig-ern-3.png" alt="Spec sheet generator" width="820" height="468" loading="lazy"></figure>
 
   <div style="height:var(--space-32)"></div>
 
-  <figure class="cm-card"><image-slot id="pp-ern-3" src="../assets/images/ed-ernesta-specsheet.png" shape="rect" radius="2" fit="contain" style="display:block;width:100%;height:min(520px,62vw)" placeholder="Drop image"></image-slot></figure>
+  <p class="cm-beat">Tear sheets, a table-stakes tool for interior design professionals, weren’t available and had been deprioritized because of tech debt on the catalogue side. I found a way around these limitations by linking our live inventory to Figma, so we could generate dozens of quotes automatically.</p>
+
+  <div style="height:var(--space-64)"></div>
+
+  <figure class="cm-fig"><img src="../assets/images/fig-ern-4.png" alt="Ernesta rug catalogue" width="820" height="802" loading="lazy"></figure>
+
+  <div style="height:var(--space-32)"></div>
+
+  <p class="cm-beat">Tear sheets, a table-stakes tool for interior design professionals, weren’t available and had been deprioritized because of tech debt on the catalogue side. I found a way around these limitations by linking our live inventory to Figma, so we could generate dozens of quotes automatically.</p>
 
   <section class="cm-result-block" style="margin-top:var(--space-112)">
     <p class="cm-result">The result: a system built to scale, faster workflows, more satisfied customer service.</p>
