@@ -55,7 +55,7 @@
     <header class="cm-header" style="display:flex;flex-direction:column;gap:var(--space-32)">
       <p class="cm-story">I'm a product designer with a background in art direction, a penchant for design systems and a knack for hairy problems.</p>
       
-      <p class="cm-support">I've built products that help people make purchase decisions, find care when they're in crisis, and products help teams work better and faster. I solve problems for people by turning complex systems into simple, delightful experiences. I’m always looking for ways to improve processes, I welcome limitations and find adaptable ways around them, and I lead with empathy.</p>
+      <p class="cm-support">I've built products that help people make purchase decisions, find care when they're in crisis, and products that help teams work better and faster. I solve problems for people by turning complex systems into simple, delightful experiences. I’m always looking for ways to improve processes, I welcome limitations and find adaptable ways around them, and I lead with empathy.</p>
     </header>
 
     <sc-for list="{{ groups }}" as="g" hint-placeholder-count="4">
@@ -66,7 +66,7 @@
             <article class="cm-tile" style="{{ p.tstyle }}">
               <a href="{{ p.href }}" class="cm-cover" aria-label="{{ p.label }}"><img src="{{ p.img }}" alt="{{ p.alt }}" loading="lazy"></a>
               <h3 class="cm-tile-name">{{ p.name }}</h3>
-              <p class="cm-support" style="margin:0"><span>{{ p.line }}</span><sc-if value="{{ p.hasLink }}"> <a href="{{ p.href }}" class="cm-link">{{ p.link }}</a></sc-if></p>
+              <p class="cm-support" style="margin:0"><span>{{ p.line }}</span><sc-if value="{{ p.hasLink }}"> <a href="{{ p.href }}" class="cm-link">{{ p.link }}</a></sc-if><sc-if value="{{ p.hasLink2 }}"> · <a href="{{ p.href2 }}" class="cm-link">{{ p.link2 }}</a></sc-if></p>
             </article>
           </sc-for>
         </div>
@@ -99,7 +99,7 @@ const T = (name, page, img, alt, line, link, wide) => ({ name, href: P(page), im
 const GROUPS_RAW = [
   { label: 'Meta', pad: 112, tiles: [
     T('Facebook Web Checkout', 'Facebook Web Checkout', 'assets/images/fig5-t-fb.png', 'Facebook web checkout on a phone', 'I led a stepped, responsive redesign and the component library behind it, and transactions rose significantly.'),
-    T('Commerce Tools and Vision work', 'Processes and People', 'assets/images/fig5-t-cxp.png', 'CXP logo', 'I built a Figma product system and an org-wide directory, and Commerce adopted both as its standard. Engineers had no easy way to create test orders, so I designed a tool that makes them in a few taps. (Email for password). I reimagined post-purchase around visibility, delight and business messaging.')
+    Object.assign(T('Commerce Tools and Vision work', 'Processes and People', 'assets/images/fig5-t-cxp.png', 'CXP logo', 'I built a Figma product system and an org-wide directory, and Commerce adopted both as its standard. Engineers had no easy way to create test orders, so I designed a tool that makes them in a few taps. (Email me for the password.) I reimagined post-purchase around visibility, delight and business messaging.', 'Processes and People'), { link2: 'Vision Work', href2: P('Vision Work') })
   ]},
   { label: 'Ernesta', pad: 112, tiles: [
     T('Ernesta Filters', 'Ernesta Filters', 'assets/images/fig5-t-efl.png', 'Filtered results for a 9-foot round wool rug', 'Filters built on a lot of work in taxonomy and nomenclature, with buyers, marketing and user research.'),
@@ -238,7 +238,7 @@ class Component extends DCLogic {
       groups: GROUPS_RAW.map((g) => ({
         label: g.label,
         style: 'padding-top:' + g.pad + 'px',
-        tiles: g.tiles.map((p) => ({ ...p, label: 'Open ' + p.name, hasLink: !!p.link, tstyle: p.wide ? 'grid-column:1/-1' : '' }))
+        tiles: g.tiles.map((p) => ({ ...p, label: 'Open ' + p.name, hasLink: !!p.link, hasLink2: !!p.link2, tstyle: p.wide ? 'grid-column:1/-1' : '' }))
       }))
     };
   }
