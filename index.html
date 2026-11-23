@@ -20,7 +20,7 @@
     .cm-bg{position:absolute;inset:0;opacity:0;animation:cm-bg-fade 120s ease-in-out infinite}
     @keyframes cm-bg-fade{0%{opacity:0}10%{opacity:1}25%{opacity:1}35%{opacity:0}100%{opacity:0}}
     @media (prefers-reduced-motion: reduce){.cm-bg{animation:none}.cm-bg:first-child{opacity:1}}
-    .cm-story{font:400 clamp(22px,4vw,27px)/1.25 var(--font-sans);letter-spacing:-.01em}
+    .cm-story{font:400 clamp(20px,4vw,27px)/1.25 var(--font-sans);letter-spacing:-.01em}
     .cm-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:56px 20px;padding-top:32px}
     .cm-tile{display:flex;flex-direction:column;gap:12px}
     .cm-cover{display:block;margin-bottom:4px;transition:transform .4s cubic-bezier(0.16,1,0.3,1)}
@@ -28,7 +28,7 @@
     .cm-cover img{display:block;width:100%;height:auto}
     .cm-tile-name{font:500 18px/1.4 var(--font-sans);margin:0;color:var(--ink)}
     @media (max-width:640px){.cm-grid{grid-template-columns:1fr;gap:48px}}
-  </style>
+  @media (max-width:640px){:root{--text-support:400 16px/1.55 var(--font-sans);--text-link:500 16px/1.55 var(--font-sans);--text-footer:400 13px/1.6 var(--font-sans)}.cm-tile-name{font-size:16px}.cm-support,.cm-link{font-size:16px;line-height:1.55}.cm-footer,.cm-footer a{font-size:13px}}</style>
 </helmet>
 
 <div onMouseMove="{{ spawnBurst }}" onClick="{{ toggleBurst }}" style="font-family:var(--font-sans);background:var(--paper);color:var(--ink);position:relative;min-height:100vh">
