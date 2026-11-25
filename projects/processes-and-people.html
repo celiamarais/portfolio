@@ -36,7 +36,7 @@
 
   <div style="height:var(--space-64)"></div>
 
-  <figure class="cm-fig"><img src="../assets/images/fig5-pp-1.png" alt="Org directory of people, teams and surface owners" width="820" height="424" loading="lazy"></figure>
+  <figure class="cm-fig"><img src="../assets/images/fig5-pp-1.png" alt="Org directory of people, teams and surface owners" width="820" height="419" loading="lazy"></figure>
 
   <div style="height:var(--space-32)"></div>
 
@@ -54,34 +54,16 @@
 
   <figure class="cm-fig-card">
     <div style="display:flex;justify-content:center">
-      <button type="button" onClick="{{ fc.next }}" aria-label="Create test order prototype: tap to go to the next step" style="all:unset;cursor:pointer;position:relative;display:block;width:var(--pw,248px);aspect-ratio:413/894;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 28px 56px -16px rgba(35,29,26,.2),0 8px 20px rgba(35,29,26,.06)">
-        <sc-for list="{{ fc.screens }}" as="s" hint-placeholder-count="8"><img src="{{ s.src }}" alt="" style="position:absolute;left:0;top:0;width:100%;height:100%;display:block;transition:opacity .35s ease;{{ s.style }}"></sc-for>
-        <div style="position:absolute;width:40px;height:40px;margin:-20px 0 0 -20px;border-radius:50%;background:rgba(24,119,242,.22);box-shadow:0 0 0 2px rgba(24,119,242,.55);pointer-events:none;transition:opacity .25s ease,transform .25s ease;{{ fc.ring }}"></div>
+      <button type="button" onClick="{{ fo.next }}" aria-label="Test order prototype: tap to go to the next step" style="all:unset;cursor:pointer;position:relative;display:block;width:var(--pw,248px);aspect-ratio:413/894;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 28px 56px -16px rgba(35,29,26,.2),0 8px 20px rgba(35,29,26,.06)">
+        <sc-for list="{{ fo.screens }}" as="s" hint-placeholder-count="20"><img src="{{ s.src }}" alt="" style="position:absolute;left:0;top:0;width:100%;height:100%;display:block;transition:opacity .35s ease;{{ s.style }}"></sc-for>
+        <div style="position:absolute;width:40px;height:40px;margin:-20px 0 0 -20px;border-radius:50%;background:rgba(24,119,242,.22);box-shadow:0 0 0 2px rgba(24,119,242,.55);pointer-events:none;transition:opacity .25s ease,transform .25s ease;{{ fo.ring }}"></div>
       </button>
     </div>
     <figcaption style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:14px;font:var(--text-caption);color:var(--ink-soft)">
-      <span>Create test order, prototype: {{ fc.caption }}</span>
+      <span>Test order, prototype: {{ fo.caption }}</span>
       <span style="display:flex;gap:14px">
-        <button type="button" onClick="{{ fc.toggle }}" style="all:unset;cursor:pointer;color:var(--ink);border-bottom:1px solid var(--ink);font-weight:500">{{ fc.toggleLabel }}</button>
-        <button type="button" onClick="{{ fc.replay }}" style="all:unset;cursor:pointer;color:var(--ink);border-bottom:1px solid var(--ink);font-weight:500">Replay</button>
-      </span>
-    </figcaption>
-  </figure>
-
-  <div style="height:var(--space-32)"></div>
-
-  <figure class="cm-fig-card">
-    <div style="display:flex;justify-content:center">
-      <button type="button" onClick="{{ fm.next }}" aria-label="Manage test order prototype: tap to go to the next step" style="all:unset;cursor:pointer;position:relative;display:block;width:var(--pw,248px);aspect-ratio:413/894;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 28px 56px -16px rgba(35,29,26,.2),0 8px 20px rgba(35,29,26,.06)">
-        <sc-for list="{{ fm.screens }}" as="s" hint-placeholder-count="8"><img src="{{ s.src }}" alt="" style="position:absolute;left:0;top:0;width:100%;height:100%;display:block;transition:opacity .35s ease;{{ s.style }}"></sc-for>
-        <div style="position:absolute;width:40px;height:40px;margin:-20px 0 0 -20px;border-radius:50%;background:rgba(24,119,242,.22);box-shadow:0 0 0 2px rgba(24,119,242,.55);pointer-events:none;transition:opacity .25s ease,transform .25s ease;{{ fm.ring }}"></div>
-      </button>
-    </div>
-    <figcaption style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:14px;font:var(--text-caption);color:var(--ink-soft)">
-      <span>Manage test order, prototype: {{ fm.caption }}</span>
-      <span style="display:flex;gap:14px">
-        <button type="button" onClick="{{ fm.toggle }}" style="all:unset;cursor:pointer;color:var(--ink);border-bottom:1px solid var(--ink);font-weight:500">{{ fm.toggleLabel }}</button>
-        <button type="button" onClick="{{ fm.replay }}" style="all:unset;cursor:pointer;color:var(--ink);border-bottom:1px solid var(--ink);font-weight:500">Replay</button>
+        <button type="button" onClick="{{ fo.toggle }}" style="all:unset;cursor:pointer;color:var(--ink);border-bottom:1px solid var(--ink);font-weight:500">{{ fo.toggleLabel }}</button>
+        <button type="button" onClick="{{ fo.replay }}" style="all:unset;cursor:pointer;color:var(--ink);border-bottom:1px solid var(--ink);font-weight:500">Replay</button>
       </span>
     </figcaption>
   </figure>
@@ -95,11 +77,7 @@
   </section>
 
   <footer class="cm-footer" style="margin-top:var(--space-112)">
-    <div class="cm-links">
-      <a href="#">Email</a>
-      <a href="#">LinkedIn</a>
-      <a href="#">Resume</a>
-    </div>
+    <a class="cm-back" href="../index.html" style="font:var(--text-caption);color:var(--ink);border-bottom:1px solid var(--ink)">← Back to home</a>
   </footer>
 </div>
 </div>
@@ -108,6 +86,30 @@
 <script type="text/x-dc" data-dc-script>
 // step: [screen, tapX, tapY, caption] in 413x894 screen units; null tap = no tap (auto-advance)
 const FLOWS = {
+  fo: { names: ['c1','c2','c3','c4','c5','c6','c7','c8','m1','m2','m3','m4','m5','m6','m7','m8','m9','m10','m11','m12'], steps: [
+    ['c1', 206, 128, 'open the debug banner'],
+    ['c2', 357, 456, 'force a payment failure'],
+    ['c3', 206, 591, 'pick a seller type'],
+    ['c4', 205, 828, 'keep Shopify'],
+    ['c3', 206, 669, 'pick a return type'],
+    ['c5', 205, 828, 'keep BYOR'],
+    ['c3', 204, 828, 'create the order'],
+    ['c6', null, null, 'creating'],
+    ['c7', 206, 176, 'open the new test order'],
+    ['c8', null, null, 'order received'],
+    ['m1', 206, 128, 'order confirmed: manage this test order'],
+    ['m2', 204, 326, 'change order state'],
+    ['m3', 357, 516, 'out for delivery'],
+    ['m4', 204, 828, 'update order'],
+    ['m5', null, null, 'updating'],
+    ['m6', 204, 128, 'out for delivery'],
+    ['m7', 204, 326, 'change order state'],
+    ['m8', 204, 578, 'refunds'],
+    ['m9', 357, 308, 'partial refund'],
+    ['m10', 204, 828, 'update order'],
+    ['m11', null, null, 'updating'],
+    ['m12', null, null, 'refund received']
+  ]},
   fc: { n: 8, pre: 'c', steps: [
     [1, 206, 128, 'open the debug banner'],
     [2, 357, 456, 'force a payment failure'],
@@ -137,7 +139,7 @@ const FLOWS = {
 };
 
 class Component extends DCLogic {
-  state = { fc: this.init(), fm: this.init() };
+  state = { fo: this.init() };
   _t = {};
 
   init() { return { i: 0, tap: 'off', playing: true }; }
@@ -167,8 +169,8 @@ class Component extends DCLogic {
 
   componentDidMount() {
     const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduce) { this.setState({ fc: { ...this.init(), playing: false }, fm: { ...this.init(), playing: false } }); return; }
-    this.schedule('fc'); this.schedule('fm');
+    if (reduce) { this.setState({ fo: { ...this.init(), playing: false } }); return; }
+    this.schedule('fo');
   }
 
   componentWillUnmount() { Object.values(this._t).forEach(clearTimeout); }
@@ -176,7 +178,9 @@ class Component extends DCLogic {
   vals(k) {
     const F = FLOWS[k], st = this.state[k], step = F.steps[st.i];
     const screens = [];
-    for (let j = 1; j <= F.n; j++) screens.push({ src: '../assets/images/hack-' + F.pre + j + '.png', style: 'opacity:' + (step[0] === j ? 1 : 0) + ';' });
+    const names = F.names || Array.from({ length: F.n }, (_, j) => F.pre + (j + 1));
+    const cur = F.names ? step[0] : F.pre + step[0];
+    names.forEach((nm) => screens.push({ src: '../assets/images/hack-' + nm + '.png', style: 'opacity:' + (cur === nm ? 1 : 0) + ';' }));
     let ring = 'opacity:0;transform:scale(.6);left:50%;top:50%;';
     if (step[1] !== null) {
       ring = 'left:' + (step[1] / 413 * 100) + '%;top:' + (step[2] / 894 * 100) + '%;' +
@@ -195,7 +199,7 @@ class Component extends DCLogic {
     };
   }
 
-  renderVals() { return { fc: this.vals('fc'), fm: this.vals('fm') }; }
+  renderVals() { return { fo: this.vals('fo') }; }
 }
 </script>
 </body>
