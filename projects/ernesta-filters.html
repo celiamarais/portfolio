@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../assets/ds/celia-marais-portfolio/components/bundle.css">
   <script src="../assets/js/image-slot.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla:wght@300..700&amp;display=swap">
-  <style>a{text-decoration:none}body{margin:0;background:var(--paper)}::selection{background:rgba(243,222,214,0.6)}.cm-close{position:fixed;top:20px;right:20px;z-index:50;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ink);background:var(--paper);box-shadow:inset 0 0 0 1px var(--hairline);transition:background .2s}.cm-close:hover{background:var(--blush)}.cm-close:focus-visible{outline:2px solid var(--ink);outline-offset:3px}@media (max-width:900px){.cm-nav{padding-right:56px}}.cm-title,.cm-subtitle,.cm-result{font:400 clamp(20px,4vw,27px)/1.25 var(--font-sans);letter-spacing:-.01em}.cm-title{margin:0;color:var(--ink)}.cm-subtitle{color:var(--ink-soft);margin:8px 0 0}.cm-beat{display:block;font:var(--text-support);color:var(--ink);margin:0}.cm-beat b{font-weight:700}.cm-fig{margin:0}.cm-fig img{display:block;width:100%;height:auto}.cm-fig-card{margin:0;background:rgba(35,29,26,.02);border-radius:var(--radius-image);padding:64px}.cm-result-block .cm-support{color:var(--ink-body)}@media (max-width:700px){.cm-fig-card{padding:20px}}@media (max-width:640px){:root{--text-support:400 16px/1.55 var(--font-sans);--text-link:500 16px/1.55 var(--font-sans);--text-footer:400 13px/1.6 var(--font-sans)}.cm-tile-name{font-size:16px}.cm-support,.cm-link{font-size:16px;line-height:1.55}.cm-footer,.cm-footer a{font-size:13px}}</style>
+  <style>a{text-decoration:none}body{margin:0;background:var(--paper)}::selection{background:rgba(243,222,214,0.6)}.cm-close{position:fixed;top:20px;right:20px;z-index:50;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ink);background:var(--paper);box-shadow:inset 0 0 0 1px var(--hairline);transition:background .2s}.cm-close:hover{background:var(--blush)}.cm-close:focus-visible{outline:2px solid var(--ink);outline-offset:3px}@media (max-width:900px){.cm-nav{padding-right:56px}}.cm-title,.cm-subtitle,.cm-result{font:400 clamp(20px,4vw,27px)/1.25 var(--font-sans);letter-spacing:-.01em}.cm-title{margin:0;color:var(--ink)}.cm-subtitle{color:var(--ink-soft);margin:8px 0 0}.cm-beat{display:block;font:var(--text-support);color:var(--ink);margin:0}.cm-beat b{font-weight:700}.cm-fig{margin:0}.cm-fig img{display:block;width:100%;height:auto}.cm-fig-card{margin:0;background:rgba(35,29,26,.02);border-radius:var(--radius-image);padding:64px}.cm-result-block .cm-support{color:var(--ink-body)}@media (max-width:700px){.cm-fig-card{padding:20px}}@media (max-width:640px){:root{--text-support:400 16px/1.55 var(--font-sans);--text-link:500 16px/1.55 var(--font-sans);--text-footer:400 13px/1.6 var(--font-sans)}.cm-tile-name{font-size:16px}.cm-support,.cm-link{font-size:16px;line-height:1.55}.cm-footer,.cm-footer a{font-size:13px}}@media (max-width:640px){.flt-stage{flex-direction:column;align-items:center}.flt-stage>div:last-child{flex-basis:auto;width:200px}}</style>
 </helmet>
 
 <div style="background:var(--paper);min-height:100vh;width:100%">
@@ -44,7 +44,23 @@
 
   <div style="height:var(--space-64)"></div>
 
-  <figure class="cm-fig"><img src="../assets/images/fig5-efl-2.png" alt="Catalogue with filters on desktop and mobile" width="820" height="705" loading="lazy"></figure>
+  <figure class="cm-fig-card" style="padding:32px">
+    <div class="flt-stage" style="position:relative;display:flex;align-items:flex-end;gap:24px">
+      <div style="position:relative;flex:1 1 auto;min-width:0;aspect-ratio:1120/607;border-radius:8px;overflow:hidden;background:#fff;box-shadow:0 28px 56px -16px rgba(35,29,26,.2),0 8px 20px rgba(35,29,26,.06)">
+        <sc-for list="{{ fd.screens }}" as="s" hint-placeholder-count="7"><img src="{{ s.src }}" alt="" style="position:absolute;left:0;top:0;width:100%;height:100%;display:block;transition:opacity .5s ease;{{ s.style }}"></sc-for>
+      </div>
+      <div style="position:relative;flex:0 0 var(--fw,200px);aspect-ratio:440/952;border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 28px 56px -16px rgba(35,29,26,.2),0 8px 20px rgba(35,29,26,.06)">
+        <sc-for list="{{ fm.screens }}" as="s" hint-placeholder-count="8"><img src="{{ s.src }}" alt="" style="position:absolute;left:0;top:0;width:100%;height:100%;display:block;transition:opacity .45s ease;{{ s.style }}"></sc-for>
+      </div>
+    </div>
+    <figcaption style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:14px;font:var(--text-caption);color:var(--ink-soft)">
+      <span>Filters prototype, desktop and mobile: {{ caption }}</span>
+      <span style="display:flex;gap:14px">
+        <button type="button" onClick="{{ toggle }}" style="all:unset;cursor:pointer;color:var(--ink);border-bottom:1px solid var(--ink);font-weight:500">{{ toggleLabel }}</button>
+        <button type="button" onClick="{{ replay }}" style="all:unset;cursor:pointer;color:var(--ink);border-bottom:1px solid var(--ink);font-weight:500">Replay</button>
+      </span>
+    </figcaption>
+  </figure>
 
   <div style="height:var(--space-32)"></div>
 
@@ -61,5 +77,47 @@
 </div>
 
 </x-dc>
+<script type="text/x-dc" data-dc-script>
+const DESK = ['size', 'color', 'style', 'material', 'room', 'handfeel', 'performance'];
+const MOB = ['browse', 'open filters', 'width', 'pick 14 feet', 'size set', 'add ivory', 'add blue', '120 rugs'];
+
+class Component extends DCLogic {
+  state = { d: 0, m: 0, playing: true };
+
+  tick = () => {
+    this.setState((s) => ({ d: (s.d + 1) % DESK.length }));
+  };
+  tickM = () => {
+    this.setState((s) => ({ m: (s.m + 1) % MOB.length }));
+  };
+
+  start() {
+    this.stop();
+    this._a = setInterval(this.tick, 2200);
+    this._b = setInterval(this.tickM, 1600);
+  }
+  stop() { clearInterval(this._a); clearInterval(this._b); }
+
+  componentDidMount() {
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) { this.setState({ playing: false }); return; }
+    this.start();
+  }
+  componentWillUnmount() { this.stop(); }
+
+  renderVals() {
+    const st = this.state;
+    const mk = (n, pre, cur) => Array.from({ length: n }, (_, j) => ({ src: '../assets/images/flt-' + pre + (j + 1) + '.jpg', style: 'opacity:' + (j === cur ? 1 : 0) + ';' }));
+    return {
+      fd: { screens: mk(DESK.length, 'd', st.d) },
+      fm: { screens: mk(MOB.length, 'm', st.m) },
+      caption: DESK[st.d] + ' / ' + MOB[st.m],
+      toggleLabel: st.playing ? 'Pause' : 'Play',
+      toggle: () => { if (st.playing) { this.stop(); this.setState({ playing: false }); } else { this.setState({ playing: true }); this.start(); } },
+      replay: () => { this.setState({ d: 0, m: 0, playing: true }); this.start(); }
+    };
+  }
+}
+</script>
 </body>
 </html>
