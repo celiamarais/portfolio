@@ -1,68 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-cm-locked>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="../assets/js/support.js"></script>
+<meta name="robots" content="noindex">
+<title>Celia Marais - Password protected</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla:wght@300..700&amp;display=swap">
+<style>
+:root{--ink:#231d1a;--soft:rgba(35,29,26,.6);--line:rgba(35,29,26,.14);--paper:#fffdfb}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.55 Karla,system-ui,sans-serif;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+main{width:100%;max-width:380px}
+h1{font:400 clamp(20px,4vw,27px)/1.25 Karla,system-ui,sans-serif;letter-spacing:-.01em;margin:0 0 8px}
+p{margin:0 0 28px;color:var(--soft)}
+form{display:flex;gap:8px}
+input{flex:1;min-width:0;font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:2px;background:#fff;color:var(--ink)}
+input:focus{outline:2px solid var(--ink);outline-offset:1px}
+button{font:500 15px/1 Karla,system-ui,sans-serif;padding:0 18px;border:0;border-radius:2px;background:var(--ink);color:var(--paper);cursor:pointer}
+.err{min-height:22px;margin:10px 0 0;font-size:14px;color:#a3352b}
+.links{display:flex;justify-content:space-between;margin-top:32px;font-size:14px}
+a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--ink)}
+#cm-toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--paper);font-size:13px;border-radius:2px;padding:12px 18px;opacity:0;transition:opacity .3s;pointer-events:none}
+</style>
 </head>
 <body>
-<x-dc>
-<helmet>
-  <link rel="stylesheet" href="../assets/ds/celia-marais-portfolio/tokens.css">
-  <link rel="stylesheet" href="../assets/ds/celia-marais-portfolio/components/bundle.css">
-  <script src="../assets/js/image-slot.js"></script>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla:wght@300..700&amp;display=swap">
-  <style>a{text-decoration:none}body{margin:0;background:var(--paper)}::selection{background:rgba(243,222,214,0.6)}.cm-close{position:fixed;top:20px;right:20px;z-index:50;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ink);background:var(--paper);box-shadow:inset 0 0 0 1px var(--hairline);transition:background .2s}.cm-close:hover{background:var(--blush)}.cm-close:focus-visible{outline:2px solid var(--ink);outline-offset:3px}@media (max-width:900px){.cm-nav{padding-right:56px}}.cm-title,.cm-subtitle,.cm-result{font:400 clamp(20px,4vw,27px)/1.25 var(--font-sans);letter-spacing:-.01em}.cm-title{margin:0;color:var(--ink)}.cm-subtitle{color:var(--ink-soft);margin:8px 0 0}.cm-beat{display:block;font:var(--text-support);color:var(--ink);margin:0}.cm-beat b{font-weight:700}.cm-fig{margin:0}.cm-fig img{display:block;width:100%;height:auto}.cm-fig-card{margin:0;background:rgba(35,29,26,.02);border-radius:var(--radius-image);padding:64px}.cm-result-block .cm-support{color:var(--ink-body)}@media (max-width:700px){.cm-fig-card{padding:20px}}@media (max-width:640px){:root{--text-support:400 16px/1.55 var(--font-sans);--text-link:500 16px/1.55 var(--font-sans);--text-footer:400 13px/1.6 var(--font-sans)}.cm-tile-name{font-size:16px}.cm-support,.cm-link{font-size:16px;line-height:1.55}.cm-footer,.cm-footer a{font-size:13px}}</style>
-</helmet>
-
-<div style="background:var(--paper);min-height:100vh;width:100%">
-<a href="../index.html" class="cm-close" aria-label="Close and go back to the home page"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
-
-<div class="cm-page">
-
-  <nav aria-label="Site" class="cm-nav">
-    <a href="../index.html" class="cm-name">Celia Marais</a>
-    <div class="cm-links">
-      <a href="#">Email</a>
-      <a href="#">LinkedIn</a>
-      <a href="#">Resume</a>
-    </div>
-  </nav>
-
-  <header class="cm-header">
-    <h1 class="cm-title">Imagining the future of Commerce at Meta</h1>
-  </header>
-
-  <div style="height:var(--space-64)"></div>
-
-  <figure class="cm-fig"><img src="../assets/images/fig5-vis-1.png" alt="Orders, order confirmation and activity screens" width="820" height="608" loading="lazy"></figure>
-
-  <div style="height:var(--space-32)"></div>
-
-  <p class="cm-beat">On the Post-Purchase team at Meta, I was tasked with our re-engagement strategy after purchase. How do we give sellers a way to engage their customers, and buyers a reason to come back to shop on the Meta apps?</p>
-
-  <div style="height:var(--space-64)"></div>
-
-  <figure class="cm-fig"><img src="../assets/images/fig5-vis-3.png" alt="Rich business messaging" width="820" height="608" loading="lazy"></figure>
-
-  <div style="height:var(--space-32)"></div>
-
-  <p class="cm-beat">Using messaging as a single touchpoint for buyers to manage their orders, and for brands to nurture them in an informal and engaging way.</p>
-
-  <div style="height:var(--space-64)"></div>
-
-  <figure class="cm-fig"><img src="../assets/images/fig5-vis-2.png" alt="Live order tracking" width="820" height="608" loading="lazy"></figure>
-
-  <div style="height:var(--space-32)"></div>
-
-  <p class="cm-beat">Creating anticipation and excitement around delivery with a differentiated visual tracking experience.</p>
-
-  <footer class="cm-footer" style="margin-top:var(--space-112)">
-    <a class="cm-back" href="./ernesta-design-system.html" style="font:var(--text-caption);color:var(--ink);border-bottom:1px solid var(--ink)">Next Project</a>
-  </footer>
-</div>
-</div>
-
-</x-dc>
+<main>
+  <h1>This project is password protected</h1>
+  <p>Some of this work is under NDA. Email me and I'll send you the password.</p>
+  <form id="f"><label for="pw" style="position:absolute;left:-9999px">Password</label><input id="pw" type="password" autocomplete="current-password" placeholder="Password" autofocus><button type="submit">Open</button></form>
+  <div class="err" id="err" role="alert"></div>
+  <div class="links"><a href="#" id="em">Email for password</a><a href="../index.html">Back to home</a></div>
+</main>
+<div id="cm-toast" role="status">Email copied to clipboard</div>
+<script>
+(function(){
+var D={"s": "TaoT/gMkbVUXQG03r7cDXw==", "v": "DApy7ILw7xWYQMdK", "c": "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", "i": 200000};
+function u(s){return Uint8Array.from(atob(s),function(c){return c.charCodeAt(0);});}
+async function open(pw,quiet){
+  try{
+    var k=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']);
+    var key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:u(D.s),iterations:D.i,hash:'SHA-256'},k,{name:'AES-GCM',length:256},false,['decrypt']);
+    var pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:u(D.v)},key,u(D.c));
+    try{sessionStorage.setItem('cm-pw',pw);}catch(_){}
+    var html=new TextDecoder().decode(pt);document.open();document.write(html);document.close();
+  }catch(e){ if(!quiet){document.getElementById('err').textContent='That password didn\u2019t work. Try again.';} }
+}
+document.getElementById('f').addEventListener('submit',function(e){e.preventDefault();open(document.getElementById('pw').value,false);});
+document.getElementById('em').addEventListener('click',function(e){e.preventDefault();var EM='celia.m.marais@gmail.com';
+  var t=document.getElementById('cm-toast');var ok=function(){t.style.opacity='1';clearTimeout(t._t);t._t=setTimeout(function(){t.style.opacity='0';},1800);};
+  if(navigator.clipboard){navigator.clipboard.writeText(EM).then(ok,ok);}else{ok();}});
+try{var s=sessionStorage.getItem('cm-pw');if(s)open(s,true);}catch(_){}
+})();
+</script>
 </body>
 </html>

@@ -67,7 +67,7 @@
             <article class="cm-tile" style="{{ p.tstyle }}">
               <a href="{{ p.href }}" class="cm-cover" aria-label="{{ p.label }}"><img src="{{ p.img }}" alt="{{ p.alt }}" loading="lazy"></a>
               <h3 class="cm-tile-name">{{ p.name }}</h3>
-              <p class="cm-support" style="margin:0"><span>{{ p.line }}</span><sc-if value="{{ p.hasLink }}"> <a href="{{ p.href }}" class="cm-link">{{ p.link }}</a></sc-if></p><sc-if value="{{ p.hasLink2 }}"><p class="cm-support" style="margin:0"><span>{{ p.line2 }}</span> <a href="{{ p.href2 }}" class="cm-link">{{ p.link2 }}</a></p></sc-if>
+              <p class="cm-support" style="margin:0"><span>{{ p.line }}</span><sc-if value="{{ p.hasLink }}"> <a href="{{ p.href }}" class="cm-link">{{ p.link }}</a></sc-if></p><sc-if value="{{ p.hasLink2 }}"><p class="cm-support" style="margin:0"><span>{{ p.line2 }}</span> <a href="{{ p.href2 }}" class="cm-link">{{ p.link2 }}</a></p></sc-if><sc-if value="{{ p.hasPw }}"><p class="cm-support" style="margin:0;color:var(--ink-soft)">Password protected. <a href="#" class="cm-link" onClick="{{ p.copyEmail }}">Email for password</a></p></sc-if>
             </article>
           </sc-for>
         </div>
@@ -80,6 +80,7 @@
         <a href="#">LinkedIn</a>
         <a href="#">Resume</a>
       </div>
+      <p class="cm-made" style="margin:24px 0 0;font:var(--text-meta);color:var(--ink-soft)">Made with Claude</p>
     </footer>
   </div>
 
@@ -226,7 +227,7 @@ class Component extends DCLogic {
 
   copyEmail = (e) => {
     e.preventDefault();
-    navigator.clipboard.writeText('celia.marais@email.com').catch(() => {});
+    navigator.clipboard.writeText('celia.m.marais@gmail.com').catch(() => {});
     this.setState({ copied: true });
     clearTimeout(this._copyT);
     this._copyT = setTimeout(() => this.setState({ copied: false }), 1800);
@@ -251,7 +252,7 @@ class Component extends DCLogic {
       groups: GROUPS_RAW.map((g) => ({
         label: g.label,
         style: 'padding-top:' + g.pad + 'px',
-        tiles: g.tiles.map((p) => ({ ...p, label: 'Open ' + p.name, hasLink: !!p.link, hasLink2: !!p.link2, tstyle: p.wide ? 'grid-column:1/-1' : '' }))
+        tiles: g.tiles.map((p) => ({ ...p, label: 'Open ' + p.name, hasLink: !!p.link, hasLink2: !!p.link2, hasPw: !!p.link2, copyEmail: this.copyEmail, tstyle: p.wide ? 'grid-column:1/-1' : '' }))
       }))
     };
   }

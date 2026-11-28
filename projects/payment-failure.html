@@ -50,12 +50,21 @@
     <p class="cm-result">More completed transactions, and higher gross merchandise value.</p>
   </section>
 
-  <footer class="cm-footer" style="margin-top:var(--space-112)">
-    <a class="cm-back" href="../index.html" style="font:var(--text-caption);color:var(--ink);border-bottom:1px solid var(--ink)">← Back to home</a>
+  <footer class="cm-footer" style="margin-top:var(--space-112);display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap">
+    <a class="cm-back" href="./ernesta-design-system.html" style="font:var(--text-caption);color:var(--ink);border-bottom:1px solid var(--ink)">Next Project</a>
+    <span class="cm-made" style="font:var(--text-meta);color:var(--ink-soft)">Made with Claude</span>
   </footer>
 </div>
 </div>
 
 </x-dc>
+<script data-cm-email>
+(function(){var EM='celia.m.marais@gmail.com';
+function toast(){var d=document.getElementById('cm-toast');if(!d){d=document.createElement('div');d.id='cm-toast';d.setAttribute('role','status');d.style.cssText='position:fixed;bottom:28px;left:50%;transform:translateX(-50%);z-index:100;background:var(--ink,#231d1a);color:var(--paper,#fff);font:var(--text-meta,500 12px/1.4 sans-serif);letter-spacing:var(--tracking-meta,.02em);border-radius:2px;padding:12px 18px;pointer-events:none;transition:opacity .3s';document.body.appendChild(d);}
+d.textContent='Email copied to clipboard';d.style.opacity='1';clearTimeout(d._t);d._t=setTimeout(function(){d.style.opacity='0';},1800);}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a');if(!a)return;var tx=(a.textContent||'').trim();if(!/^email/i.test(tx)&&!a.hasAttribute('data-copy-email'))return;e.preventDefault();
+var done=function(){toast();};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(EM).then(done,function(){fallback();done();});}else{fallback();done();}
+function fallback(){var ta=document.createElement('textarea');ta.value=EM;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(_){}ta.remove();}},true);})();
+</script>
 </body>
 </html>
