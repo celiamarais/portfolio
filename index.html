@@ -33,14 +33,14 @@
 </helmet>
 
 <div onMouseMove="{{ spawnBurst }}" style="font-family:var(--font-sans);background:var(--paper);color:var(--ink);position:relative;min-height:100vh">
-  <div ref="{{ bgRef }}" style="position:fixed;inset:-25%;z-index:0;pointer-events:none;filter:blur(28px);opacity:0.5">
+  <div ref="{{ bgRef }}" class="cm-bgwrap" style="position:fixed;inset:-25%;z-index:0;pointer-events:none;filter:blur(28px);opacity:0.5">
     <div class="cm-bg" style="animation-delay:0s;background:conic-gradient(from 210deg at 47% 34%, #fbeee6 0deg, #f6d9cd 55deg, #efc4b1 120deg, #f3ded6 200deg, #fbf3ea 275deg, #fbeee6 360deg)"></div>
     <div class="cm-bg" style="animation-delay:-30s;background:conic-gradient(from 210deg at 47% 34%, #eef2e6 0deg, #dce6d2 55deg, #c9d9c0 120deg, #dfe8d8 200deg, #f1f4ea 275deg, #eef2e6 360deg)"></div>
     <div class="cm-bg" style="animation-delay:-60s;background:conic-gradient(from 210deg at 47% 34%, #f2edf5 0deg, #e2d7ea 55deg, #d3c4e0 120deg, #e6dcee 200deg, #f5f1f7 275deg, #f2edf5 360deg)"></div>
     <div class="cm-bg" style="animation-delay:-90s;background:conic-gradient(from 210deg at 47% 34%, #fdf0e2 0deg, #f8dcc0 55deg, #f2c9a2 120deg, #f6dcc4 200deg, #fcf1e4 275deg, #fdf0e2 360deg)"></div>
   </div>
-  <div style="position:fixed;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg, rgba(255,251,246,0.62) 0%, rgba(255,251,246,0.32) 45%, rgba(255,251,246,0.7) 100%)"></div>
-  <div ref="{{ burstRef }}" style="position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden"></div>
+  <div class="cm-veil" style="position:fixed;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg, rgba(255,251,246,0.62) 0%, rgba(255,251,246,0.32) 45%, rgba(255,251,246,0.7) 100%)"></div>
+  <div ref="{{ burstRef }}" class="cm-burst" style="position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden"></div>
 
   <div class="cm-page" style="position:relative;z-index:1;background:transparent">
 
@@ -129,7 +129,8 @@ class Component extends DCLogic {
   _palette = ['#f6d9cd', '#efc4b1', '#dce6d2', '#c9d9c0', '#e2d7ea', '#d3c4e0', '#f8dcc0', '#f2c9a2'];
   _colorAt = (offset) => {
     const step = Math.floor(performance.now() / 2600) + (offset || 0);
-    return this._palette[((step % this._palette.length) + this._palette.length) % this._palette.length];
+    const pal = (window.CM_BG && window.CM_BG.blobs) || this._palette;
+    return pal[((step % pal.length) + pal.length) % pal.length];
   };
 
   bgRef = React.createRef();
@@ -146,7 +147,7 @@ class Component extends DCLogic {
     this._fallback = setTimeout(() => this._sections.forEach((el) => this.reveal(el)), 1500);
     const auto = () => {
       const w = window.innerWidth || 1200, h = window.innerHeight || 800;
-      this.makeBlob(Math.random() * w, Math.random() * h, true);
+      if (!window.CM_BG || window.CM_BG.ambient) this.makeBlob(Math.random() * w, Math.random() * h, true);
       this._autoT = setTimeout(auto, 1400 + Math.random() * 900);
     };
     this._autoT = setTimeout(auto, 300);
@@ -190,6 +191,7 @@ class Component extends DCLogic {
   };
 
   spawnBurst = (e) => {
+    if (window.CM_BG && !window.CM_BG.cursor) return;
     const now = performance.now();
     if (this._lastBurst && now - this._lastBurst < 90) return;
     this._lastBurst = now;
@@ -258,6 +260,73 @@ class Component extends DCLogic {
   }
 }
 
+</script>
+<script data-cm-bgctl>(function(){
+var DEF={cycle:true,speed:120,blur:28,strength:0.5,veil:1,ambient:true,cursor:true,blob:1,
+ themes:[['#fbeee6','#f6d9cd','#efc4b1'],['#eef2e6','#dce6d2','#c9d9c0'],['#f2edf5','#e2d7ea','#d3c4e0'],['#fdf0e2','#f8dcc0','#f2c9a2']],
+ blobs:['#f6d9cd','#efc4b1','#dce6d2','#c9d9c0','#e2d7ea','#d3c4e0','#f8dcc0','#f2c9a2']};
+var KEY='cm-bg-settings';
+function clone(o){return JSON.parse(JSON.stringify(o));}
+var S=clone(DEF);
+try{var saved=JSON.parse(localStorage.getItem(KEY)||'null');if(saved)for(var k in saved)S[k]=saved[k];}catch(_){}
+window.CM_BG=S;
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(_){}}
+function q(s){return document.querySelector(s);}
+function apply(){
+  var wrap=q('.cm-bgwrap'),veil=q('.cm-veil');if(!wrap)return false;
+  wrap.style.filter='blur('+S.blur+'px)';wrap.style.opacity=S.strength;
+  if(veil)veil.style.opacity=S.veil;
+  var L=wrap.querySelectorAll('.cm-bg');
+  for(var i=0;i<L.length;i++){var t=S.themes[i%S.themes.length];var el=L[i];
+    el.style.background='conic-gradient(from 210deg at 47% 34%, '+t[0]+' 0deg, '+t[1]+' 55deg, '+t[2]+' 120deg, '+t[1]+' 200deg, '+t[0]+' 275deg, '+t[0]+' 360deg)';
+    if(S.cycle){el.style.animation='';el.style.animationDuration=S.speed+'s';el.style.animationDelay=(-i*S.speed/4)+'s';el.style.opacity='';}
+    else{el.style.animation='none';el.style.opacity=i===0?'1':'0';}}
+  var b=q('.cm-burst');if(b){b.style.opacity=S.blob;}
+  return true;}
+function ready(fn){var n=0;(function w(){if(apply()||n++>100){fn();return;}setTimeout(w,100);})();}
+var show=!/github\.io$/.test(location.hostname)||/[?&]controls/.test(location.search);
+ready(function(){if(show)panel();});
+function panel(){
+  var css='#cm-bgc{position:fixed;left:16px;bottom:16px;z-index:200;font:13px/1.4 Karla,system-ui,sans-serif;color:#231d1a}'+
+  '#cm-bgc>button{all:unset;cursor:pointer;background:#fffdfb;border-radius:20px;padding:8px 14px;box-shadow:0 0 0 1px rgba(35,29,26,.14),0 6px 18px rgba(35,29,26,.08)}'+
+  '#cm-bgc .p{display:none;position:absolute;left:0;bottom:44px;width:280px;max-height:70vh;overflow:auto;background:#fffdfb;border-radius:8px;padding:16px;box-shadow:0 0 0 1px rgba(35,29,26,.12),0 18px 40px rgba(35,29,26,.14)}'+
+  '#cm-bgc.open .p{display:block}#cm-bgc h4{margin:14px 0 8px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(35,29,26,.55)}#cm-bgc h4:first-child{margin-top:0}'+
+  '#cm-bgc label{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:6px 0}#cm-bgc input[type=range]{width:130px;accent-color:#231d1a}#cm-bgc input[type=checkbox]{accent-color:#231d1a;width:16px;height:16px}'+
+  '#cm-bgc .sw{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0}#cm-bgc input[type=color]{width:28px;height:28px;padding:0;border:1px solid rgba(35,29,26,.15);border-radius:50%;background:none;cursor:pointer}'+
+  '#cm-bgc input[type=color]::-webkit-color-swatch-wrapper{padding:0}#cm-bgc input[type=color]::-webkit-color-swatch{border:0;border-radius:50%}'+
+  '#cm-bgc .row{display:flex;gap:8px;margin-top:14px}#cm-bgc .row button{all:unset;cursor:pointer;flex:1;text-align:center;padding:7px 0;border-radius:2px;box-shadow:inset 0 0 0 1px rgba(35,29,26,.2)}#cm-bgc .row button.k{background:#231d1a;color:#fffdfb;box-shadow:none}'+
+  '#cm-bgc .n{font-size:11px;color:rgba(35,29,26,.55);margin-top:8px}';
+  var st=document.createElement('style');st.textContent=css;document.head.appendChild(st);
+  var root=document.createElement('div');root.id='cm-bgc';
+  root.innerHTML='<div class="p" role="dialog" aria-label="Background controls"></div><button type="button" aria-expanded="false">Background</button>';
+  document.body.appendChild(root);
+  var p=root.querySelector('.p'),btn=root.querySelector('button');
+  btn.onclick=function(){var o=root.classList.toggle('open');btn.setAttribute('aria-expanded',o);};
+  function render(){
+    var h='<h4>Animation</h4>'+
+    tog('cycle','Color cycle')+rng('speed','Cycle length',30,300,10,'s')+tog('ambient','Floating blobs')+tog('cursor','Cursor trail')+
+    rng('blob','Blob strength',0,1,0.05,'')+'<h4>Look</h4>'+rng('strength','Gradient strength',0,1,0.05,'')+rng('blur','Blur',0,80,2,'px')+rng('veil','White wash',0,1,0.05,'')+
+    '<h4>Gradient colors</h4>';
+    S.themes.forEach(function(t,i){h+='<div class="sw">'+t.map(function(c,j){return '<input type="color" value="'+c+'" data-t="'+i+'" data-j="'+j+'" aria-label="Gradient '+(i+1)+' color '+(j+1)+'">';}).join('')+'</div>';});
+    h+='<h4>Blob colors</h4><div class="sw">'+S.blobs.map(function(c,i){return '<input type="color" value="'+c+'" data-b="'+i+'" aria-label="Blob color '+(i+1)+'">';}).join('')+'</div>'+
+    '<div class="row"><button type="button" data-a="reset">Reset</button><button type="button" class="k" data-a="copy">Copy settings</button></div>'+
+    '<div class="n">Changes save in this browser. Copy settings and paste them to Claude to make them the default.</div>';
+    p.innerHTML=h;}
+  function tog(k,l){return '<label>'+l+'<input type="checkbox" data-k="'+k+'"'+(S[k]?' checked':'')+'></label>';}
+  function rng(k,l,a,b,s,u){return '<label>'+l+' <span>'+S[k]+u+'</span><input type="range" min="'+a+'" max="'+b+'" step="'+s+'" value="'+S[k]+'" data-k="'+k+'" data-u="'+u+'"></label>';}
+  render();
+  p.addEventListener('input',function(e){var t=e.target;
+    if(t.dataset.k){S[t.dataset.k]=t.type==='checkbox'?t.checked:parseFloat(t.value);if(t.type==='range')t.previousElementSibling.textContent=t.value+(t.dataset.u||'');}
+    else if(t.dataset.t){S.themes[+t.dataset.t][+t.dataset.j]=t.value;}
+    else if(t.dataset.b){S.blobs[+t.dataset.b]=t.value;}
+    apply();save();});
+  p.addEventListener('change',function(e){if(e.target.type==='checkbox'){S[e.target.dataset.k]=e.target.checked;apply();save();}});
+  p.addEventListener('click',function(e){var a=e.target.dataset&&e.target.dataset.a;if(!a)return;
+    if(a==='reset'){var d=clone(DEF);for(var k in d)S[k]=d[k];try{localStorage.removeItem(KEY);}catch(_){}apply();render();}
+    if(a==='copy'){var txt=JSON.stringify(S);var b=e.target;var done=function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy settings';},1500);};
+      if(navigator.clipboard)navigator.clipboard.writeText(txt).then(done,done);else done();}});
+}
+})();
 </script>
 </body>
 </html>
